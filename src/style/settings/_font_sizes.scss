@@ -1,0 +1,8 @@
+@import "./layout";
+
+/* === Font Sizes From 8px to 50px === */
+@each $classlabel, $mediaquery in $breakpointmap {
+	@for $i from 8 through 50 {
+		.fontSize#{$i}#{$classlabel} {font-size: $i + px!important;}
+	}
+}

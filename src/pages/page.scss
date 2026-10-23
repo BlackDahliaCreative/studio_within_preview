@@ -1,0 +1,60 @@
+.page {
+    box-sizing: border-box;
+    padding: var(--padding-lg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    .tempFolder{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sphere_1 {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        background:
+            radial-gradient(
+            circle at 30% 30%,
+            #ffffff,
+            #d9d9d9 35%,
+            #8a8a8a 65%,
+            #4a4a4a 100%
+            );
+        box-shadow:
+            inset -20px -20px 40px rgba(0, 0, 0, 0.35),
+            inset 10px 10px 30px rgba(255, 255, 255, 0.4),
+            0 25px 35px rgba(0, 0, 0, 0.45);
+    }
+
+    .glass-sphere {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        position: relative;
+        background: radial-gradient(
+            circle at 35% 30%,
+            #ffffff,
+            #b0c4de 40%,
+            #3a4f7a 75%,
+            #1c263b 100%
+        );
+        box-shadow:
+            inset -25px -25px 45px rgba(0, 0, 0, 0.5),
+            0 30px 40px rgba(0, 0, 0, 0.5);
+        &::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 28px;
+            width: 70px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            filter: blur(4px);
+        }
+    }
+
+
+}

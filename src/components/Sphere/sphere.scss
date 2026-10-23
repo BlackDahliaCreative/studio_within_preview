@@ -1,0 +1,26 @@
+.perspective {
+    perspective: 900px;
+    width: 260px;
+    height: 260px;
+    display: grid;
+    place-items: center;
+    .sphere {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle at 30% 30%,
+            #ffffff,
+            #c9c9c9 40%,
+            #6b6b6b 70%,
+            #2a2a2a 100%
+        );
+    
+        box-shadow:
+        inset -20px -20px 35px rgba(0,0,0,0.4),
+        0 30px 35px rgba(0,0,0,0.45);
+    
+        will-change: transform;
+    }
+}
+

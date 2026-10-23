@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+}
+
+.carouselFrame{
+    border: 2px solid rebeccapurple;
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 50vh;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+
+    /**  Section containing the "active image" and eventually the folder buttons*/
+    .carouselContent{
+        display: flex;
+        height: 100%;
+        width: 100%;
+
+        /** Right section for button folders*/
+        .multiFoldersBtnsSection{
+            width: 30%;
+            height: 100%;
+            box-sizing: border-box;
+            border: 2px solid black;
+            background-color: rgb(183, 238, 240);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .carouselBtnFold{
+                &:not(:first-child){
+                    margin-top: 10px;
+                }
+                &.active{
+                    filter: brightness(0.5);
+                }
+            }
+        }
+
+        /** Picture section for the "active image" and eventually the arrows*/
+        .carouselPictures{
+            width: calc(70% - 20px);
+            box-sizing: border-box;
+            margin-left: 20px;
+            height: 100%;
+            border: 2px solid black;
+            background-color: rgb(183, 238, 240);
+            position: relative;
+            overflow: hidden;
+            &.fullWidth{
+                width: 100%;
+                margin-left: 0px;
+            }
+            .carouselScrollIcon{
+                position: absolute;
+                top: 50%;
+                z-index: 2;
+                &.left { left: 15px; }
+                &.right { right: 15px; }
+            }
+            .animatedPic{
+                height: 100%;
+                width: 100%;
+                position: absolute; /* Ensures it covers the parent container */
+                top: 0;
+                left: 0;
+                .carouselSinglePic{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+            .picCaption{
+                position: absolute;
+                bottom: 0px;
+                right: 10px;
+                font-weight: bold;
+                color: rgb(255, 255, 255);
+                text-shadow: 
+                    1px 1px 1px black, 
+                    -1px -1px 1px black, 
+                    -1px 1px 1px black, 
+                    1px -1px 1px black; 
+            }
+        }
+    }
+
+    /** Preview section for all the pictures available*/
+    .carouselPreview{
+        margin-top: 10px;
+        width: calc(90% - 40px);
+        max-width: fit-content;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        align-self: center;
+        justify-self: center;
+        box-sizing: border-box;
+        .previewScrollIcons{
+            position: absolute;
+            height: 80px;
+            &.right{right: 20px;}
+            &.left{left: 20px;}
+            align-self: center;
+        }
+        .allPics{
+            // height: 120px;
+            display: flex;
+            img {
+                width: 100px;
+                object-fit: cover;
+                flex: 0 0 auto;
+                cursor: pointer;
+                &:hover { cursor: pointer; }
+                &.active { border: 1px solid red; }
+                &:not(:last-child) { margin-right: 10px;}
+            }
+            /* Scrollbar styles */
+        }
+        &::-webkit-scrollbar { height: 0px; }
+        &::-webkit-scrollbar-thumb:hover { background-color: #555; }
+    }
+}

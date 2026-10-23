@@ -1,0 +1,65 @@
+{
+  "name": "Single Folder Carousel",
+  "images": [
+    {
+      "src": "/single-carousel-folder/1.Grand resort lagonissi.webp",
+      "alt": "Grand resort lagonissi",
+      "extraCaption": null
+    },
+    {
+      "src": "/single-carousel-folder/2.Orange Picture.webp",
+      "alt": "Orange Picture",
+      "extraCaption": null
+    },
+    {
+      "src": "/single-carousel-folder/3.Recipe App Background.webp",
+      "alt": "Recipe App Background",
+      "extraCaption": null
+    },
+    {
+      "src": "/single-carousel-folder/4.Something else.webp",
+      "alt": "Something else",
+      "extraCaption": null
+    },
+    {
+      "src": "/single-carousel-folder/5.Abstract.webp",
+      "alt": "Abstract",
+      "extraCaption": null
+    },
+    {
+      "src": "/single-carousel-folder/6.Boats.webp",
+      "alt": "Boats",
+      "extraCaption": null
+    },
+    {
+      "src": "/single-carousel-folder/7.Form Background 2.webp",
+      "alt": "Form Background 2",
+      "extraCaption": null
+    },
+    {
+      "src": "/single-carousel-folder/8.Marco.webp",
+      "alt": "Marco",
+      "extraCaption": null
+    },
+    {
+      "src": "/single-carousel-folder/9.Casa Colucci Flyer.webp",
+      "alt": "Casa Colucci Flyer",
+      "extraCaption": null
+    },
+    {
+      "src": "/single-carousel-folder/10.Hexagon.webp",
+      "alt": "Hexagon",
+      "extraCaption": null
+    },
+    {
+      "src": "/single-carousel-folder/11.This One.webp",
+      "alt": "This One",
+      "extraCaption": null
+    },
+    {
+      "src": "/single-carousel-folder/12.Form Background.webp",
+      "alt": "Form Background",
+      "extraCaption": null
+    }
+  ]
+}

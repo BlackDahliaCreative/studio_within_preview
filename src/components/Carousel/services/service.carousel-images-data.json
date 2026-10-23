@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Random Pictures",
+    "images": [
+      {
+        "src": "/carousel-pictures/1-Random Pictures/1.Grand resort lagonissi.webp",
+        "alt": "Grand resort lagonissi",
+        "extraCaption": "Grand resort lagonissi"
+      },
+      {
+        "src": "/carousel-pictures/1-Random Pictures/2.Marco.webp",
+        "alt": "Marco",
+        "extraCaption": null
+      },
+      {
+        "src": "/carousel-pictures/1-Random Pictures/3.Casa Colucci Flyer.webp",
+        "alt": "Casa Colucci Flyer",
+        "extraCaption": null
+      }
+    ]
+  },
+  {
+    "name": "Random Backgrounds",
+    "images": [
+      {
+        "src": "/carousel-pictures/2-Random Backgrounds/1.Orange Picture.webp",
+        "alt": "Orange Picture",
+        "extraCaption": null
+      },
+      {
+        "src": "/carousel-pictures/2-Random Backgrounds/2.Abstract.webp",
+        "alt": "Abstract",
+        "extraCaption": null
+      }
+    ]
+  },
+  {
+    "name": "More Random Backgrounds",
+    "images": [
+      {
+        "src": "/carousel-pictures/3-More Random Backgrounds/1.Recipe App Background.webp",
+        "alt": "Recipe App Background",
+        "extraCaption": null
+      },
+      {
+        "src": "/carousel-pictures/3-More Random Backgrounds/2.Form Background 2.webp",
+        "alt": "Form Background 2",
+        "extraCaption": null
+      },
+      {
+        "src": "/carousel-pictures/3-More Random Backgrounds/3.Hexagon.webp",
+        "alt": "Hexagon",
+        "extraCaption": null
+      },
+      {
+        "src": "/carousel-pictures/3-More Random Backgrounds/4.Form Background.webp",
+        "alt": "Form Background",
+        "extraCaption": null
+      }
+    ]
+  },
+  {
+    "name": "Mareland",
+    "images": [
+      {
+        "src": "/carousel-pictures/4-Mareland/1.Something else.webp",
+        "alt": "Something else",
+        "extraCaption": null
+      },
+      {
+        "src": "/carousel-pictures/4-Mareland/2.Boats.webp",
+        "alt": "Boats",
+        "extraCaption": null
+      },
+      {
+        "src": "/carousel-pictures/4-Mareland/3.This One.webp",
+        "alt": "This One",
+        "extraCaption": null
+      }
+    ]
+  }
+]

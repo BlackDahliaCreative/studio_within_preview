@@ -1,0 +1,29 @@
+$primary-color: #3498db;
+$primary-font-color: yellow;
+:root {
+    --primary-font-color: #000000;
+    --page-primary-backgroung: #d5daf6;
+    --white-text: #ffffff;
+
+    /*==== ACCESSIBILITY ====*/
+    --color-focus: #4a90e2;         /* keyboard focus ring — update to match brand */
+
+    /*==== GENERAL ====*/
+    --padding-xs: 5px;
+    --padding-sm: 10px;
+    --padding-md: 20px;
+    --padding-lg: 30px;
+    --padding-xl: 40px;
+    --h-100: 100;
+
+
+    /*==== NAVIGATION BAR ====*/
+    --navbar-height: 40px;
+    --navbar-background: #98c0da;
+    --navbar-fontsize: 16px;
+    --navbar-fontFamily: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    --navbar-fontWeight: 600;
+
+    /*==== FOOTER ====*/
+    --footer-height: 60px;
+}

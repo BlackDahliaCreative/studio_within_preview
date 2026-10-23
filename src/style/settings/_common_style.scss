@@ -1,0 +1,67 @@
+
+.rotate180{ transform: rotate(180deg); }
+
+.text-center{text-align: center !important;}
+.text-light {font-weight:300 !important;}
+.text-semibold {font-weight:600 !important;}
+.text-bold {font-weight:700 !important;}
+.text-italic {font-style: italic;}
+.text-white{color: #fff !important;}
+.hide {display: none !important;}
+.show {display: flex;}
+
+/* ── Accessibility: keyboard focus ───────────────────────────────────────── */
+
+/* Remove default outline only when not navigating by keyboard */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Visible focus ring for keyboard users */
+*:focus-visible {
+    outline: 2px solid var(--color-focus, #4a90e2);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* Skip-to-content link — hidden off-screen until focused */
+.skip-link {
+    background: var(--color-focus, #4a90e2);
+    color: #fff;
+    font-weight: 600;
+    left: 50%;
+    padding: 8px 16px;
+    position: fixed;
+    top: -100px;
+    transform: translateX(-50%);
+    transition: top 0.15s ease;
+    z-index: 9999;
+    border-radius: 0 0 6px 6px;
+    text-decoration: none;
+
+    &:focus-visible {
+        top: 0;
+        outline: none;
+    }
+}
+
+/* Hamburger button reset — removes default button appearance */
+button.hambContainer {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* ── SCROLLBAR SETTINGS ──────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+	width: 8px !important;
+}
+::-webkit-scrollbar-track {
+	background-color: #E3D7C84D;
+	border-radius: 20px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #000000b1;
+	border-radius: 3px;
+}

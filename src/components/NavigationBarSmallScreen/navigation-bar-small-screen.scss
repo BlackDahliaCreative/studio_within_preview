@@ -1,0 +1,84 @@
+
+.hambContainer {
+    border-radius: 0px;
+    display: flex;
+    justify-content: end;
+    position: fixed;
+    z-index: 12;
+    right: 20px;
+    top: 20px;
+
+    .hamburger-menu {
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        position: relative;
+        background-color: black;
+        border: 1px solid white;
+        padding: 0;
+
+        .bar {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 60%;
+            height: 2px;
+            background-color: white;
+            border-radius: 10px;
+            transition: transform 0.35s ease, opacity 0.2s ease, width 0.35s ease;
+        }
+
+        #bar1 { transform: translate(-50%, calc(50% - 10px)); }
+        #bar2 { transform: translate(-70%, -50%); width: 40%; }
+        #bar3 { transform: translate(-50%, calc(-170% + 10px)); }
+
+        &.openHam {
+            #bar1 {
+                transform: translate(-50%, -50%) rotate(45deg);
+                width: 70%;
+            }
+            #bar2 {
+                opacity: 0;
+                transform: translate(-50%, -50%) scaleX(0.2);
+            }
+            #bar3 {
+                transform: translate(-50%, -50%) rotate(-45deg);
+                width: 70%;
+            }
+        }
+    }
+
+}
+
+#smallScreenMenu {
+    box-sizing: border-box;
+    background-color: black;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    z-index: 10;
+    .navBarSm {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        .navLinksSmScreen {
+            text-decoration: none;
+            color: white;
+            font-size: var(--navbar-fontsize);
+            font-family: var(--navbar-fontFamily);
+            font-weight: 400;
+            align-self: center;
+            p {
+                margin: 10px 0px;
+                text-align: center;
+            }
+        }
+    }
+}

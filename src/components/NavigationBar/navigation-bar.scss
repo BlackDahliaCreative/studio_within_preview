@@ -1,0 +1,18 @@
+
+.navBar {
+    background-color: var(--navbar-background);
+    min-height: var(--navbar-height);
+    .navLinks {
+        text-decoration: none;
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+        color: var(--primary-font-color);
+        font-size: var(--navbar-fontsize);
+        font-family: var(--navbar-fontFamily);
+        font-weight: var(--navbar-fontWeight);
+        p {
+            margin: 0px;
+        }
+    }
+  }
