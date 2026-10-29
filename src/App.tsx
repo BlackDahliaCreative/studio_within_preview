@@ -8,11 +8,15 @@ import PageLoader from './components/PageLoader/PageLoader';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 import './style/App.scss';
+import './pages/page.scss'; // shared .page layout, used by every page
 
-const HomePage = lazy(() => import('./pages/HomePage'));
-const Page1 = lazy(() => import('./pages/Page1'));
-const Page2 = lazy(() => import('./pages/Page2'));
-const Animations = lazy(() => import('./pages/Animations'));
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const Landing = lazy(() => import('./pages/Landing/Landing'));
+const Policies = lazy(() => import('./pages/Policies/Policies'));
+const FAQs = lazy(() => import('./pages/FAQs/FAQs'));
+const Careers = lazy(() => import('./pages/Careers/Careers'));
+const GetInTouch = lazy(() => import('./pages/GetInTouch/GetInTouch'));
+const MeetTheTeam = lazy(() => import('./pages/MeetTheTeam/MeetTheTeam'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
@@ -26,11 +30,14 @@ function App() {
       <main id="main-content">
         <Suspense fallback={<PageLoader />}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/carousels" element={<Page1 />} />
-            <Route path="/page-2" element={<Page2 />} />
-            <Route path="/animations" element={<Animations />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/home-page" element={<HomePage />} />
+            <Route path="/policies" element={<Policies />} />
+            <Route path="/faqs" element={<FAQs />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/get-in-touch" element={<GetInTouch />} />
+            <Route path="/meet-the-team" element={<MeetTheTeam />} />
+            <Route path="*"element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>

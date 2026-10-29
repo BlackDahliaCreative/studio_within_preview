@@ -1,0 +1,53 @@
+#landingHero {
+    position: relative;
+    padding: 0;
+    min-height: 100svh;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    // Shown through the video while it fades at the loop point
+    background: url('./landing_video.jpg') center / cover no-repeat;
+
+    // Video fills the hero; cropped rather than stretched on any screen shape
+    .landingHero__video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        // Two copies are stacked (see Landing.tsx). The one in back stays fully visible
+        // until the crossfade ends, then hides, so nothing behind ever shows through.
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 0s linear var(--crossfade, 1.5s);
+
+        // The copy on top fades in over the one underneath
+        &.is-front {
+            z-index: 1;
+            opacity: 1;
+            transition: opacity var(--crossfade, 1.5s) ease-in-out;
+        }
+    }
+
+    // Keep links above the videos
+    .linkBtn {
+        z-index: 2;
+    }
+
+    // Logo centered over the video (the hero is a centered flex column)
+    .logo_partner {
+        position: relative;
+        z-index: 2;
+        width: min(60vw, 420px);
+        height: auto;
+    }
+
+    // Anything placed over the video
+    .landingHero__content {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        text-align: center;
+        padding: var(--padding-lg);
+    }
+}

@@ -35,10 +35,13 @@ const NavigationBarSmallScreen = () => {
                 item ? (
                     <animated.div style={style} id="smallScreenMenu" role="dialog" aria-label="Navigation menu">
                         <nav aria-label="Main navigation" className='navBarSm'>
-                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/'}>Home Page</Link>
-                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/carousels/'}>Carousels</Link>
-                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/page-2/'}>Page 2</Link>
-                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/animations/'}>Animations</Link>
+                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/'}>Landing</Link>
+                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/home-page'}>Home Page</Link>
+                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/policies'}>Policies</Link>
+                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/faqs'}>FAQs</Link>
+                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/careers'}>Careers</Link>
+                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/get-in-touch'}>Get in Touch</Link>
+                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/meet-the-team'}>Meet the Team</Link>
                         </nav>
                     </animated.div>
                 ) : null

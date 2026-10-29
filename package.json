@@ -1,5 +1,5 @@
 {
-  "name": "web-template",
+  "name": "Studio Within Preview",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,10 +12,10 @@
     "test:watch": "vitest",
     "build:preview": "npm run scan-images && npm run typecheck && vite build --mode preview && vite build --mode preview --ssr src/entry-server.tsx --outDir build-ssr && node scripts/prerender.js --preview",
     "predeploy:preview": "npm run build:preview",
-    "deploy:preview": "node scripts/deploy.js live https://github.com/BlackDahliaCreative/CLIENT_PREVIEW_REPO.git",
+    "deploy:preview": "node scripts/deploy.js live https://github.com/BlackDahliaCreative/studio_within_preview.git",
     "build:official": "npm run scan-images && npm run typecheck && vite build --mode official && vite build --mode official --ssr src/entry-server.tsx --outDir build-ssr && node scripts/prerender.js",
     "predeploy:official": "npm run build:official && node -e \"require('fs').writeFileSync('build/CNAME','CLIENT_DOMAIN.com')\"",
-    "deploy:official": "node scripts/deploy.js live https://github.com/BlackDahliaCreative/CLIENT_LIVE_REPO.git"
+    "deploy:official": "node scripts/deploy.js live https://github.com/BlackDahliaCreative/studio_within_live.git"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

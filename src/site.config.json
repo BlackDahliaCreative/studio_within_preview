@@ -13,23 +13,44 @@
       "priority": "1.0"
     },
     {
-      "path": "/carousels",
-      "title": "Carousels",
-      "description": "CLIENT_CAROUSELS_DESC",
+      "path": "/home-page",
+      "title": "Home Page",
+      "description": "CLIENT_HOME_DESC",
       "changefreq": "monthly",
       "priority": "0.8"
     },
     {
-      "path": "/page-2",
-      "title": "Page 2",
-      "description": "CLIENT_PAGE2_DESC",
+      "path": "/policies",
+      "title": "Policies",
+      "description": "CLIENT_POLICIES_DESC",
       "changefreq": "monthly",
       "priority": "0.8"
     },
     {
-      "path": "/animations",
-      "title": "Animations",
-      "description": "CLIENT_ANIMATIONS_DESC",
+      "path": "/faqs",
+      "title": "FAQs",
+      "description": "CLIENT_FAQS_DESC",
+      "changefreq": "monthly",
+      "priority": "0.8"
+    },
+    {
+      "path": "/careers",
+      "title": "Careers",
+      "description": "CLIENT_CAREERS_DESC",
+      "changefreq": "monthly",
+      "priority": "0.8"
+    },
+    {
+      "path": "/get-in-touch",
+      "title": "Get in Touch",
+      "description": "CLIENT_CONTACT_DESC",
+      "changefreq": "monthly",
+      "priority": "0.8"
+    },
+    {
+      "path": "/meet-the-team",
+      "title": "Meet the Team",
+      "description": "CLIENT_TEAM_DESC",
       "changefreq": "monthly",
       "priority": "0.8"
     }
