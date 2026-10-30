@@ -11,16 +11,12 @@
 // Every class has fallbacks, shown for a moment while the font loads (font-display: swap).
 
 // ── Local fonts (not on Google Fonts) ─────────────────────────────────
-@font-face {
-	font-family: 'Bison';
-	src: url('../fonts/Bison/Bison-Bold.woff2') format('woff2');
-	font-display: swap;
-}
-@font-face {
-	font-family: 'September Script';
-	src: url('../fonts/September_script/september-script.regular.woff2') format('woff2');
-	font-display: swap;
-}
+// None yet. Example:
+// @font-face {
+// 	font-family: 'Bison';
+// 	src: url('../fonts/Bison/Bison-Bold.woff2') format('woff2');
+// 	font-display: swap;
+// }
 
 // ── Font classes ──────────────────────────────────────────────────────
 // Google fonts (see src/style/fonts.ts)
@@ -41,12 +37,4 @@
 }
 .font-ledger {
 	font-family: 'Ledger', Georgia, serif !important;
-}
-
-// Local fonts
-.font-bison {
-	font-family: 'Bison', Impact, 'Arial Narrow', sans-serif !important;
-}
-.font-september-script {
-	font-family: 'September Script', 'Brush Script MT', cursive !important;
 }
