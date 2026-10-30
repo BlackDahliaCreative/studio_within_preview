@@ -1,1 +1,0 @@
-import{j as e,L as o}from"./index-B_IzTliX.js";import{S as t}from"./SEOHead-3hj-KbcY.js";const r=()=>e.jsxs("div",{className:"page",children:[e.jsx(t,{title:"Page not found",noIndex:!0}),e.jsx("h1",{children:"Page not found"}),e.jsx("p",{children:"The page you're looking for doesn't exist or has moved."}),e.jsx(o,{to:"/",children:"Back to the home page"})]});export{r as default};
