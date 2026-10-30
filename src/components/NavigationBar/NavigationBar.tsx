@@ -15,6 +15,7 @@ const NavigationBar = () => {
                 <NavLink className="navLinks" to={'/services/'}>Services</NavLink>
                 <NavLink className="navLinks" to={'/careers/'}>Careers</NavLink>
                 <NavLink className="navLinks" to={'/get-in-touch/'}>Get in Touch</NavLink>
+                
             </div>
         </nav>
     )
