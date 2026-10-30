@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         CLIENT CONFIG — update these placeholders before launch
+         ═══════════════════════════════════════════════════════════════════
+         SITE_LANG      → html lang attribute, e.g. "it" or "en"
+         SITE_NAME      → brand name, e.g. "Acme Studio"
+         SITE_URL       → canonical root, e.g. "https://www.acme.com"
+         SITE_TAGLINE   → short description used in the default title
+         SITE_DESC      → default meta description (≤160 chars)
+         SITE_OG_IMAGE  → absolute URL to a 1200×630 social-share image
+         GTM_ID         → Google Tag Manager container ID, e.g. "GTM-XXXXXXX"
+                          Set to empty string "" to disable GTM entirely
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <!-- Favicon / PWA (Vite adds the preview base path automatically) -->
+    <link rel="icon"             href="/studio_within_preview/favicon.ico" />
+    <link rel="apple-touch-icon" href="/studio_within_preview/logo192.png" />
+    <link rel="manifest"         href="/studio_within_preview/manifest.json" />
+
+    <!-- Preload the font used above the fold (the menu), so it arrives with the page.     -->
+    <!-- Preload only 1-2 fonts that every page uses (the "latin" file); the rest load later. -->
+    <!-- Fontsource files are in node_modules/@fontsource(-variable)/<name>/files/          -->
+    <link rel="preload" href="/studio_within_preview/assets/inter-latin-wght-normal-Dx4kXJAl.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Performance: preconnect to any third-party origins used site-wide -->
+    <!-- Add / remove entries to match your actual external resources       -->
+    <!-- Uncomment together with Google Tag Manager below:                  -->
+    <!-- <link rel="preconnect" href="https://www.googletagmanager.com" />  -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />       -->
+    <!-- <link rel="preconnect" href="https://use.typekit.net" crossorigin /> -->
+
+    <!-- Title, description, canonical, Open Graph and Twitter tags for each page come from
+         SEOHead (values in src/site.config.json). The build writes them in here: -->
+    <title data-rh="true">Careers | CLIENT_NAME</title>
+    <meta data-rh="true" name="description" content="CLIENT_CAREERS_DESC"/><meta data-rh="true" name="robots" content="noindex, nofollow"/><meta data-rh="true" property="og:type" content="website"/><meta data-rh="true" property="og:site_name" content="CLIENT_NAME"/><meta data-rh="true" property="og:title" content="Careers | CLIENT_NAME"/><meta data-rh="true" property="og:description" content="CLIENT_CAREERS_DESC"/><meta data-rh="true" property="og:url" content="https://www.CLIENT_DOMAIN.com/careers/"/><meta data-rh="true" property="og:image" content="https://www.CLIENT_DOMAIN.com/CLIENT_OG_IMAGE_PATH"/><meta data-rh="true" property="og:image:width" content="1200"/><meta data-rh="true" property="og:image:height" content="630"/><meta data-rh="true" name="twitter:card" content="summary_large_image"/><meta data-rh="true" name="twitter:title" content="Careers | CLIENT_NAME"/><meta data-rh="true" name="twitter:description" content="CLIENT_CAREERS_DESC"/><meta data-rh="true" name="twitter:image" content="https://www.CLIENT_DOMAIN.com/CLIENT_OG_IMAGE_PATH"/>
+    <link data-rh="true" rel="canonical" href="https://www.CLIENT_DOMAIN.com/careers/"/>
+    
+
+    <!-- Same on every page -->
+    <meta property="og:locale"       content="en_US" />
+    <meta property="og:image:alt"    content="CLIENT_NAME" />
+    <meta name="twitter:image:alt"   content="CLIENT_NAME" />
+
+    <!-- Google Tag Manager — replace GTM_ID or remove this block if not used -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM_ID');</script> -->
+    <!-- End Google Tag Manager -->
+
+    <!-- Organization JSON-LD — validate at: https://search.google.com/test/rich-results       -->
+    <!-- CLIENT_NAME, CLIENT_URL, CLIENT_DESC and CLIENT_OG_IMAGE are filled in from             -->
+    <!-- src/site.config.json at build time. Fill in the social links, or use "LocalBusiness" etc. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "CLIENT_URL/#organization",
+          "name": "CLIENT_NAME",
+          "url": "CLIENT_URL",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "CLIENT_OG_IMAGE",
+            "width": 1200,
+            "height": 630
+          },
+          "description": "CLIENT_DESC",
+          "sameAs": [
+            "https://www.instagram.com/CLIENT_INSTAGRAM",
+            "https://www.facebook.com/CLIENT_FACEBOOK"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "CLIENT_URL/#website",
+          "url": "CLIENT_URL",
+          "name": "CLIENT_NAME",
+          "publisher": { "@id": "CLIENT_URL/#organization" },
+          "inLanguage": "en"
+        }
+      ]
+    }
+    </script>
+
+    <script type="module" crossorigin src="/studio_within_preview/assets/index-B_IzTliX.js"></script>
+    <link rel="stylesheet" crossorigin href="/studio_within_preview/assets/style-DAWN-UO0.css">
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) — keep in sync with GTM_ID above -->
+    <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM_ID"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Skip-to-content link: only visible on keyboard focus, lets users skip the navbar -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- The build puts each page's full HTML inside #root (scripts/prerender.js) -->
+    <div id="root"><div class="App flex flex-column col-12"><div class="nav-desktop"><nav aria-label="Main navigation" class="flex flex-alignItems-center flex-justifyContent-center navBar"><a class="hide" href="/studio_within_preview">Landing</a><div class="flex flex-alignItems-center"><a class="navLinks" href="/studio_within_preview/home-page/">Home</a><a class="navLinks" href="/studio_within_preview/meet-the-team/">Meet the Team</a><a class="navLinks" href="/studio_within_preview/policies/">Policies</a><a class="navLinks" href="/studio_within_preview/faqs/">FAQs</a><a class="navLinks" href="/studio_within_preview/services/">Services</a><a class="navLinks" href="/studio_within_preview/careers/">Careers</a><a class="navLinks" href="/studio_within_preview/get-in-touch/">Get in Touch</a></div></nav></div><div class="nav-mobile"><button class="hambContainer" aria-expanded="false" aria-controls="smallScreenMenu" aria-label="Open navigation menu"><div class="hamburger-menu" aria-hidden="true"><div class="bar" id="bar1"></div><div class="bar" id="bar2"></div><div class="bar" id="bar3"></div></div></button></div><main id="main-content"><!--$--><div class="page" id="careersPage"><h1>Careers</h1></div><!--/$--></main><footer class="footer"><h1 class="m-0">FOOTER</h1></footer></div></div>
+  </body>
+</html>
