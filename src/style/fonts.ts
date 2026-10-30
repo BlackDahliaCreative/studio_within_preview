@@ -13,9 +13,5 @@
 //
 // Fonts that aren't on Google Fonts go in src/style/fonts/; see _font_families.scss.
 
-import '@fontsource-variable/inter'            // font-family: 'Inter Variable'
-import '@fontsource-variable/playfair-display' // font-family: 'Playfair Display Variable'
-import '@fontsource-variable/merriweather'     // font-family: 'Merriweather Variable'
-import '@fontsource/bebas-neue'                // font-family: 'Bebas Neue'    (weight 400)
-import '@fontsource/prata'                     // font-family: 'Prata'         (weight 400)
-import '@fontsource/ledger'                    // font-family: 'Ledger'        (weight 400)
+import '@fontsource-variable/inter';          // font-family: 'Inter Variable'
+import '@fontsource-variable/josefin-sans';

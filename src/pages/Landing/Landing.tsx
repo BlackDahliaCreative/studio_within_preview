@@ -87,6 +87,7 @@ const Landing = () => {
             style={{ position: 'relative', '--crossfade': `${CROSSFADE_SECONDS}s` } as CSSProperties}
         >
             <SEOHead path="/" />
+
             {[0, 1].map((i) => (
                 <video
                     key={i}
@@ -103,9 +104,9 @@ const Landing = () => {
                     <source src={videoDesktop} type="video/mp4" />
                 </video>
             ))}
-            <div className="flex flex-column flex-alignItems-center">
+            <div className="flex flex-column flex-alignItems-center" id="logo_btn_landing">
                 <img className="logo_partner" src={publicUrl('/logos/white_primary_logo.png')} alt="Studio Within Salon Logo" />
-                <Link to={'/home-page'} className="linkBtn" style={{position: 'absolute', bottom: '40px', right: '40px'}}>ENTER HERE</Link>
+                <Link to={'/home-page'} className="linkBtn">ENTER HERE</Link>
             </div>
         </div>
     )

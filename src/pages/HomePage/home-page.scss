@@ -1,1 +1,43 @@
-#homePage {}
+#homePage {
+    padding: 0px !important;
+    #landing_hero {
+        height: 100dvh;
+        width: 100%;
+        margin-top: -81.52px;
+        position: relative;
+        #home_hero {
+            object-fit: cover;
+            height: 100dvh;
+            width: 100%;
+            position: absolute;
+
+        }
+        #logo_home {
+            position: absolute;
+            z-index: 2;
+            right: 15%;
+            bottom: 30%;
+            
+            .logo_partner {
+                width: min(50vw, 420px);
+                height: auto;
+                z-index: 2;
+            }
+            p {
+                font-size: 16pt;
+                line-height: 18.8pt;
+                font-weight: 500;
+                letter-spacing: 3px;
+                color: var(--primary-color);
+                margin-top: 0px;
+            }
+        }
+    }
+    .Intro2 {
+        font-family: var(--secondary-font-family) !important;
+        font-weight: 500;
+        line-height: 48pt;
+        font-size: 32pt;
+        letter-spacing: 2px;
+    }
+}

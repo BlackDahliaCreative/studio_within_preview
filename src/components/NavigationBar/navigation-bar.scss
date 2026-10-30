@@ -1,18 +1,26 @@
 
 .navBar {
     background-color: var(--navbar-background);
-    min-height: var(--navbar-height);
+    max-height: var(--navbar-height);
+    z-index: 2;
     .navLinks {
         text-decoration: none;
         &:not(:last-child) {
-            margin-right: 20px;
+            margin-right: 35px;
         }
         color: var(--primary-font-color);
         font-size: var(--navbar-fontsize);
         font-family: var(--navbar-fontFamily);
         font-weight: var(--navbar-fontWeight);
+        padding-top: 40px;
+        padding-bottom: 15px;
         p {
             margin: 0px;
         }
+        &.active {display: none;}
+    }
+    .white {
+        .navLinks {color: #fff !important;}
+        z-index: 2;
     }
   }
