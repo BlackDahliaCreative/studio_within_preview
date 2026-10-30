@@ -14,4 +14,5 @@
 // Fonts that aren't on Google Fonts go in src/style/fonts/; see _font_families.scss.
 
 import '@fontsource-variable/inter';          // font-family: 'Inter Variable'
+import '@fontsource-variable/inter/wght-italic.css';
 import '@fontsource-variable/josefin-sans';

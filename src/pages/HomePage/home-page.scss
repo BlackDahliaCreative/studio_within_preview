@@ -1,43 +1,500 @@
+// Home page. Measurements come from the Figma "Home" frame (1440px wide).
 #homePage {
     padding: 0px !important;
+    overflow-x: clip;
+    color: var(--primary-font-color);
+
+    // ── Shared bits ─────────────────────────────────────────────────
+    .home-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 297px;
+        height: 51px;
+        padding: 0 var(--padding-lg);
+        font-family: var(--primary-font-family);
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 2.8px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+        &:hover { opacity: 0.85; }
+
+        &--dark {
+            background: var(--brown-color);
+            border: 1px solid var(--brown-color);
+            color: #fff;
+        }
+        &--light {
+            background: var(--cream-color);
+            color: #000;
+        }
+    }
+
+    // Vertical label on the left side of a section
+    .side-label {
+        position: absolute;
+        margin: 0;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-size: 16px;
+        line-height: 28.8px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .home-heading {
+        margin: 0;
+        font-size: 32px;
+        line-height: 48px;
+        letter-spacing: 2.56px;
+        text-align: center;
+        // White bar behind the lower half of the heading
+        .highlight {
+            padding: 0 18px;
+            background: linear-gradient(to bottom, transparent 52%, #fff 52%, #fff 92%, transparent 92%);
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+        }
+        &--italic {
+            font-style: italic;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        &--light {
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            text-transform: capitalize;
+        }
+    }
+
+    // ── Hero ────────────────────────────────────────────────────────
     #landing_hero {
         height: 100dvh;
+        min-height: 600px;
         width: 100%;
-        margin-top: -81.52px;
+        margin-top: calc(var(--navbar-height) * -1);
         position: relative;
+        overflow: hidden; // keeps the zoomed photo inside the hero
         #home_hero {
+            will-change: transform;
             object-fit: cover;
-            height: 100dvh;
+            height: 100%;
             width: 100%;
             position: absolute;
-
+            inset: 0;
         }
         #logo_home {
             position: absolute;
             z-index: 2;
             right: 15%;
             bottom: 30%;
-            
+
             .logo_partner {
                 width: min(50vw, 420px);
                 height: auto;
                 z-index: 2;
             }
             p {
-                font-size: 16pt;
-                line-height: 18.8pt;
+                font-size: 16px;
+                line-height: 28.8px;
                 font-weight: 500;
-                letter-spacing: 3px;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
                 color: var(--primary-color);
                 margin-top: 0px;
             }
         }
+        .hero_buttons {
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            right: 0;
+            bottom: 70px;
+            display: flex;
+            justify-content: center;
+            gap: 96px;
+            padding: 0 var(--padding-md);
+        }
     }
-    .Intro2 {
-        font-family: var(--secondary-font-family) !important;
-        font-weight: 500;
-        line-height: 48pt;
-        font-size: 32pt;
-        letter-spacing: 2px;
+
+    // ── Welcome ─────────────────────────────────────────────────────
+    .home-welcome {
+        position: relative;
+        background: var(--light-gray-color);
+        padding: 61px var(--padding-xl) 75px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .side-label--welcome {
+            left: 81px;
+            top: -88px;
+            color: var(--text-brown-color);
+            font-weight: 500;
+            z-index: 3;
+            rotate: 180deg;
+            // transform: rotate(180deg);
+            // Tan bar behind the label
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0 auto 16px 16px;
+                width: 24px;
+                background: var(--primary-color);
+                z-index: -1;
+            }
+        }
+        .home-welcome__text {
+            max-width: 1013px;
+            margin: 44px 0 19px;
+            font-size: 16px;
+            line-height: 28.8px;
+            letter-spacing: 0.85px;
+            text-transform: capitalize;
+        }
+    }
+
+    // ── Who we are ──────────────────────────────────────────────────
+    .home-about {
+        position: relative;
+        padding: 101px 45px 94px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .home-about__band {
+            width: min(854px, 100%);
+            margin: 0;
+            padding: 11px var(--padding-sm);
+            background: var(--primary-color);
+            font-size: clamp(16px, 0.015vw, 22px);
+            font-weight: 600;
+            line-height: 28.8px;
+            letter-spacing: 0.06em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .home-about__image {
+            position: relative;
+            width: 100%;
+            max-width: 1349px;
+            height: 715px;
+            isolation: isolate;
+            // Purple band behind the photo, showing on both sides of it
+            &::before {
+                content: '';
+                position: absolute;
+                left: -100vw;
+                right: -100vw;
+                top: 42%;
+                height: 39px;
+                background: var(--accent-purple-color);
+                z-index: -1;
+            }
+            img {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+        .home-about__label {
+            position: absolute;
+            top: 33px;
+            left: 0;
+            right: 0;
+            margin: 0;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 28.8px;
+            letter-spacing: 0.06em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .home-about__card {
+            position: relative;
+            width: min(1138px, 100%);
+            margin-top: -489px; // overlaps the lower part of the photo
+            padding: 47px 29px 55px 30px;
+            background: rgba(249, 249, 249, 0.75);
+            font-size: 17px;
+            line-height: 30px;
+            letter-spacing: 0.85px;
+            p { margin: 0; }
+        }
+    }
+
+    // ── Sustainability ──────────────────────────────────────────────
+    .home-sustain {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 57px;
+        padding: 94px 0 135px;
+        .home-sustain__content { padding-top: 181px; }
+
+        .home-sustain__media {
+            position: relative;
+            flex: 0 0 auto;
+            width: 657px;
+            padding: 121px 0 122px 163px;
+            isolation: isolate;
+        }
+        // Tan block behind the photo; it stretches to the left edge of the screen
+        .home-sustain__block {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -100vw;
+            right: 103px;
+            background: var(--primary-color);
+            z-index: -1;
+        }
+        // Photo frame: the photo zooms inside it, and the frame moves for the parallax
+        .home-sustain__photo {
+            width: 496px;
+            height: 568px;
+            overflow: hidden;
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .side-label--sustain {
+            left: 111px;
+            top: 72px;
+            font-family: var(--secondary-font-family);
+            font-weight: 600;
+        }
+        .home-sustain__content {
+            flex: 1;
+            max-width: 726px;
+            padding-right: var(--padding-md);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-family: var(--secondary-font-family);
+            p {
+                max-width: 503px;
+                margin: 71px 0 0 67px;
+                font-size: 17px;
+                line-height: 34px;
+                letter-spacing: 0.85px;
+                color: var(--text-brown-color);
+            }
+            .home-btn {
+                margin: 23px 0 0 215px;
+            }
+        }
+        .home-sustain__title {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 48px;
+            letter-spacing: 2.56px;
+        }
+        .home-sustain__more {
+            display: inline-block;
+            margin-left: 67px;
+            font-size: 17px;
+            line-height: 34px;
+            letter-spacing: 0.85px;
+            color: var(--text-brown-color);
+            text-decoration: none;
+            &:hover { text-decoration: underline; }
+        }
+    }
+
+    // ── Reviews ─────────────────────────────────────────────────────
+    .home-reviews {
+        background: var(--light-gray-color);
+        padding: 46px var(--padding-md) 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        // Row of reviews that scrolls left on its own (see ReviewsMarquee.tsx)
+        .home-reviews__marquee {
+            position: relative;
+            width: calc(100% + 2 * var(--padding-md)); // runs edge to edge
+            margin: 87px 0 93px;
+        }
+        .home-reviews__viewport { overflow: hidden; }
+        .home-reviews__track {
+            display: flex;
+            width: max-content;
+            will-change: transform;
+        }
+        .home-reviews__arrow {
+            position: absolute;
+            top: 50%;
+            z-index: 2;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            border: none;
+            border-radius: 50%;
+            background: var(--brown-color);
+            color: #fff;
+            cursor: pointer;
+            touch-action: none;
+            user-select: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+            transition: transform 0.15s ease, opacity 0.2s ease;
+            &:hover { opacity: 0.9; }
+            &:active { transform: translateY(-50%) scale(0.92); }
+            &--left  { left: 24px; }
+            &--right { right: 24px; }
+        }
+        .home-reviews__list {
+            display: flex;
+            align-items: stretch;
+            gap: 12px;
+            padding-right: 12px; // same gap where the two copies meet
+        }
+        .home-review {
+            flex: 0 0 569px;
+            min-height: 236px;
+            margin: 0;
+            padding: 29px 28px 20px;
+            background: var(--primary-color);
+            img { display: block; }
+            blockquote {
+                margin: 11px 0 0;
+                font-size: 14px;
+                font-style: italic;
+                font-weight: 300;
+                line-height: 25px;
+                letter-spacing: 1px;
+                text-transform: capitalize;
+            }
+        }
+        // The button sits half in, half out of the grey band
+        .home-btn { margin-bottom: -20px; position: relative; z-index: 1; }
+    }
+
+    // ── Gallery ─────────────────────────────────────────────────────
+    .home-gallery {
+        margin-top: 117px;
+        background: var(--cream-color);
+        padding: 32px var(--padding-md) 24px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 450px));
+        justify-content: center;
+        column-gap: 46px;
+        row-gap: 23px;
+
+        .home-gallery__frame { overflow: hidden; }
+        .home-gallery__zoom {
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        img {
+            width: 100%;
+            aspect-ratio: 362 / 202;
+            object-fit: cover;
+            display: block;
+        }
+
+        // Hover: the photo under the cursor slowly zooms inside its frame
+        @media (hover: hover) {
+            .home-gallery__frame:hover .home-gallery__zoom { transform: scale(1.08); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .home-gallery__zoom { transition: none; }
+        }
+    }
+
+    // ── Smaller screens ─────────────────────────────────────────────
+    @media (max-width: 1199.98px) {
+        .home-sustain {
+            flex-direction: column;
+            align-items: stretch;
+            .home-sustain__media {
+                width: auto;
+                max-width: 657px;
+            }
+            .home-sustain__content {
+                align-self: center;
+                padding: 0 var(--padding-md);
+            }
+            .home-sustain__content .home-btn { margin-left: 67px; }
+        }
+    }
+
+    @media (max-width: 999.98px) {
+        .home-about {
+            padding-left: var(--padding-md);
+            padding-right: var(--padding-md);
+            .home-about__image { height: 420px; }
+            .home-about__card { margin-top: -160px; }
+        }
+        .home-gallery {
+            grid-template-columns: repeat(2, minmax(0, 362px));
+            column-gap: 23px;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        #landing_hero {
+            #logo_home { right: 50%; transform: translateX(50%); bottom: 40%; }
+            .hero_buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+                bottom: 40px;
+            }
+        }
+        .home-btn { min-width: 260px; }
+        .side-label--welcome { display: none; }
+        .home-heading {
+            font-size: 24px;
+            line-height: 36px;
+            &--light { font-size: 28px; }
+        }
+        .home-welcome { padding: 48px var(--padding-md) 60px; }
+        .home-about {
+            padding-top: 60px;
+            .home-about__image { height: 280px; }
+            .home-about__card { margin-top: 0; padding: 24px var(--padding-md); font-size: 16px; line-height: 28px; }
+            .home-btn { margin-top: 24px; }
+        }
+        .home-sustain {
+            padding: 48px 0 60px;
+            gap: 40px;
+            .home-sustain__media {
+                padding: 48px var(--padding-md) 48px 56px;
+            }
+            .home-sustain__block { right: 25%; }
+            .home-sustain__photo { width: 100%; height: auto; aspect-ratio: 496 / 568; }
+            .side-label--sustain { left: 14px; top: 48px; }
+            .home-sustain__title { font-size: 24px; line-height: 36px; }
+            .home-sustain__content {
+                p { margin: 24px 0 0; }
+                .home-sustain__more { margin-left: 0; }
+                .home-btn { margin: 23px 0 0; }
+            }
+        }
+        .home-reviews {
+            .home-reviews__marquee { margin: 40px 0; }
+            .home-reviews__arrow { width: 38px; height: 38px; }
+            .home-reviews__arrow--left  { left: 10px; }
+            .home-reviews__arrow--right { right: 10px; }
+            .home-review { flex-basis: 300px; padding: 20px; }
+        }
+        .home-gallery {
+            margin-top: 80px;
+            grid-template-columns: minmax(0, 1fr);
+        }
     }
 }
