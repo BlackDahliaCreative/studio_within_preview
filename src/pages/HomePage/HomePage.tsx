@@ -86,9 +86,9 @@ const HomePage = () => {
                 </div>
                 <div className="home-about__card">
                     <p>Studio Within is a curly hair salon in Chicago specializing in customized curl cuts, curly hair color, styling, and healthy curl care. For more than 20 years, Studio Within has continued to evolve, beginning as a full service salon and spa with private studio spaces and growing into the curl focused salon it is today. Located in Chicago’s Arcadia Terrace neighborhood, just north of Lincoln Square on Western Avenue near Bryn Mawr, our modern, open concept salon is designed around highly specialized care for curly and textured hair.</p>
-                    <p>Owner Kristy has spent more than two decades in the salon industry as a stylist, salon owner, mentor, and business builder. As Studio Within became increasingly focused on curly hair, Kristy and the Studio Within team continued investing in advanced curl education, curl specific training, and certifications in curly cutting techniques.</p>
-                    <p>Our curl specialists understand that no two heads of curls are the same. Every customized curly haircut is designed around the guest’s curl pattern, texture, density, shrinkage, lifestyle, styling routine, and hair goals. Our training goes beyond simply adapting traditional haircutting techniques for curly hair. We consider how curls naturally move, fall, respond to moisture, and behave between salon visits.</p>
-                    <p>The Studio Within experience goes beyond the haircut, too. Guests can enjoy coffee or tea, steam shampoos, personalized curl services, thoughtful styling spaces that offer a little more privacy, and snacks while color processes. From consultation to finished style, every detail is designed to make our guests feel comfortable, understood, and cared for. And if you’re lucky, you may even get a visit from one of our two resident pugs.</p>
+                    <p className="mt-15">Owner Kristy has spent more than two decades in the salon industry as a stylist, salon owner, mentor, and business builder. As Studio Within became increasingly focused on curly hair, Kristy and the Studio Within team continued investing in advanced curl education, curl specific training, and certifications in curly cutting techniques.</p>
+                    <p className="mt-15">Our curl specialists understand that no two heads of curls are the same. Every customized curly haircut is designed around the guest’s curl pattern, texture, density, shrinkage, lifestyle, styling routine, and hair goals. Our training goes beyond simply adapting traditional haircutting techniques for curly hair. We consider how curls naturally move, fall, respond to moisture, and behave between salon visits.</p>
+                    <p className="mt-15">The Studio Within experience goes beyond the haircut, too. Guests can enjoy coffee or tea, steam shampoos, personalized curl services, thoughtful styling spaces that offer a little more privacy, and snacks while color processes. From consultation to finished style, every detail is designed to make our guests feel comfortable, understood, and cared for. And if you’re lucky, you may even get a visit from one of our two resident pugs.</p>
                 </div>
                 <ButtonLink to="/meet-the-team/">Meet the stylists</ButtonLink>
             </section>
@@ -96,7 +96,7 @@ const HomePage = () => {
             <SustainSection bookingUrl={BOOKING_URL} />
 
             <section className="home-reviews">
-                <h2 className="home-heading home-heading--light"><span className="highlight">What people are saying...</span></h2>
+                <h2 className="home-heading home-heading--italic"><span className="highlight">What people are saying...</span></h2>
                 <ReviewsMarquee reviews={reviews} />
                 <ButtonLink to={BOOKING_URL}>Book now</ButtonLink>
             </section>
