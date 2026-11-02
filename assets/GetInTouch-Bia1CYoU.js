@@ -1,0 +1,1 @@
+import{j as e}from"./index-BQKadHFc.js";import{S as t}from"./SEOHead-Yz35Bnux.js";const a=()=>e.jsxs("div",{className:"page",id:"getInTouchPage",children:[e.jsx(t,{path:"/get-in-touch"}),e.jsx("h1",{children:"Get in Touch"})]});export{a as default};
