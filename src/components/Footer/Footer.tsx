@@ -14,8 +14,8 @@ const links = [
 // Replace the "#" links with the salon's real profiles.
 const socials = [
     { name: 'tiktok', label: 'TikTok', href: '#' },
-    { name: 'facebook', label: 'Facebook', href: '#' },
-    { name: 'instagram', label: 'Instagram', href: '#' },
+    { name: 'facebook', label: 'Facebook', href: 'https://www.facebook.com/studiowithin' },
+    { name: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/studiowithin/' },
 ]
 
 const Footer = () => {

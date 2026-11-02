@@ -1,58 +1,65 @@
 {
-  "siteName": "CLIENT_NAME",
-  "siteUrl": "https://www.CLIENT_DOMAIN.com",
-  "tagline": "CLIENT_TAGLINE",
-  "defaultDescription": "CLIENT_DESC",
-  "defaultImage": "/CLIENT_OG_IMAGE_PATH",
+  "siteName": "Studio Within Salon",
+  "siteUrl": "https://www.studiowithinchicago.com",
+  "tagline": "The Curl Spot",
+  "defaultDescription": "Studio Within is Chicago's curly hair salon. Certified curl specialists for custom curly haircuts, curly hair color, styling and curl care near Lincoln Square.",
+  "defaultImage": "/logos/black_primary_logo.png",
   "pages": [
     {
       "path": "/",
-      "title": "",
-      "description": "CLIENT_DESC",
+      "title": "Curly Hair Salon in Chicago",
+      "description": "Studio Within is Chicago's curly hair salon. Certified curl specialists for custom curly haircuts, curly hair color, styling and curl care near Lincoln Square.",
       "changefreq": "monthly",
       "priority": "1.0"
     },
     {
       "path": "/home-page",
-      "title": "Home Page",
-      "description": "CLIENT_HOME_DESC",
+      "title": "Chicago Curl Specialists",
+      "description": "For 20+ years Studio Within has cared for curly and textured hair in Chicago. Visit our curl specialists on Western Ave near Bryn Mawr, north of Lincoln Square.",
       "changefreq": "monthly",
-      "priority": "0.8"
+      "priority": "0.9"
     },
     {
-      "path": "/policies",
-      "title": "Policies",
-      "description": "CLIENT_POLICIES_DESC",
+      "path": "/services",
+      "title": "Curly Haircuts, Color & Styling",
+      "description": "Curly hair services in Chicago: customized curl cuts, curly hair color, curl styling and care, plus curl product recommendations from certified curl stylists.",
       "changefreq": "monthly",
-      "priority": "0.8"
+      "priority": "0.9"
     },
     {
-      "path": "/faqs",
-      "title": "FAQs",
-      "description": "CLIENT_FAQS_DESC",
-      "changefreq": "monthly",
-      "priority": "0.8"
-    },
-    {
-      "path": "/careers",
-      "title": "Careers",
-      "description": "CLIENT_CAREERS_DESC",
+      "path": "/meet-the-team",
+      "title": "Meet Our Curl Specialists",
+      "description": "Meet the Studio Within team: Chicago curl stylists trained in curly cutting techniques, led by owner Kristy with more than 20 years in the salon industry.",
       "changefreq": "monthly",
       "priority": "0.8"
     },
     {
       "path": "/get-in-touch",
-      "title": "Get in Touch",
-      "description": "CLIENT_CONTACT_DESC",
+      "title": "Book a Curly Hair Appointment",
+      "description": "Book with a curly hair specialist in Chicago. Studio Within is on Western Ave near Bryn Mawr in Arcadia Terrace, just north of Lincoln Square.",
       "changefreq": "monthly",
       "priority": "0.8"
     },
     {
-      "path": "/meet-the-team",
-      "title": "Meet the Team",
-      "description": "CLIENT_TEAM_DESC",
+      "path": "/faqs",
+      "title": "Curly Hair FAQs",
+      "description": "Answers to common questions about curly haircuts, curl color, booking and caring for your curls at Studio Within, Chicago's curly hair salon.",
       "changefreq": "monthly",
-      "priority": "0.8"
+      "priority": "0.7"
+    },
+    {
+      "path": "/policies",
+      "title": "Salon Policies",
+      "description": "Booking, cancellation and appointment policies for Studio Within, a curly hair salon in Chicago. Know what to expect before your curl cut or color visit.",
+      "changefreq": "yearly",
+      "priority": "0.5"
+    },
+    {
+      "path": "/careers",
+      "title": "Curl Stylist Careers in Chicago",
+      "description": "Join Studio Within, a curl-focused salon in Chicago investing in advanced curl education and certification for stylists who love working with curly hair.",
+      "changefreq": "monthly",
+      "priority": "0.6"
     }
   ]
 }

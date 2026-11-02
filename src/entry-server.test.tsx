@@ -8,7 +8,8 @@ test('pre-rendered page contains its content and SEO tags', async () => {
 
   expect(html).toContain('id="homePage"')               // real page content, not the loading spinner
   expect(html).not.toMatch(/page not found/i)
-  expect(head).toContain('<title data-rh="true">Home Page | ')
+  const homeTitle = site.pages.find((p) => p.path === '/home-page')!.title
+  expect(head).toContain(`<title data-rh="true">${site.siteName} | ${homeTitle}</title>`)
   expect(head).toContain(`href="${site.siteUrl}/home-page/"`) // canonical
   expect(head).toContain('property="og:title"')
 })

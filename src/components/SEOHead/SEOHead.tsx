@@ -25,7 +25,7 @@ const SEOHead = ({ path, title, description, ogImage, noIndex = false }: Props) 
     const page = site.pages.find((p) => p.path === path)
 
     const pageTitle = title ?? page?.title
-    const fullTitle = pageTitle ? `${pageTitle} | ${site.siteName}` : `${site.siteName} | ${site.tagline}`
+    const fullTitle = pageTitle ? `${site.siteName} | ${pageTitle}` : `${site.siteName} | ${site.tagline}`
     const desc = description ?? page?.description ?? site.defaultDescription
     const image = ogImage ?? `${site.siteUrl}${site.defaultImage}`
     const canonical = path ? canonicalUrl(path) : undefined
