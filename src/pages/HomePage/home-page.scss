@@ -207,26 +207,19 @@
             right: 0;
             margin: 0;
             color: #fff;
-            // font-weight: 700;
-            // font-size: 42pt;
-            // line-height: 58.8pt;
-            // letter-spacing: 0.06em;
-            // text-align: center;
-            // text-transform: uppercase;
-            // font-family: var(--secondary-font-family);
-            // text-shadow: 6px 6px 6px #000000bb;
+            
+            font-family: var(--secondary-font-family);
             font-size: 32pt;
+            font-weight: 600;
             line-height: 48pt;
             letter-spacing: 0.04em;
             text-align: center;
-            font-family: var(--secondary-font-family);
+            text-transform: uppercase;
+            
             width: fit-content;
             justify-self: center;
-
-            font-weight: 600;
-            text-transform: uppercase;
             z-index: 22;
-             mix-blend-mode: overlay;
+            //  mix-blend-mode: overlay;
             &::after {
                 content: '';
                 display: block;

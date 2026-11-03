@@ -11,8 +11,8 @@ const grid: Variants = {
     show: { transition: { staggerChildren: 0.1 } },
 }
 const tile: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } },
+    hidden: { opacity: 0.5, y: 100 },
+    show: { opacity: 1, y: 0, transition: { duration: 1, ease } },
 }
 const photo: Variants = {
     hidden: { scale: 1.08 },

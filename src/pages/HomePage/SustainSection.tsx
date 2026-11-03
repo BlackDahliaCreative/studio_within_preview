@@ -7,8 +7,8 @@ const ease = [0.22, 1, 0.36, 1] as const
 
 // 1. Reveal: plays once when the section scrolls into view
 const block: Variants = {
-    hidden: { x: '-100%' },
-    show: { x: 0, transition: { duration: 0.9, ease } },
+    hidden: { x: '-60%' },
+    show: { x: 0, transition: { duration: 0.6, ease } },
 }
 const photo: Variants = {
     hidden: { opacity: 0, scale: 1.08 },
@@ -42,7 +42,7 @@ const SustainSection = ({ bookingUrl }: { bookingUrl: string }) => {
             ref={sectionRef}
             initial={reduceMotion ? false : 'hidden'}
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.2 }}
         >
             <div className="home-sustain__media">
                 <motion.span className="home-sustain__block" variants={block} aria-hidden="true" />
