@@ -11,12 +11,12 @@ const grid: Variants = {
     show: { transition: { staggerChildren: 0.1 } },
 }
 const tile: Variants = {
-    hidden: { opacity: 0.5, y: 100 },
+    hidden: { opacity: 0.5, y: 20 },
     show: { opacity: 1, y: 0, transition: { duration: 1, ease } },
 }
 const photo: Variants = {
-    hidden: { scale: 1.08 },
-    show: { scale: 1, transition: { duration: 1.1, ease } },
+    hidden: { scale: 1 },
+    show: { scale: 1.15, transition: { duration: 1.2, ease } },
 }
 
 type Props = {
@@ -35,7 +35,7 @@ const GallerySection = ({ photos, folder = 'homepage', label = 'Curly hair galle
             variants={grid}
             initial={reduceMotion ? false : 'hidden'}
             whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
+            viewport={{ once: false, amount: 0.2 }}
         >
             {photos.map(img => (
                 // Frame: reveal. Inner layer: hover zoom (in the SCSS)

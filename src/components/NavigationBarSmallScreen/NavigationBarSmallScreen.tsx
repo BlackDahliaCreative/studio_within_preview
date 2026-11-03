@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import './navigation-bar-small-screen.scss'
 import { useState } from "react";
 import { useTransition, animated } from "@react-spring/web";
+import { publicUrl } from "../../utils/publicUrl";
+import { navLinks, HOME_PATH } from "../NavigationBar/navLinks";
 
 const NavigationBarSmallScreen = () => {
+    const path = useLocation().pathname
     const [isExpanded, setIsExpanded] = useState(false)
     const toggleLogic = () => {
         setIsExpanded(prevState => !prevState)
     }
+    const close = () => setIsExpanded(false)
     const transitions = useTransition(isExpanded, {
         from: { opacity: 0, height: '0%', width: '0%' },
         enter: { opacity: 1, height: '100%', width: '100%' },
@@ -15,8 +19,25 @@ const NavigationBarSmallScreen = () => {
         config: { duration: 200 },
     })
 
+    // Same as desktop: the logo box (the home link) shows on every page except
+    // the landing page and the home page, whose hero already has the big logo.
+    const showLogoBar = path !== '/' && !path.startsWith('/home-page')
+
     return (
         <>
+            {showLogoBar && (
+                <div className="navSm__bar">
+                    <Link className="navSm__logo" to={HOME_PATH}>
+                        <img
+                            src={publicUrl('/logos/black_primary_logo-400.webp')}
+                            width={400}
+                            height={330}
+                            alt="Studio Within Salon, home"
+                        />
+                    </Link>
+                </div>
+            )}
+
             <button
                 className="hambContainer"
                 onClick={toggleLogic}
@@ -35,13 +56,17 @@ const NavigationBarSmallScreen = () => {
                 item ? (
                     <animated.div style={style} id="smallScreenMenu" role="dialog" aria-label="Navigation menu">
                         <nav aria-label="Main navigation" className='navBarSm'>
-                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/'}>Landing</Link>
-                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/home-page'}>Home Page</Link>
-                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/policies'}>Policies</Link>
-                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/faqs'}>FAQs</Link>
-                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/careers'}>Careers</Link>
-                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/get-in-touch'}>Get in Touch</Link>
-                            <Link className="navLinksSmScreen" onClick={toggleLogic} to={'/meet-the-team'}>Meet the Team</Link>
+                            <Link className="navSm__menuLogo" onClick={close} to={HOME_PATH}>
+                                <img
+                                    src={publicUrl('/logos/white_primary_logo-840.webp')}
+                                    width={840}
+                                    height={694}
+                                    alt="Studio Within Salon, home"
+                                />
+                            </Link>
+                            {navLinks.map(link => (
+                                <NavLink key={link.to} className="navLinksSmScreen" onClick={close} to={link.to}>{link.label}</NavLink>
+                            ))}
                         </nav>
                     </animated.div>
                 ) : null

@@ -105,7 +105,7 @@ const Landing = () => {
                 </video>
             ))}
             <div className="flex flex-column flex-alignItems-center" id="logo_btn_landing">
-                <img className="logo_partner" src={publicUrl('/logos/white_primary_logo.png')} alt="Studio Within Salon Logo" />
+                <img className="logo_partner" src={publicUrl('/logos/white_primary_logo-840.webp')} width={840} height={694} alt="Studio Within Salon Logo" />
                 <Link to={'/home-page'} className="linkBtn">ENTER HERE</Link>
             </div>
         </div>

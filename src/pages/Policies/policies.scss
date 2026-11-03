@@ -25,10 +25,10 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
         padding: 0 var(--padding-md);
         text-align: center;
         font-family: var(--primary-font-family);
-        font-size: 48px;
+        font-size: 48pt;
         font-weight: 500;
-        line-height: 52.5px;
-        letter-spacing: -1px;
+        line-height: 52.5pt;
+        letter-spacing: -1pt;
         color: var(--text-brown-color);
 
         // Soft beige bar behind the lower half of the heading
@@ -68,24 +68,28 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
         width: col(574);
         padding: 0 54px 64px 68px;
         background: $card-bg;
+        container-type: inline-size; // lets the title size itself to the card (cqi below)
     }
     .policy-card__title {
         margin: 0;
         transform: translateY(-17px); // sits on the card's top edge
         font-family: var(--primary-font-family);
-        font-size: 24px;
+        // Shrinks with the card so the longest title ("Cancellations + No Shows",
+        // about 16.5x its font size wide) stays on one line. 24pt is the Figma size.
+        font-size: 20pt; // browsers without container units
+        font-size: clamp(12pt, 100cqi / 16.5, 24pt);
         font-weight: 500;
-        line-height: 28.8px;
-        letter-spacing: 1px;
+        line-height: 28.8pt;
+        letter-spacing: 0.042em; // 1pt at 24pt, and shrinks with the text
         text-transform: uppercase;
     }
     .policy-card__body {
         margin-top: 34px;
         font-family: var(--primary-font-family);
-        font-size: 16px;
+        font-size: 16pt;
         font-weight: 300;
-        line-height: 28.8px;
-        letter-spacing: 0.85px;
+        line-height: 28.8pt;
+        letter-spacing: 0.85pt;
         p { margin: 0; }
         .policy-card__gap { margin-top: 28.8px; }
     }
@@ -113,6 +117,11 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
             height: 100%;
             object-fit: cover;
         }
+    }
+    // Clips the photo while it drifts on scroll (see Photo in Policies.tsx)
+    .policies-photo__frame {
+        height: 100%;
+        overflow: hidden;
     }
     // Full-width grey band that starts a little above the photo
     .policies-photo--band::before {
@@ -153,10 +162,10 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
     .policies-next__text {
         margin: 0 0 30px;
         font-family: var(--primary-font-family);
-        font-size: 32px;
+        font-size: 32pt;
         font-weight: 300;
         line-height: 1.2;
-        letter-spacing: 0.85px;
+        letter-spacing: 0.85pt;
         text-align: center;
     }
 
@@ -226,7 +235,6 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
             span::before { left: -12px; top: 22px; height: 20px; }
         }
         .policy-card { padding: 0 var(--padding-md) 32px; }
-        .policy-card__title { font-size: 20px; }
         .home-btn { min-width: 260px; }
         .policies-next .home-btn { min-width: 260px; height: 51px; }
         .policies-next__text { font-size: 26px; }

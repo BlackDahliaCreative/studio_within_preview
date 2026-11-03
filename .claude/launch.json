@@ -6,6 +6,13 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["vite", "--open=false"],
       "port": 3000
+    },
+    {
+      "name": "prod",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "preview", "--mode", "official", "--port", "4173", "--strictPort"],
+      "port": 4173,
+      "autoPort": false
     }
   ]
 }

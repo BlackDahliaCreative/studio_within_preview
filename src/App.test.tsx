@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, within } from '@testing-library/react';
 import site from './site.config.json';
 import { MemoryRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
@@ -14,9 +14,11 @@ const renderAt = (path: string) =>
     </HelmetProvider>
   );
 
-test('renders the main navigation', () => {
-  renderAt('/');
-  expect(screen.getByRole('navigation', { name: /main navigation/i })).toBeInTheDocument();
+test('renders the main navigation, with the logo as the home link', () => {
+  renderAt('/services/');
+  const nav = screen.getByRole('navigation', { name: /main navigation/i });
+  expect(within(nav).getByRole('link', { name: /studio within salon, home/i })).toHaveAttribute('href', '/home-page/');
+  expect(within(nav).queryByRole('link', { name: /^home$/i })).toBeNull();
 });
 
 // Every page in site.config.json must have a route in App.tsx (also with the trailing

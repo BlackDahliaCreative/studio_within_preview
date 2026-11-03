@@ -1,3 +1,5 @@
+import { useRef } from "react"
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import "./policies.scss"
 import SEOHead from "../../components/SEOHead/SEOHead"
 import { publicUrl } from "../../utils/publicUrl"
@@ -28,11 +30,28 @@ const PolicyCard = ({ id, title, className = '', children }: {
     </section>
 )
 
-const Photo = ({ src, alt, className }: { src: string, alt: string, className: string }) => (
-    <div className={`policies-photo ${className}`}>
-        <img src={publicUrl(`/images/policies/${src}`)} alt={alt} loading="lazy" />
-    </div>
-)
+// The photo drifts a little slower than the page while it scrolls past.
+// It's zoomed in slightly so the drift never shows an edge.
+const Photo = ({ src, alt, className }: { src: string, alt: string, className: string }) => {
+    const frameRef = useRef<HTMLDivElement>(null)
+    const reduceMotion = useReducedMotion()
+    const { scrollYProgress } = useScroll({ target: frameRef, offset: ['start end', 'end start'] })
+    const y = useTransform(scrollYProgress, [0, 1], ['-17%', '17%'])
+    const scaleScr = useTransform(scrollYProgress, [0, 1], ['1', '1.1'])
+
+    return (
+        <div className={`policies-photo ${className}`}>
+            <div className="policies-photo__frame" ref={frameRef}>
+                <motion.img
+                    src={publicUrl(`/images/policies/${src}`)}
+                    alt={alt}
+                    loading="lazy"
+                    style={reduceMotion ? undefined : { y, scale: scaleScr }}
+                />
+            </div>
+        </div>
+    )
+}
 
 const Policies = () => {
 

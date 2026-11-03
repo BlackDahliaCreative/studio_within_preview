@@ -1,1 +1,228 @@
-#faqsPage {}
+@use '../shared';
+
+// FAQs page. Measurements come from the Figma "FAQ's" frame (1440px wide).
+// The question list is 947px wide, centred.
+
+$tab-bg: #F6EFE2;   // question bar
+$ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+#faqsPage {
+    padding: 0 !important;
+    overflow-x: clip;
+    color: var(--primary-font-color);
+    font-family: var(--primary-font-family);
+
+    @include shared.buttons;
+
+    // ── Heading ─────────────────────────────────────────────────────
+    .faqs-intro {
+        margin-top: 40px;
+        padding: 0 var(--padding-md);
+        text-align: center;
+    }
+    .faqs-title {
+        margin: 0;
+        font-size: 48pt;
+        font-weight: 700;
+        line-height: 52.5pt;
+        letter-spacing: 1pt;
+        color: var(--text-brown-color);
+        em { font-style: italic; }
+    }
+    .faqs-subtitle {
+        margin: 6px 0 0;
+        font-size: 14pt;
+        font-weight: 400;
+        line-height: 52.5pt;
+        letter-spacing: 1pt;
+        text-transform: uppercase;
+        // Soft grey bar behind the subtitle
+        span {
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                left: -9px;
+                right: 0;
+                top: -13px;
+                height: 26px;
+                background: rgba(223, 223, 223, 0.37);
+            }
+        }
+    }
+
+    // ── Groups ──────────────────────────────────────────────────────
+    .faqs-list {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: calc(947px + 2 * var(--padding-md));
+        margin: 87px auto 0;
+        padding: 0 var(--padding-md);
+    }
+    .faq-group + .faq-group { margin-top: 40px; }
+
+    // Group title followed by a thin black line to the right edge
+    .faq-group__title {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin: 0 -25px 11px 0;
+        padding-left: 10px;
+        font-size: 24pt;
+        font-weight: 600;
+        line-height: 52.5pt;
+        letter-spacing: 1pt;
+        text-transform: uppercase;
+        &::after {
+            content: '';
+            flex: 1;
+            border-top: 1px solid #000;
+        }
+    }
+
+    // ── Questions ───────────────────────────────────────────────────
+    .faq-item + .faq-item { margin-top: 16px; }
+
+    .faq-item__heading {
+        margin: 0;
+        font: inherit;
+    }
+    .faq-item__toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        width: 100%;
+        min-height: 74px;
+        padding: 12px 57px 12px 28px;
+        border: 0;
+        border-radius: 37px; // pill when closed; flat bottom when open (below)
+        background: $tab-bg;
+        color: inherit;
+        font-family: inherit;
+        font-size: 16pt;
+        font-weight: 500;
+        line-height: 28.8pt;
+        letter-spacing: 0.85pt;
+        text-align: left;
+        cursor: pointer;
+        transition: border-radius 0.3s $ease, background-color 0.2s ease;
+
+        &:hover { background: #F1E6D3; } // question bar, a shade darker
+        &:focus-visible {
+            outline: 2px solid var(--brown-color);
+            outline-offset: 2px;
+        }
+    }
+    .faq-item__icon {
+        flex: none;
+        width: 1ch;
+        font-size: 24pt;
+        font-weight: 300;
+        text-align: center;
+    }
+    .faq-item.is-open .faq-item__toggle { border-radius: 37px 37px 0 0; }
+
+    // Smooth open/close: the grid row grows from 0 to the answer's height
+    .faq-item__panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.4s $ease;
+    }
+    .faq-item.is-open .faq-item__panel { grid-template-rows: 1fr; }
+
+    .faq-item__answer {
+        overflow: hidden;
+        min-height: 0;
+        padding: 0 69px 0 28px;
+        font-size: 16pt;
+        font-weight: 300;
+        line-height: 28.8pt;
+        letter-spacing: 0.85pt;
+        opacity: 0;
+        transition: opacity 0.25s ease, padding 0.4s $ease;
+        p { margin: 0; }
+    }
+    .faq-item.is-open .faq-item__answer {
+        padding-top: 16px;
+        padding-bottom: 24px;
+        opacity: 1;
+        transition-delay: 0.1s, 0s;
+    }
+
+    .faq-link {
+        color: var(--text-brown-color);
+        font-weight: 500;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    // ── "We're here to help" ────────────────────────────────────────
+    .faqs-help {
+        position: relative;
+        isolation: isolate;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 160px;
+        padding: 23px var(--padding-md) 36px;
+        text-align: center;
+        font-weight: 300;
+        letter-spacing: 0.85pt;
+
+        // Wave texture at 33%
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: url('/images/faqs/help-texture.webp') center / cover no-repeat;
+            opacity: 0.33;
+        }
+    }
+    .faqs-help__eyebrow {
+        margin: 0;
+        font-size: 20pt;
+        line-height: 28.8pt;
+    }
+    .faqs-help__title {
+        margin: 20px 0 14px;
+        font-size: 48pt;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+    .faqs-help .home-btn {
+        min-width: 334px;
+        height: 58px;
+        font-size: 20pt;
+    }
+    .faqs-help__phone {
+        margin: 23px 0 0;
+        font-size: 14pt;
+        line-height: 28.8pt;
+        a { color: inherit; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .faq-item__toggle,
+        .faq-item__panel,
+        .faq-item__answer { transition: none; }
+    }
+
+    // ── Smaller screens ─────────────────────────────────────────────
+    @media (max-width: 767.98px) {
+        .faqs-intro { margin-top: 32px; }
+        .faqs-title { font-size: 34px; line-height: 42px; }
+        .faqs-subtitle { font-size: 12px; line-height: 22px; margin-top: 16px; span::before { top: -2px; } }
+        .faqs-list { margin-top: 48px; }
+        .faq-group__title { margin-right: 0; padding-left: 0; font-size: 20pt; gap: 16px; }
+        .faq-item__toggle { padding: 12px 22px; border-radius: 28px; min-height: 64px; }
+        .faq-item.is-open .faq-item__toggle { border-radius: 28px 28px 0 0; }
+        .faq-item__answer { padding-left: 22px; padding-right: 22px; }
+        .faqs-help { margin-top: 96px; }
+        .faqs-help__title { font-size: 34px; }
+        .faqs-help .home-btn { min-width: 260px; height: 51px; font-size: 18px; }
+    }
+}

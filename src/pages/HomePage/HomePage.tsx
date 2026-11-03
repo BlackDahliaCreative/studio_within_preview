@@ -52,12 +52,15 @@ const HomePage = () => {
                 <motion.img
                     id="home_hero"
                     src={publicUrl('/images/homepage/homepage_HERO.webp')}
+                    // Phones get the 800px copy (~60KB) instead of the 1400px one
+                    srcSet={`${publicUrl('/images/homepage/homepage_HERO-800.webp')} 800w, ${publicUrl('/images/homepage/homepage_HERO.webp')} 1400w`}
+                    sizes="100vw"
                     alt=""
                     fetchPriority="high"
                     style={reduceMotion ? undefined : { scale: heroScale, y: heroY }}
                 />
                 <div className="flex flex-column flex-alignItems-center" id="logo_home">
-                    <img className="logo_partner" src={publicUrl('/logos/white_primary_logo.png')} alt="Studio Within Salon Logo" />
+                    <img className="logo_partner" src={publicUrl('/logos/white_primary_logo-840.webp')} width={840} height={694} alt="Studio Within Salon Logo" />
                     <p>Lincoln Square, Chicago</p>
                 </div>
                 <div className="hero_buttons">

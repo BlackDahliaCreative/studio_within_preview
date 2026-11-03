@@ -82,6 +82,8 @@ const main = async () => {
         const page = template
             .replace('<!--app-head-->', head)
             .replace('<!--app-html-->', html)
+            // Records which page this HTML is, so src/main.tsx only reuses it on that URL
+            .replace('<div id="root">', `<div id="root" data-path="${pagePath}">`)
         fs.mkdirSync(path.dirname(outFile), { recursive: true })
         fs.writeFileSync(outFile, page)
         console.log(`  ✓ ${pagePath.padEnd(22)} → ${path.relative(BUILD_DIR, outFile)}`)

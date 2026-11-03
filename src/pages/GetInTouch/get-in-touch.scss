@@ -1,1 +1,217 @@
-#getInTouchPage {}
+@use 'sass:math';
+@use '../shared';
+
+// Get in Touch page. Measurements come from the Figma "get in touch" frame
+// (1440px wide). Type sizes are pt, as in Figma.
+@function frame($px) {
+    @return math.percentage(math.div($px, 1440));
+}
+
+#getInTouchPage {
+    padding: 0 !important;
+    overflow-x: clip;
+    isolation: isolate; // keeps the grey band (z-index: -1) behind the photo
+    color: var(--primary-font-color);
+    font-family: var(--primary-font-family);
+
+    @include shared.buttons;
+    @include shared.gallery(441px, 22px, 15px, "441 / 248");
+
+    // ── Heading ─────────────────────────────────────────────────────
+    .git-intro {
+        margin-top: 40px;
+        padding: 0 var(--padding-md);
+        text-align: center;
+    }
+    .git-title {
+        margin: 0;
+        font-size: clamp(34px, 4.4vw, 48pt); // 48pt (Figma) on wide screens; narrower so it clears the logo box
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: 1pt;
+        color: var(--text-brown-color);
+    }
+    .git-subtitle {
+        margin: 16px 0 0;
+        font-size: 14pt;
+        font-weight: 400;
+        line-height: 1.8;
+        letter-spacing: 1pt;
+        span {
+            padding: 0 6px;
+            background: rgba(223, 223, 223, 0.37);
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+        }
+    }
+
+    // ── Photos (the image drifts inside the frame, see Photo in GetInTouch.tsx) ──
+    .git-photo__frame {
+        height: 100%;
+        overflow: hidden;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    // ── Salon photo + contact details ───────────────────────────────
+    .git-contact {
+        display: grid;
+        grid-template-columns: minmax(400px, 900px) minmax(min(460px, 100%), 1fr);
+        align-items: center;
+        column-gap: frame(91);
+        // max-width: 1440px;
+        margin: 96px auto 0;
+        padding: 0 frame(80) 0 frame(161);
+        box-sizing: border-box;
+    }
+    .git-photo--salon { aspect-ratio: 640 / 426; }
+
+    .git-contact__details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        address {
+            font-style: normal;
+            font-size: 24pt;
+            font-weight: 300;
+            line-height: 49pt;
+            letter-spacing: 1pt;
+        }
+        address a { // only the contact links, not the Book Now button
+            color: inherit;
+            text-decoration: none;
+            &:hover { text-decoration: underline; text-underline-offset: 6px; }
+        }
+        .home-btn { margin-top: 28px; }
+    }
+    .git-contact__phone {
+        display: inline-flex;
+        flex-wrap: wrap;
+        column-gap: 28px;
+    }
+
+    // ── Storefront on a full-width grey band ────────────────────────
+    .git-storefront {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin-top: 102px;
+        margin-bottom: 102px;
+        padding-left: frame(144);
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            right: 0;
+            top: 52px;
+            height: 288px;
+            background: var(--secondary-color);
+        }
+    }
+    .git-photo--storefront {
+        width: 100%;
+        max-width: 850px;
+        aspect-ratio: 640 / 426;
+    }
+
+    // ── Hours + hallway photo ───────────────────────────────────────
+    .git-hours {
+        display: grid;
+        grid-template-columns: minmax(0, 611px) minmax(0, 550px);
+        justify-content: space-between;
+        align-items: end;
+        column-gap: 48px;
+        // max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 frame(120) 0 frame(200);
+        box-sizing: border-box;
+    }
+    .git-hours__title {
+        display: inline-block;
+        margin: 0 0 22px;
+        // padding-bottom: 14px;
+        border-bottom: 1px solid var(--primary-color);
+        font-size: 32pt;
+        font-weight: 700;
+        line-height: 1.6;
+        letter-spacing: 1pt;
+        color: var(--text-brown-color);
+    }
+    .git-hours table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 24pt;
+        letter-spacing: 1pt;
+        th, td {
+            padding: 0;
+            height: 86px;
+            text-align: left;
+            vertical-align: middle;
+            border-bottom: 1px solid var(--primary-color);
+        }
+        th { width: 264px; font-weight: 400; }
+        td { font-weight: 300; }
+    }
+    .git-photo--hallway { aspect-ratio: 440 / 586; }
+
+    .git-book {
+        display: flex;
+        justify-content: center;
+        margin-top: 80px;
+    }
+
+    // ── Gallery ─────────────────────────────────────────────────────
+    .home-gallery {
+        margin-top: 80px;
+        padding: 61px 24px;
+        background: #F1ECE2;
+        // Tall photos: keep the faces in frame, as cropped in Figma
+        .home-gallery__frame:nth-child(3) img { object-position: center 12%; } // red curls by the tree
+        .home-gallery__frame:nth-child(5) img { object-position: center 25%; } // curl spray
+    }
+
+    // ── Smaller screens ─────────────────────────────────────────────
+    @media (max-width: 1199.98px) {
+        .git-contact__details address { font-size: 18pt; line-height: 36pt; }
+        .git-hours table { font-size: 18pt; th { width: 45%; } th, td { height: 68px; } }
+        .git-hours__title { font-size: 26pt; }
+    }
+
+    // One column: everything stacks and centres
+    @media (max-width: 899.98px) {
+        .git-contact,
+        .git-hours {
+            grid-template-columns: minmax(0, 1fr);
+            row-gap: 40px;
+            padding: 0 var(--padding-md);
+            max-width: 672px;
+        }
+        .git-contact { margin-top: 48px; }
+        .git-contact__details { align-items: center; text-align: center; }
+        .git-contact__phone { justify-content: center; }
+        .git-storefront { margin-top: 64px; padding: 0 var(--padding-md); }
+        .git-hours { margin-top: 48px; }
+        .git-photo--hallway { max-width: 440px; justify-self: center; width: 100%; }
+
+        .home-gallery {
+            margin-top: 64px;
+            grid-template-columns: repeat(2, minmax(0, 362px));
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .git-intro { margin-top: 32px; }
+        .git-title { font-size: 34px; }
+        .git-subtitle { font-size: 14px; }
+        .git-contact__details address { font-size: 20px; line-height: 40px; }
+        .git-hours__title { font-size: 26px; }
+        .git-hours table { font-size: 18px; th, td { height: 56px; } }
+        .git-storefront::before { top: 30%; height: 40%; }
+        .home-gallery { grid-template-columns: minmax(0, 1fr); padding: 32px var(--padding-md); }
+    }
+}

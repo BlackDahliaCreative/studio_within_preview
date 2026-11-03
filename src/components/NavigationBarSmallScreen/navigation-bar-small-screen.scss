@@ -1,3 +1,24 @@
+// Top strip with the small logo box (links home). The menu button floats on its right.
+.navSm__bar {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px 16px 0;
+}
+.navSm__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100px;
+    aspect-ratio: 189 / 165; // same box shape as desktop
+    background: #fff;
+    border: 1px solid #000;
+    img {
+        display: block;
+        width: 99%;
+        height: auto;
+    }
+}
 
 .hambContainer {
     border-radius: 0px;
@@ -68,13 +89,21 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        // White logo at the top of the open menu (links home)
+        .navSm__menuLogo {
+            margin-bottom: 16px;
+            img { display: block; width: 160px; height: auto; }
+        }
         .navLinksSmScreen {
             text-decoration: none;
             color: white;
             font-size: var(--navbar-fontsize);
             font-family: var(--navbar-fontFamily);
             font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
             align-self: center;
+            &.active { text-decoration: underline; text-underline-offset: 6px; }
             p {
                 margin: 10px 0px;
                 text-align: center;

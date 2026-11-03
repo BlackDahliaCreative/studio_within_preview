@@ -1,26 +1,67 @@
-
+// Desktop menu. Sizes come from the Figma nav (1440px frame): logo box 189 x 165
+// at 83px from the left, links 14pt uppercase on the right.
 .navBar {
+    position: relative;
+    z-index: 2; // above the home page hero, which slides up underneath
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: var(--navbar-height);
+    padding: 0 66px 0 0;
     background-color: var(--navbar-background);
-    max-height: var(--navbar-height);
-    z-index: 2;
+
     .navLinks {
-        text-decoration: none;
-        &:not(:last-child) {
-            margin-right: 35px;
-        }
         color: var(--primary-font-color);
-        font-size: var(--navbar-fontsize);
         font-family: var(--navbar-fontFamily);
+        font-size: 14pt;
         font-weight: var(--navbar-fontWeight);
-        padding-top: 40px;
-        padding-bottom: 15px;
-        p {
-            margin: 0px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: nowrap;
+        &:not(:last-child) { margin-right: 27px; }
+        &:hover { text-decoration: underline; text-underline-offset: 6px; }
+    }
+    .navBar__links {
+        display: flex;
+        align-items: center;
+    }
+
+    // White box with the logo that hangs below the bar. Links to the home page.
+    .navBar__logo {
+        position: absolute;
+        top: 30px;
+        left: clamp(24px, 5.8vw, 83px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: clamp(130px, 13.1vw, 189px);
+        aspect-ratio: 189 / 165;
+        background: #fff;
+        border: 1px solid #000;
+        img {
+            display: block;
+            width: 99%;
+            height: auto;
         }
-        &.active {display: none;}
     }
-    .white {
-        .navLinks {color: #fff !important;}
-        z-index: 2;
+
+    // Home page: no bar colour, white links centred over the hero photo
+    &--home {
+        justify-content: center;
+        padding: 0;
+        background: transparent;
+        .navLinks { color: #fff; }
     }
-  }
+
+    // Narrower desktops: smaller links so they still fit beside the logo
+    @media (max-width: 1199.98px) {
+        .navLinks {
+            font-size: 11pt;
+            letter-spacing: 0.12em;
+            &:not(:last-child) { margin-right: 18px; }
+        }
+        padding-right: 32px;
+    }
+}
