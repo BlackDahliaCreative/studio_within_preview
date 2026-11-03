@@ -9,6 +9,9 @@ import react from '@vitejs/plugin-react'
 // In those files:
 //   BASE_PATH=/repo-name/   where the site lives ("/" for a custom domain)
 //   VITE_SITE_ENV=preview   "preview" or "official"
+//   PREVIEW_ORIGIN=https://<account>.github.io   (preview only) where the preview site
+//                           is hosted. Share links (og:image, og:url) point there, so link
+//                           previews work before the real domain is live.
 // The old CRA names (PUBLIC_URL, REACT_APP_SITE_ENV) still work, so existing env files don't break.
 export default defineConfig(({ mode, isSsrBuild }) => {
     const env = loadEnv(mode, process.cwd(), '')
@@ -16,12 +19,17 @@ export default defineConfig(({ mode, isSsrBuild }) => {
     const rawBase = env.BASE_PATH || env.PUBLIC_URL || '/'
     const base = `/${rawBase.replace(/^\/+|\/+$/g, '')}/`.replace(/^\/\/$/, '/')
     const siteEnv = env.VITE_SITE_ENV || env.REACT_APP_SITE_ENV || ''
+    // e.g. "https://blackdahliacreative.github.io/studio_within_preview"; empty = use siteUrl
+    const shareUrl = siteEnv === 'preview' && env.PREVIEW_ORIGIN
+        ? `${env.PREVIEW_ORIGIN.replace(/\/+$/, '')}${base}`.replace(/\/+$/, '')
+        : ''
 
     return {
         base,
         plugins: [react()],
         define: {
             'import.meta.env.VITE_SITE_ENV': JSON.stringify(siteEnv),
+            'import.meta.env.VITE_SHARE_URL': JSON.stringify(shareUrl),
         },
         server: { port: 3000, open: true },
         build: {

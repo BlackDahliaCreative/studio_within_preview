@@ -13,6 +13,13 @@ const IS_PREVIEW = import.meta.env.VITE_SITE_ENV === 'preview'
 export const canonicalUrl = (path: string) =>
     `${site.siteUrl}${path === '/' ? '/' : `${path.replace(/\/+$/, '')}/`}`
 
+// Where link previews (WhatsApp, Facebook, iMessage...) fetch the page and image from.
+// Preview builds use the preview site's address (PREVIEW_ORIGIN in .env.preview), because
+// the real domain may not have the new site yet. Official builds use siteUrl.
+const SHARE_BASE = import.meta.env.VITE_SHARE_URL || site.siteUrl
+const shareUrl = (path: string) =>
+    `${SHARE_BASE}${path === '/' ? '/' : `${path.replace(/\/+$/, '')}/`}`
+
 type Props = {
     path?: string           // a page "path" from site.config.json, e.g. "/carousels"
     title?: string          // overrides the config title
@@ -27,7 +34,7 @@ const SEOHead = ({ path, title, description, ogImage, noIndex = false }: Props) 
     const pageTitle = title ?? page?.title
     const fullTitle = pageTitle ? `${site.siteName} | ${pageTitle}` : `${site.siteName} | ${site.tagline}`
     const desc = description ?? page?.description ?? site.defaultDescription
-    const image = ogImage ?? `${site.siteUrl}${site.defaultImage}`
+    const image = ogImage ?? `${SHARE_BASE}${site.defaultImage}`
     const canonical = path ? canonicalUrl(path) : undefined
 
     return (
@@ -43,7 +50,7 @@ const SEOHead = ({ path, title, description, ogImage, noIndex = false }: Props) 
             <meta property="og:site_name"    content={site.siteName} />
             <meta property="og:title"        content={fullTitle} />
             <meta property="og:description"  content={desc} />
-            {canonical && <meta property="og:url" content={canonical} />}
+            {path && <meta property="og:url" content={shareUrl(path)} />}
             <meta property="og:image"        content={image} />
             <meta property="og:image:width"  content="1200" />
             <meta property="og:image:height" content="630" />

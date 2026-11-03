@@ -19,7 +19,9 @@ Tip: search the whole project for `CLIENT_`. Every placeholder you need to repla
    ```
    BASE_PATH=/name-of-the-preview-repo/
    VITE_SITE_ENV=preview
+   PREVIEW_ORIGIN=https://blackdahliacreative.github.io
    ```
+   `PREVIEW_ORIGIN` makes link previews (WhatsApp, iMessage, Facebook) of the preview site show the share image, even before the real domain is live.
 
    **`.env.official`**
    ```

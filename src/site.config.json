@@ -3,7 +3,7 @@
   "siteUrl": "https://www.studiowithinchicago.com",
   "tagline": "The Curl Spot",
   "defaultDescription": "Studio Within is Chicago's curly hair salon. Certified curl specialists for custom curly haircuts, curly hair color, styling and curl care near Lincoln Square.",
-  "defaultImage": "/logos/black_primary_logo.png",
+  "defaultImage": "/images/share/studio-within-share.jpg",
   "pages": [
     {
       "path": "/",
