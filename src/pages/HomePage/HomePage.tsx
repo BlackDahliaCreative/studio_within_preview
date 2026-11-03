@@ -7,9 +7,7 @@ import ReviewsMarquee from "./ReviewsMarquee"
 import SustainSection from "./SustainSection"
 import GallerySection from "./GallerySection"
 import ButtonLink from "./ButtonLink"
-
-// Where the "book now" style buttons go. Replace with the salon's booking link when we have it.
-const BOOKING_URL = '/get-in-touch/'
+import { BOOKING_URL } from "../../utils/booking"
 
 // Reviews in the scrolling row, in the order they appear in Figma
 const reviews = [

@@ -19,13 +19,19 @@ const photo: Variants = {
     show: { scale: 1, transition: { duration: 1.1, ease } },
 }
 
-const GallerySection = ({ photos }: { photos: Photo[] }) => {
+type Props = {
+    photos: Photo[]
+    folder?: string // folder under public/images
+    label?: string  // what screen readers announce for the section
+}
+
+const GallerySection = ({ photos, folder = 'homepage', label = 'Curly hair gallery' }: Props) => {
     const reduceMotion = useReducedMotion()
 
     return (
         <motion.section
             className="home-gallery"
-            aria-label="Curly hair gallery"
+            aria-label={label}
             variants={grid}
             initial={reduceMotion ? false : 'hidden'}
             whileInView="show"
@@ -35,7 +41,7 @@ const GallerySection = ({ photos }: { photos: Photo[] }) => {
                 // Frame: reveal. Inner layer: hover zoom (in the SCSS)
                 <motion.div key={img.src} className="home-gallery__frame" variants={tile}>
                     <div className="home-gallery__zoom">
-                        <motion.img variants={photo} src={publicUrl(`/images/homepage/${img.src}`)} alt={img.alt} loading="lazy"/>
+                        <motion.img variants={photo} src={publicUrl(`/images/${folder}/${img.src}`)} alt={img.alt} loading="lazy"/>
                     </div>
                 </motion.div>
             ))}

@@ -25,7 +25,7 @@ const content: Variants = {
 }
 const item: Variants = {
     hidden: { opacity: 0, y: 24 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
+    show: { opacity: 1, y: 0, transition: { duration: 1, ease } },
 }
 
 const SustainSection = ({ bookingUrl }: { bookingUrl: string }) => {

@@ -1,1 +1,236 @@
-#policiesPage {}
+@use 'sass:math';
+@use '../shared';
+
+// Policies page. Measurements come from the Figma "policies" frame (1442px wide),
+// laid out as two columns of 721px. Horizontal sizes are percentages of a column,
+// so the layout keeps its proportions as the window narrows.
+@function col($px) {
+    @return math.percentage(math.div($px, 721));
+}
+
+$card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
+
+#policiesPage {
+    padding: 0 !important;
+    overflow-x: clip;
+    isolation: isolate; // keeps the grey bands (z-index: -1) behind the page content
+    color: var(--primary-font-color);
+
+    @include shared.buttons;
+    @include shared.gallery(442px, 31px, 26px, "442 / 248");
+
+    // ── Heading ─────────────────────────────────────────────────────
+    .policies-title {
+        margin: 40px 0 0;
+        padding: 0 var(--padding-md);
+        text-align: center;
+        font-family: var(--primary-font-family);
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 52.5px;
+        letter-spacing: -1px;
+        color: var(--text-brown-color);
+
+        // Soft beige bar behind the lower half of the heading
+        span {
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                left: -32px;
+                right: 0;
+                top: 34px;
+                height: 26px;
+                background: $card-bg;
+            }
+        }
+    }
+
+    // ── Two-column layout ───────────────────────────────────────────
+    .policies-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        max-width: 1442px;
+        margin: 58px auto 0;
+    }
+    .policies-col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    // ── Cards ───────────────────────────────────────────────────────
+    .policy-card {
+        position: relative;
+        box-sizing: border-box;
+        width: col(574);
+        padding: 0 54px 64px 68px;
+        background: $card-bg;
+    }
+    .policy-card__title {
+        margin: 0;
+        transform: translateY(-17px); // sits on the card's top edge
+        font-family: var(--primary-font-family);
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 28.8px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    .policy-card__body {
+        margin-top: 34px;
+        font-family: var(--primary-font-family);
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 28.8px;
+        letter-spacing: 0.85px;
+        p { margin: 0; }
+        .policy-card__gap { margin-top: 28.8px; }
+    }
+    // Button inside the cancellations card
+    .policy-card__action {
+        margin-top: 20px;
+        padding-left: 150px;
+        .home-btn { min-width: 235px; }
+    }
+    .policy-card--cancel { padding-bottom: 22px; }
+
+    // Button centred under a card
+    .policies-action {
+        display: flex;
+        justify-content: center;
+        width: col(574);
+    }
+
+    // ── Photos ──────────────────────────────────────────────────────
+    .policies-photo {
+        position: relative;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    // Full-width grey band that starts a little above the photo
+    .policies-photo--band::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: -43px;
+        height: 288px;
+        left: -100vw;
+        right: -100vw;
+        background: var(--secondary-color);
+    }
+
+    // ── Left column (positions from Figma) ──────────────────────────
+    .policy-card--cancel        { margin: 119px 0 0 col(59); }
+    .policies-photo--lounge     { margin: 114px 0 0 col(70);  width: col(632); aspect-ratio: 632 / 422; }
+    .policy-card--guests        { margin: 141px 0 0 col(99); }
+    .policy-card--refunds       { margin: 113px 0 0 col(99); }
+    .policies-action--refunds   { margin: 15px 0 0 col(99); }
+    .policies-photo--hallway    { margin: 50px 0 0 col(134); width: col(456); aspect-ratio: 456 / 684; }
+    .policies-photo--hallway::before { top: -35px; }
+
+    // ── Right column ────────────────────────────────────────────────
+    .policies-photo--salon      { margin-left: col(-48); width: col(722); aspect-ratio: 722 / 480; }
+    .policy-card--children      { margin: 167px 0 0 col(30); }
+    .policies-action--children  { margin: 17px 0 0 col(30); }
+    .policies-photo--station    { margin: 18px 0 0 col(30); width: col(605); aspect-ratio: 605 / 910; }
+    .policy-card--food          { margin: 129px 0 0 col(46); }
+
+    .policies-next {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: col(574);
+        margin: 97px 0 0 col(46);
+        .home-btn { min-width: 334px; height: 58px; }
+    }
+    .policies-next__text {
+        margin: 0 0 30px;
+        font-family: var(--primary-font-family);
+        font-size: 32px;
+        font-weight: 300;
+        line-height: 1.2;
+        letter-spacing: 0.85px;
+        text-align: center;
+    }
+
+    // ── Gallery ─────────────────────────────────────────────────────
+    .home-gallery {
+        margin-top: 97px;
+        padding: 32px 24px;
+    }
+
+    // ── Smaller screens ─────────────────────────────────────────────
+    @media (max-width: 1199.98px) {
+        .policy-card { padding: 0 32px 48px 40px; }
+        .policy-card__action { padding-left: 0; text-align: center; }
+    }
+
+    // One column, in reading order
+    @media (max-width: 999.98px) {
+        .policies-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 48px;
+            margin-top: 40px;
+            padding: 0 var(--padding-md);
+            box-sizing: border-box;
+        }
+        .policies-col { display: contents; }
+
+        // Undo the desktop offsets: everything is centred and full width
+        .policy-card,
+        .policies-photo,
+        .policies-action,
+        .policies-next {
+            margin: 0 !important;
+            width: 100% !important;
+            max-width: 640px;
+        }
+        .policies-action { margin-top: -24px !important; } // keep each button close to its card
+        .policy-card { margin-top: 17px !important; }      // room for the title on the edge
+        .policies-photo--band::before { display: none; }   // bands only make sense in the 2-column layout
+
+        .policy-card--cancel       { order: 1; }
+        .policies-photo--salon     { order: 2; }
+        .policy-card--children     { order: 3; }
+        .policies-action--children { order: 4; }
+        .policies-photo--lounge    { order: 5; }
+        .policy-card--guests       { order: 6; }
+        .policy-card--refunds      { order: 7; }
+        .policies-action--refunds  { order: 8; }
+        .policies-photo--station   { order: 9; }
+        .policy-card--food         { order: 10; }
+        .policies-photo--hallway   { order: 11; }
+        .policies-next             { order: 12; }
+
+        .home-gallery {
+            margin-top: 80px;
+            grid-template-columns: repeat(2, minmax(0, 362px));
+            column-gap: 23px;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .policies-title {
+            margin-top: 32px;
+            font-size: 34px;
+            line-height: 42px;
+            span::before { left: -12px; top: 22px; height: 20px; }
+        }
+        .policy-card { padding: 0 var(--padding-md) 32px; }
+        .policy-card__title { font-size: 20px; }
+        .home-btn { min-width: 260px; }
+        .policies-next .home-btn { min-width: 260px; height: 51px; }
+        .policies-next__text { font-size: 26px; }
+
+        .home-gallery { grid-template-columns: minmax(0, 1fr); }
+    }
+}
