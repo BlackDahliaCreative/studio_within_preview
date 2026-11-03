@@ -1,8 +1,6 @@
-// Desktop menu. Sizes come from the Figma nav (1440px frame): logo box 189 x 165
-// at 83px from the left, links 14pt uppercase on the right.
 .navBar {
     position: relative;
-    z-index: 2; // above the home page hero, which slides up underneath
+    z-index: 2; 
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -13,21 +11,34 @@
     .navLinks {
         color: var(--primary-font-color);
         font-family: var(--navbar-fontFamily);
-        font-size: 14pt;
+        font-size: 16px;
         font-weight: var(--navbar-fontWeight);
         letter-spacing: 0.2em;
         text-transform: uppercase;
         text-decoration: none;
         white-space: nowrap;
         &:not(:last-child) { margin-right: 27px; }
-        &:hover { text-decoration: underline; text-underline-offset: 6px; }
+        position: relative;
+        // &:hover { text-decoration: underline; text-underline-offset: 6px; }
+        &::after {
+            content: '';
+            position: absolute;
+            left: -5%;
+            bottom: -2px;
+            width: 0%;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.4s ease-in-out;
+        }
+        &:hover::after, &.active::after {
+            width: 110%;
+        }
     }
     .navBar__links {
         display: flex;
         align-items: center;
     }
 
-    // White box with the logo that hangs below the bar. Links to the home page.
     .navBar__logo {
         position: absolute;
         top: 30px;
@@ -44,6 +55,9 @@
             display: block;
             width: 99%;
             height: auto;
+        }
+        &:hover {
+            scale: 1.01;
         }
     }
 

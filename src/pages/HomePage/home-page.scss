@@ -38,7 +38,7 @@
         }
         &--italic {
             // font-style: italic;
-            font-weight: 600;
+            font-weight: 300;
             text-transform: uppercase;
         }
         &--light {
@@ -174,15 +174,14 @@
         }
         .home-about__label {
             position: absolute;
-            top: 63px;
-            left: 0;
-            right: 0;
+            top: 100px;
+            left: 39.5%;
             margin: 0;
             color: #fff;
             
             font-family: var(--secondary-font-family);
             font-size: 32pt;
-            font-weight: 600;
+            font-weight: 300;
             line-height: 48pt;
             letter-spacing: 0.04em;
             text-align: center;
@@ -193,11 +192,11 @@
             z-index: 22;
             //  mix-blend-mode: overlay;
             &::after {
-                content: '';
+                // content: '';
                 display: block;
                 width: 110%;
                 height: 20px;
-                background-color: #000;
+                // background-color: #000;
                 position: absolute;
                 bottom: 15px;
                 left: -5%;
