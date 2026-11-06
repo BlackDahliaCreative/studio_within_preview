@@ -1,1 +1,0 @@
-import{j as e}from"./index-Ci3tXt9i.js";import{S as t}from"./SEOHead-D_LfOiyE.js";const s=()=>e.jsxs("div",{className:"page",id:"meetTheTeamPage",children:[e.jsx(t,{path:"/meet-the-team"}),e.jsx("h1",{children:"Meet the Team"})]});export{s as default};
