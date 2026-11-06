@@ -18,6 +18,7 @@ const Careers = lazy(() => import('./pages/Careers/Careers'));
 const GetInTouch = lazy(() => import('./pages/GetInTouch/GetInTouch'));
 const Services = lazy(() => import('./pages/Services/Services'));
 const MeetTheTeam = lazy(() => import('./pages/MeetTheTeam/MeetTheTeam'));
+const SingleStylist = lazy(() => import(`./pages/MeetTheTeam/StylistPage`));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/careers" element={<Careers />} />
             <Route path="/get-in-touch" element={<GetInTouch />} />
             <Route path="/meet-the-team" element={<MeetTheTeam />} />
+            <Route path="/meet-the-team/:stylistId" element={<SingleStylist />} />
             <Route path="/services" element={<Services />} />
             <Route path="*"element={<NotFound />} />
           </Routes>
