@@ -67,14 +67,14 @@
         }
         #logo_home {
             position: absolute;
-            z-index: 2;
+            z-index: 1;
             right: 15%;
             bottom: 30%;
 
             .logo_partner {
                 width: min(50vw, 420px);
                 height: auto;
-                z-index: 2;
+                z-index: 1;
             }
             p {
                 font-size: 16pt;
@@ -88,7 +88,7 @@
         }
         .hero_buttons {
             position: absolute;
-            z-index: 2;
+            z-index: 1;
             left: 0;
             right: 0;
             bottom: 70px;

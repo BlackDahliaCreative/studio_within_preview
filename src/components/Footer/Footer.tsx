@@ -8,7 +8,7 @@ const links = [
     { to: '/policies/', label: 'Policies' },
     { to: '/faqs/', label: "FAQ's" },
     { to: '/services/', label: 'Services' },
-    { to: '/get-in-touch/', label: 'Get in touch' },
+    { to: '/contact-us/', label: 'Get in touch' },
 ]
 
 // Replace the "#" links with the salon's real profiles.

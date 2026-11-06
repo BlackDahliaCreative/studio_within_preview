@@ -57,7 +57,7 @@ const Photo = ({ src, alt, className }: { src: string, alt: string, className: s
 const GetInTouch = () => {
     return(
         <div className="page" id="getInTouchPage">
-            <SEOHead path="/get-in-touch" />
+            <SEOHead path="/contact-us" />
 
             <header className="git-intro">
                 <h1 className="git-title">Let’s get you in the Chair!</h1>

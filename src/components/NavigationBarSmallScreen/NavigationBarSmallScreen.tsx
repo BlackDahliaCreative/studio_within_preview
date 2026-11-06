@@ -3,7 +3,7 @@ import './navigation-bar-small-screen.scss'
 import { useState } from "react";
 import { useTransition, animated } from "@react-spring/web";
 import { publicUrl } from "../../utils/publicUrl";
-import { navLinks, HOME_PATH } from "../NavigationBar/navLinks";
+import { navLinks, navLinksDropdown, HOME_PATH } from "../NavigationBar/navLinks";
 
 const NavigationBarSmallScreen = () => {
     const path = useLocation().pathname
@@ -64,7 +64,8 @@ const NavigationBarSmallScreen = () => {
                                     alt="Studio Within Salon, home"
                                 />
                             </Link>
-                            {navLinks.map(link => (
+                            {/* No dropdown on phones: the "Get In Touch" links follow the main ones */}
+                            {[...navLinks, ...navLinksDropdown].map(link => (
                                 <NavLink key={link.to} className="navLinksSmScreen" onClick={close} to={link.to}>{link.label}</NavLink>
                             ))}
                         </nav>

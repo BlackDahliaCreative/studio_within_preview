@@ -37,7 +37,7 @@ function App() {
             <Route path="/policies" element={<Policies />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/careers" element={<Careers />} />
-            <Route path="/get-in-touch" element={<GetInTouch />} />
+            <Route path="/contact-us" element={<GetInTouch />} />
             <Route path="/meet-the-team" element={<MeetTheTeam />} />
             <Route path="/meet-the-team/:stylistId" element={<SingleStylist />} />
             <Route path="/services" element={<Services />} />

@@ -58,7 +58,7 @@ const FAQs = () => {
             <section className="faqs-help" aria-labelledby="faqs-help-title">
                 <p className="faqs-help__eyebrow">Still have a question?</p>
                 <h2 className="faqs-help__title" id="faqs-help-title">We’re here to help.</h2>
-                <ButtonLink to="/get-in-touch/">Get in touch</ButtonLink>
+                <ButtonLink to="/contact-us/">Get in touch</ButtonLink>
                 <p className="faqs-help__phone">or call us @ <a href={PHONE_HREF}>{PHONE_DISPLAY}</a></p>
             </section>
         </div>

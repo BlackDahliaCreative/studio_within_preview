@@ -38,10 +38,31 @@
         row-gap: 50px;
         width: 100%;
         .single_stylist_card {
-            max-width: 420px;
-            min-width: 245px;
-            width: calc(25% - 18px);
+            max-width: 400px;
+            min-width: 320px;
+            width: calc(33% - 18px);
             text-decoration: none !important;
+            border: 1px solid transparent;
+            // padding: 5px;
+            box-shadow: 5px 5px 5px 0px transparent;
+            transition: all linear 0.5s ;
+            &:hover {
+                img {
+                    // border: 1px solid black;
+                    scale: 1.04;
+                    translate: 0px 5px;
+                }
+                .stylist_name {
+                    font-size: 21px;
+                    font-weight: 400;
+                }
+                .stylist_specialty { 
+                    font-weight: 400;
+                    overflow: hidden;
+                    // padding: 9px;
+                }
+
+            }
             
             p {
                 margin: 0px;
@@ -54,6 +75,7 @@
                 line-height: 32px;
                 width: 100%;
                 text-align: center;
+                transition: all linear .2s;
             }
             .stylist_specialty {
                 align-self: center;
@@ -69,20 +91,31 @@
                 position: relative;
                 text-align: center;
                 width: fit-content;
+                transition: all linear 0.5s;
             }
+            .stylist_img_cont {
+                display: flex;
+                overflow: hidden;
+            }
+
             .stylist_image {
+                object-position: center;
                 width: 100%;
+                height: 100%;
+                translate: 0px 0px;
+                scale: 1;
+                transition: all linear .4s;
             }
             &#stylist_7 {
                 align-content: center;
             }
-            &:hover {}
         }
     }
 
 }
 .stylist_single_page {
-    padding: 170px 0px;
+    @include shared.buttons;
+    padding: 70px 0px;
     header {
         padding: 0px 170px;
         .stylist_header {
@@ -109,32 +142,41 @@
             color: black;
         }
     }
-    // The cream band is drawn by .stylist_body (the text column), stretched to full width,
-    // so its height follows the text: a short bio lets the photo hang below the band,
-    // a long bio makes the band tall enough to cover the photo too.
     .stylist_card_body {
         padding: 0px 170px;
         display: flex;
         align-items: flex-start;
         gap: 20px;
         width: 100%;
+        // Photo frame: the image inside drifts on scroll (see StylistPage.tsx)
         .stylist_img {
             width: 30%;
             max-width: 620px;
             min-width: 320px;
+            overflow: hidden;
+            img {
+                display: block;
+                width: 100%;
+            }
         }
-        // Keep the photo and logo above the band's stretched background
         .stylist_img,
         .stylist_body_logo {
             position: relative;
             z-index: 1;
         }
         .stylist_body {
-            padding: 25px 0px 40px;
-            background-color: var(--cream-color);
-            // Paint the cream out to both page edges without changing the layout
-            box-shadow: 0 0 0 100vmax var(--cream-color);
-            clip-path: inset(0 -100vmax);
+            padding: 25px 0px 0px;
+            position: relative;
+            z-index: 0; 
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: -1;
+                background-color: var(--cream-color);
+                box-shadow: 0 0 0 100vmax var(--cream-color);
+                clip-path: inset(0 -100vmax);
+            }
         }
 
         .stylist_body_header {
@@ -154,12 +196,62 @@
         .stylist_body_bio {
             width: 90%;
             max-width: 1025px;
-            p {
+            margin-top: 70px;
+            padding-bottom: 70px ;
+            .stylist_bio_paragraph {
                 font-size: 14pt;
                 letter-spacing: 2px;
                 font-weight: 300;
                 line-height: 27px;
             }
+        }
+        
+    }
+    .stylist_card_body {
+        margin-bottom: 44px; // room for the part of the button below the band
+    }
+    .stylist_body_links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        row-gap: 20px;
+        margin-bottom: -24px;
+        position: relative;
+        .home-btn--light {
+            align-items: center;
+            border: 1px solid #000;
+            display: inline-flex;
+            // height: 68px;
+            justify-content: center;
+            letter-spacing: 2px;
+            padding: 13px 40px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .backTo {
+            color: #000;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+        }
+    }
+    .stylist_education {
+        margin-top: 70px;
+        padding: 0px 170px ;
+        h1, p {
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        strong {
+            font-weight: 500;
+        }
+        h1 {
+            
+            font-weight: 500;
+            text-decoration: underline;
+            text-transform: uppercase;
+            text-underline-offset: 7px;
         }
     }
 }

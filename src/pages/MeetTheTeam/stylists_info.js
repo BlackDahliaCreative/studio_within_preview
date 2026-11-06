@@ -1,4 +1,5 @@
 export const stylist_info = [
+    /* ====== Kristy-Kladzyk =======*/
     {
         stylist_id: 'Kristy-Kladzyk',
         stylist_name: 'Kristy Kladzyk',
@@ -14,7 +15,8 @@ export const stylist_info = [
                 'Her approach pairs personalized cutting with hands-on education, giving clients the tools to confidently care for and style their curls at home. Whether you’re discovering your natural texture or ready for a fresh shape, her goal is for you to leave feeling understood and comfortable being yourself.',
                 'Outside the salon, Kristy is a devoted pug mom, a lover of vintage, and an enthusiastic traveler who’s always finding inspiration along the way.'
             ],
-            body_is_stylist: true
+            mangomintID: '6',
+            body_is_stylist: "yes"
         },
         stylist_education: [
             { title: 'Rezo Cut', detail: 'Level 2' },
@@ -26,6 +28,8 @@ export const stylist_info = [
             { title: 'Razor Cutting', detail: 'with Jayne Mathews' },
         ]
     },
+
+    /* ====== Bette-Schwarz =======*/
     {
         stylist_id: 'Bette-Schwarz',
         stylist_name: 'Bette Schwarz',
@@ -36,7 +40,8 @@ export const stylist_info = [
             body_stylist_pic: 'meet_bette.webp',
             body_what_is_my_specialty: 'Curls and lived in color',
             body_stylist_bio: ['For over 40 years, I’ve helped clients discover hair that feels authentic to them. Specializing in curly hair and texture services, I combine experience, education, and a personalized approach to create looks that are beautiful, manageable, and uniquely yours. I love building lasting relationships and creating a space where clients feel comfortable, understood, and confident in their natural beauty.'],
-            body_is_stylist: true
+            mangomintID: '15',
+            body_is_stylist: "yes"
         },
         stylist_education: [
             { title: 'DevaCurl', detail: 'Level 2 Certified' },
@@ -44,6 +49,8 @@ export const stylist_info = [
             { title: 'RezoLites:', detail: 'Level 1' },
         ]
     },
+
+    /* ====== Jacob-Greenfield =======*/
     {
         stylist_id: 'Jacob-Greenfield',
         stylist_name: 'Jacob Greenfield',
@@ -54,7 +61,8 @@ export const stylist_info = [
             body_stylist_pic: 'meet_jacob.webp',
             body_what_is_my_specialty: 'Curly Hair, Color and Cuts',
             body_stylist_bio: ["I have been a hairstylist for over 12 years and have been specializing in naturally curly hair for over 10 years. I thoroughly enjoy helping people reach their goals with their hair and guide them in education of proper products and styling techniques to maintain their hair. One of my favorite things about my job is when I'm able to give a client the hair of their dreams! Continuing education is also important for me to stay on top of trends and techniques so I can share them with my clients."],
-            body_is_stylist: true
+            mangomintID: '5',
+            body_is_stylist: "yes"
         },
         stylist_education: [
             { title: 'DevaCurl', detail: 'Level 2 Certified' },
@@ -63,7 +71,9 @@ export const stylist_info = [
             { title: 'Curl by Curl', detail: 'Certified by Lorraine Massey' },
             { title: 'Cut It Kinky:', detail: 'Enrichment' },
         ]
-    },
+    },  
+    
+    /* ====== Gina-Ceja =======*/
     {
         stylist_id: 'Gina-Ceja',
         stylist_name: 'Gina Ceja (Martha)',
@@ -74,14 +84,17 @@ export const stylist_info = [
             body_stylist_pic: 'meet_gina.webp',
             body_what_is_my_specialty: 'Curly Hair',
             body_stylist_bio: ['Gina (Martha) Ceja has over 25 years of experience and has developed a personable approach to hair design. Gina is a master colorist at Studio Within who is well-versed in all types of color techniques, highlights, as well as Pintura highlights for curly hair. She is also a curly girl specialist receiving Deva Curl’s Level 3 certification, which is their highest level of curl expertise. She always looks forward to helping you look and feel your best all the time.'],
-            body_is_stylist: true
+            mangomintID: '7',
+            body_is_stylist: "yes"
         },
         stylist_education: [
             { title: 'Rezo Cut:', detail: 'Level 2' },
             { title: 'Rezo Lites:', detail: 'Level 2' },
             { title: 'DevaCurl', detail: 'Level 3 Certified' },
         ]
-    },
+    },  
+    
+    /* ====== Kelley-George =======*/
     {
         stylist_id: 'Kelley-George',
         stylist_name: 'Kelley George',
@@ -95,27 +108,33 @@ export const stylist_info = [
                 'Kelley George has spent over a decade specializing in curly hair in its natural state, helping clients embrace and enhance their unique texture. She loves creating customized curly cuts that fit each person’s lifestyle, personality, and hair goals.',
                 'After retiring from chemical services two years ago, she shifted her focus to the overall health and integrity of the hair. Today, she offers a variety of treatments and holistic services designed to nourish, strengthen, and bring out the very best in your curls.',
             ],
-            body_is_stylist: true
+            mangomintID: '14',
+            body_is_stylist: "yes"
         },
         stylist_education: [
             { title: 'DevaCurl:', detail: 'Level 1' },
             { title: 'ForeverCurls', detail: '' },
         ]
-    },
+    },  
+    
+    /* ====== Dani-Perrin =======*/
     {
-        stylist_id: 'Dani-Driver',
-        stylist_name: 'Dani Driver',
+        stylist_id: 'Dani-Perrin',
+        stylist_name: 'Dani Perrin',
         stylist_title: 'Haircutting Specialist, National Educator Innersense Organic Beauty',
-        stylist_short_title: 'Hair Nerd',
-        stylist_social_media: 'daniidriver',
+        stylist_short_title: 'Hairstylist · Innersense Pro Educator',
+        stylist_social_media: 'daniiperrin',
         stylist_info_body: {
             body_stylist_pic: 'meet_dani.webp',
             body_what_is_my_specialty: 'Customized haircuts for all textures and densities. I specialize in creating personalized shapes that grow out beautifully, from lived-in layers and shags to precision bobs, razor cuts, and transformational haircuts.',
-            body_stylist_bio: ["Dani Driver is a Chicago-based Haircut Specialist with over 10 years of experience behind the chair. Her work combines precision cutting, razor cutting, and texture expertise to create personalized haircuts that feel authentic to each client and grow out beautifully over time. As an Innersense National Educator, Dani is passionate about creating customized shapes that complement each client's unique features, lifestyle, and maintenance preferences. Whether you're looking for a dramatic transformation or a subtle refinement, her goal is simple: helping you leave feeling confident, comfortable, and completely yourself."],
-            body_is_stylist: true
+            body_stylist_bio: ["Dani Perrin is a Chicago-based Haircut Specialist with over 10 years of experience behind the chair. Her work combines precision cutting, razor cutting, and texture expertise to create personalized haircuts that feel authentic to each client and grow out beautifully over time. As an Innersense National Educator, Dani is passionate about creating customized shapes that complement each client's unique features, lifestyle, and maintenance preferences. Whether you're looking for a dramatic transformation or a subtle refinement, her goal is simple: helping you leave feeling confident, comfortable, and completely yourself."],
+            mangomintID: '23',
+            body_is_stylist: "yes"
         },
         stylist_education: []
-    },
+    },  
+    
+    /* ====== Maxwell-Tucker =======*/
     {
         stylist_id: 'Maxwell-Tucker',
         stylist_name: 'Maxwell Tucker',
@@ -126,10 +145,13 @@ export const stylist_info = [
             body_stylist_pic: 'meet_maxwell.webp',
             body_what_is_my_specialty: 'Curls and Color ',
             body_stylist_bio: ['As a passionate textured hair specialist, Maxwell loves helping clients embrace and celebrate their natural curls. With over two years of mentorship under master stylist Bette Schwarz, Maxwell has developed specialized skills in textured hair, focusing on DevaCurl and Rezo cutting techniques. Dedicated to creating beautiful, personalized shapes, Maxwell strives to help every client feel confident, comfortable, and empowered in their natural texture.'],
-            body_is_stylist: true
+            mangomintID: '26',
+            body_is_stylist: "yes"
         },
         stylist_education: []
-    },
+    },  
+    
+    /* ====== 'biggie2pac' =======*/
     {
         stylist_id: 'biggie2pac',
         stylist_name: 'Biggie and 2Pac',
@@ -144,7 +166,7 @@ export const stylist_info = [
                 `Their specialties include supervising appointments, accepting belly rubs, and making sure no snack goes unnoticed. Tupac brings years of experience in soulful stare-downs, while Biggie is learning the family business: look cute, get spoiled, scream, repeat.`,
                 `With a shared commitment to naps and absolutely no interest in answering the phone, these two keep salon morale high and productivity… negotiable.`
             ],
-            body_is_stylist: false
+            body_is_stylist: 'no'
         },
         stylist_education: []
     },

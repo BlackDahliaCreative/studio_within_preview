@@ -29,6 +29,7 @@
             height: 2px;
             background: var(--primary-color);
             transition: width 0.4s ease-in-out;
+           
         }
         &:hover::after, &.active::after {
             width: 110%;
@@ -37,6 +38,81 @@
     .navBar__links {
         display: flex;
         align-items: center;
+        padding-left: 30px;
+    }
+
+    // "Get In Touch" dropdown. Shows on hover, or when clicked (--open).
+    .navDropdown {
+        position: relative;
+
+        &__toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0;
+            background: none;
+            border: 0;
+            cursor: pointer;
+        }
+        &__chevron {
+            width: 6px;
+            height: 6px;
+            margin-top: -3px;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: rotate(45deg);
+            transition: transform 0.25s ease, margin 0.25s ease;
+        }
+
+        // padding-top bridges the gap under the label so hover isn't lost on the way down
+        &__menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            padding-top: 14px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, -6px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+
+            ul {
+                min-width: 200px;
+                margin: 0;
+                padding: 10px 0;
+                list-style: none;
+                background: #fff;
+                border: 1px solid #000;
+            }
+        }
+        &__link {
+            display: block;
+            padding: 10px 24px;
+            color: var(--primary-font-color);
+            font-family: var(--navbar-fontFamily);
+            font-size: 14px;
+            font-weight: var(--navbar-fontWeight);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
+            &:hover, &:focus-visible, &.active {
+                background-color: var(--cream-color);
+            }
+        }
+
+        &:hover, &--open {
+            .navDropdown__menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translate(-50%, 0);
+                             z-index: 22;
+            }
+            .navDropdown__chevron {
+                margin-top: 3px;
+                transform: rotate(-135deg);
+            }
+        }
     }
 
     .navBar__logo {
@@ -47,7 +123,7 @@
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
-        width: clamp(130px, 13.1vw, 189px);
+        width: clamp(130px, 8vw, 189px);
         aspect-ratio: 189 / 165;
         background: #fff;
         border: 1px solid #000;
