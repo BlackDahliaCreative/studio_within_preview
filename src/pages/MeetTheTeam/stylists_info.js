@@ -34,7 +34,7 @@ export const stylist_info = [
         stylist_id: 'Bette-Schwarz',
         stylist_name: 'Bette Schwarz',
         stylist_title: 'Master Stylist · Curl and Color Specialist',
-        stylist_short_title: 'Master Curl Specialist · Colorist',
+        stylist_short_title: 'Master Stylist · Curl and Color Specialist',
         stylist_social_media: 'bettecutscurls',
         stylist_info_body: {
             body_stylist_pic: 'meet_bette.webp',

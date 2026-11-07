@@ -1,1 +1,237 @@
-#careersPage {}
+@use '../shared';
+#ContactPage {
+    @include shared.buttons;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    // ── Heading ─────────────────────────────────────────────────────
+    .git-intro {
+        margin-top: 40px;
+        padding: 0 var(--padding-md);
+        text-align: center;
+    }
+    .git-title {
+        margin: 0;
+        font-size: clamp(34px, 4.4vw, 48pt); // 48pt (Figma) on wide screens; narrower so it clears the logo box
+        font-weight: 500;
+        line-height: 1.1;
+        letter-spacing: 1pt;
+        color: var(--text-brown-color);
+    }
+    .git-subtitle {
+        margin: 16px 0 0;
+        font-size: 14pt;
+        font-weight: 400;
+        line-height: 1.8;
+        letter-spacing: 1pt;
+        span {
+            padding: 0 6px;
+            background: rgba(223, 223, 223, 0.37);
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+        }
+    }
+}
+
+// ── Application form (Figma "Let's get to know you") ───────────────
+// Cream pills in a 2-column grid inside a cream-outlined card.
+.careers-form {
+    --pill-height: 44px;
+    width: 100%;
+    max-width: 1020px;
+    margin-bottom: 60px;
+    padding: 28px 40px 36px;
+    border: 3px solid var(--cream-color);
+    border-radius: 20px;
+    font-family: var(--primary-font-family);
+
+    &__title {
+        margin: 0 0 30px;
+        color: var(--text-brown-color);
+        font-size: clamp(26px, 3vw, 48px);
+        font-weight: 600;
+        letter-spacing: 0;
+        text-align: center;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 34px;
+        row-gap: 22px;
+    }
+    &__wide { grid-column: 1 / -1; }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 0;
+    }
+
+    // Shared pill look for inputs, the select, the textarea and the file/date rows
+    &__input {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: var(--pill-height);
+        padding: 0 18px;
+        background: var(--cream-color);
+        border: 1px solid transparent;
+        border-radius: 999px;
+        color: #000;
+        // font: inherit;
+        font-size: 20px;
+        font-weight: 300px !important;
+        letter-spacing: 0.06em;
+        transition: border-color 0.2s ease;
+        &::placeholder { color: #000; opacity: 1; font-weight: 300; letter-spacing: 2px;}
+        &:focus, &:focus-within { outline: none; border-color: var(--text-brown-color); }
+        &[aria-invalid='true'], &.is-invalid { border-color: #c24141; }
+    }
+
+    // Position: the shared DropdownSelect, restyled to the design.
+    // Closed it's a pill; open, the pill squares off at the bottom and a white list hangs under it.
+    &__dropdown.dropdown {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        .dropdown__button {
+            justify-content: space-between;
+            padding: 0 22px 0 18px;
+            background: var(--cream-color);
+            border: 1px solid transparent;
+            border-radius: 999px;
+            text-align: left;
+            transition: border-radius 0.15s ease, border-color 0.2s ease;
+            .dropdown__button-text { font-size: inherit; }
+            .dropdown__icon { margin-left: 12px; font-size: inherit; }
+            &[aria-expanded='true'] {
+                border-radius: 22px 22px 0 0;
+                .careers-form__chevron { margin-top: 4px; transform: rotate(-135deg); }
+            }
+        }
+        &.is-invalid .dropdown__button { border-color: #c24141; }
+
+        .dropdown__list {
+            z-index: 5;
+            padding: 6px 0 10px;
+            background: #fff;
+            border: 0;
+            border-radius: 0 0 22px 22px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+            .dropdown__option {
+                padding: 9px 20px;
+                font-size: 13px;
+                letter-spacing: 0.06em;
+                &.dropdown__option--active { background: var(--cream-color); }
+                &.dropdown__option--selected { font-weight: 500; }
+            }
+        }
+    }
+    &__chevron {
+        display: block;
+        width: 7px;
+        height: 7px;
+        margin-top: -4px;
+        border-right: 1.5px solid #000;
+        border-bottom: 1.5px solid #000;
+        transform: rotate(45deg);
+        transition: transform 0.2s ease, margin 0.2s ease;
+    }
+
+    // Resume and start date: label on the left, value on the right
+    &__split {
+        position: relative; // keeps the hidden file input inside the pill
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        cursor: pointer;
+        > span:first-child { white-space: nowrap; }
+    }
+    &__hint {
+        overflow: hidden;
+        color: #8a8a8a;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    // The real file input is invisible; the pill around it opens the picker
+    &__file {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+    }
+    &__date {
+        padding: 0;
+        background: transparent;
+        border: 0;
+        color: #8a8a8a;
+        font: inherit;
+        cursor: pointer;
+        &:focus { outline: none; color: #000; }
+    }
+
+    &__textarea {
+        min-height: 110px;
+        padding: 14px 20px;
+        border-radius: 24px;
+        line-height: 1.6;
+        resize: vertical;
+    }
+    &__count {
+        align-self: flex-end;
+        padding-right: 12px;
+        color: #8a8a8a;
+        font-size: 11px;
+    }
+
+    &__submit {
+        display: block;
+        min-width: 232px;
+        height: 44px;
+        margin: 30px auto 0;
+        padding: 0 40px;
+        background: var(--cream-color);
+        border: 1px solid #000;
+        border-radius: 999px;
+        color: #000;
+        font: inherit;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        &:hover:not(:disabled) { background: var(--primary-color); }
+        &:disabled { opacity: 0.6; cursor: wait; }
+    }
+
+    &__status {
+        min-height: 1.5em;
+        margin: 14px 0 0;
+        color: var(--text-brown-color);
+        font-size: 14px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #ContactPage {
+        padding: 60px 0px 20px !important;
+    }
+    .careers-form {
+        width: calc(100% - 32px);
+        padding: 22px 18px 28px;
+        &__grid {
+            grid-template-columns: 1fr;
+            row-gap: 16px;
+        }
+        &__input { padding: 0 14px; letter-spacing: 0.03em; }
+        &__dropdown.dropdown .dropdown__button { padding-right: 16px; }
+        &__split { gap: 10px; }
+        &__textarea { padding: 14px 16px; }
+    }
+}
