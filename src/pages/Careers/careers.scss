@@ -6,33 +6,7 @@
     flex-direction: column;
     justify-content: center;
 
-    // ── Heading ─────────────────────────────────────────────────────
-    .git-intro {
-        margin-top: 40px;
-        padding: 0 var(--padding-md);
-        text-align: center;
-    }
-    .git-title {
-        margin: 0;
-        font-size: clamp(34px, 4.4vw, 48pt); // 48pt (Figma) on wide screens; narrower so it clears the logo box
-        font-weight: 500;
-        line-height: 1.1;
-        letter-spacing: 1pt;
-        color: var(--text-brown-color);
-    }
-    .git-subtitle {
-        margin: 16px 0 0;
-        font-size: 14pt;
-        font-weight: 400;
-        line-height: 1.8;
-        letter-spacing: 1pt;
-        span {
-            padding: 0 6px;
-            background: rgba(223, 223, 223, 0.37);
-            -webkit-box-decoration-break: clone;
-            box-decoration-break: clone;
-        }
-    }
+
 }
 
 // ── Application form (Figma "Let's get to know you") ───────────────

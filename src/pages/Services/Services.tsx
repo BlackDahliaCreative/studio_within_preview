@@ -10,7 +10,7 @@ type ServiceGroup = {
     id: string
     title: string
     items: string[]
-    photo: { src: string, alt: string, width: number, height: number }
+    photo: { src: string, alt: string }
     photoSide: 'left' | 'right'
     tone: 'grey' | 'cream'
 }
@@ -35,7 +35,7 @@ const groups: ServiceGroup[] = [
             'Face Frame',
             'Neck Clean Up',
         ],
-        photo: { src: 'services1.webp', alt: 'Smiling woman running a hand through her big curly hair', width: 598, height: 399 },
+        photo: { src: 'services1.webp', alt: 'Smiling woman running a hand through her big curly hair' },
         photoSide: 'right',
         tone: 'grey',
     },
@@ -51,7 +51,7 @@ const groups: ServiceGroup[] = [
             'Full Highlight/Balayage/Pintura',
             'Fashion Color',
         ],
-        photo: { src: 'services2.webp', alt: 'Woman with sun-lit coloured curls sitting on a hillside at sunset', width: 588, height: 386 },
+        photo: { src: 'services2.webp', alt: 'Woman with sun-lit coloured curls sitting on a hillside at sunset' },
         photoSide: 'left',
         tone: 'cream',
     },
@@ -67,7 +67,7 @@ const groups: ServiceGroup[] = [
             'Extensions',
             'Silk Press',
         ],
-        photo: { src: 'services3.webp', alt: 'Laughing woman with defined auburn curls in a knit sweater', width: 485, height: 324 },
+        photo: { src: 'services3.webp', alt: 'Laughing woman with defined auburn curls in a knit sweater'},
         photoSide: 'right',
         tone: 'grey',
     },
@@ -91,7 +91,7 @@ const groups: ServiceGroup[] = [
             'K-18 Deluxe Add On',
             'Scalp Treatment',
         ],
-        photo: { src: 'services4.webp', alt: 'Smiling woman with voluminous curls, eyes closed', width: 443, height: 664 },
+        photo: { src: 'services4.webp', alt: 'Smiling woman with voluminous curls, eyes closed' },
         photoSide: 'left',
         tone: 'cream',
     },
@@ -103,7 +103,7 @@ const groups: ServiceGroup[] = [
             'Perm Consultation',
             'Perm',
         ],
-        photo: { src: 'services5.webp', alt: 'Woman with long red curls lying among daisies', width: 351, height: 234 },
+        photo: { src: 'services5.webp', alt: 'Woman with long red curls lying among daisies' },
         photoSide: 'right',
         tone: 'grey',
     },
@@ -111,23 +111,23 @@ const groups: ServiceGroup[] = [
 
 // The photo drifts a little slower than the page while it scrolls past.
 // It's zoomed in enough that the drift never shows an edge.
-const Photo = ({ src, alt, width, height }: ServiceGroup['photo']) => {
+const Photo = ({ src, alt }: ServiceGroup['photo']) => {
     const frameRef = useRef<HTMLDivElement>(null)
     const reduceMotion = useReducedMotion()
     const { scrollYProgress } = useScroll({ target: frameRef, offset: ['start end', 'end start'] })
-    const y = useTransform(scrollYProgress, [0, 1], ['-10%', '10%'])
+    const y = useTransform(scrollYProgress, [0, 1], ['-17%', '20%'])
+    const scaleFr = useTransform(scrollYProgress, [0, 1], ['1', '1.1'])
 
     return (
         <div
             className="service-group__photo"
             ref={frameRef}
-            style={{ maxWidth: width, aspectRatio: `${width} / ${height}` }}
         >
             <motion.img
                 src={publicUrl(`/images/services/${src}`)}
                 alt={alt}
                 loading="lazy"
-                style={reduceMotion ? undefined : { y, scale: 1.25 }}
+                style={reduceMotion ? undefined : { y, scale: scaleFr }}
             />
         </div>
     )

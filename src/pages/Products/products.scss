@@ -1,0 +1,141 @@
+@use 'sass:math';
+@use '../shared';
+
+// products page. Measurements come from the Figma "products" frame (1442px wide),
+// laid out as two columns of 721px. Horizontal sizes are percentages of a column,
+// so the layout keeps its proportions as the window narrows.
+@function col($px) {
+    @return math.percentage(math.div($px, 721));
+}
+
+$card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
+
+#productsPage {
+    padding: 0 !important;
+    overflow-x: clip;
+    isolation: isolate; // keeps the grey bands (z-index: -1) behind the page content
+    color: var(--primary-font-color);
+
+    @include shared.buttons;
+    @include shared.gallery(442px, 31px, 26px, "442 / 248");
+
+    .git-subtitle {
+        width: 60%;
+        justify-self: center;
+    }
+    // ── Two-column layout ───────────────────────────────────────────
+    .products-layout {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        row-gap: 150px;
+        width: 100%;
+        max-width: 1442px;
+        margin: 58px auto 0;
+    }
+    .products-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    // ── Cards ───────────────────────────────────────────────────────
+    .product-card {
+        position: relative;
+        box-sizing: border-box;
+        width: col(574);
+        padding: 0 54px 64px 68px;
+        align-self: center;
+        container-type: inline-size; // lets the title size itself to the card (cqi below)
+        &__title {
+            margin: 0;
+            transform: translateY(0px); // sits on the card's top edge
+            font-family: var(--primary-font-family);
+            font-size: 20pt; // browsers without container units
+            font-size: clamp(12pt, 100cqi / 16.5, 24pt);
+            font-weight: 500;
+            line-height: 28.8pt;
+            letter-spacing: 0.042em; // 1pt at 24pt, and shrinks with the text
+            text-transform: uppercase;
+            width: fit-content;
+
+            &::after {
+                content: '';
+                background-color: #000;
+                width: 110%;
+                position: absolute;
+                left: -5%;
+                height: 1px;
+                bottom: -5px;
+            }
+        }
+        &__body {
+            margin-top: 47px;
+            margin-bottom: 67px;
+            font-family: var(--primary-font-family);
+            font-size: 16pt;
+            font-weight: 300;
+            line-height: 28.8pt;
+            letter-spacing: 0.85pt;
+        }
+    }
+
+    // ── Photos ──────────────────────────────────────────────────────
+    .products-photo {
+        position: relative;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        // Clips the photo while it drifts on scroll (see Photo in Products.tsx)
+        &__frame {
+            height: 100%;
+            overflow: hidden;
+        }
+        // Full-width grey band that starts a little above the photo
+        &--band::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            bottom: 7%;
+            height: 130px;
+            left: -100vw;
+            right: -100vw;
+            background: var(--secondary-color);
+        }
+    }
+
+    // ── Smaller screens ─────────────────────────────────────────────
+    @media (max-width: 1199.98px) {
+        .product-card { padding: 0 32px 48px 40px; }
+    }
+
+    // One column, in reading order
+    @media (max-width: 999.98px) {
+        .products-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 48px;
+            margin-top: 40px;
+            padding: 0 var(--padding-md);
+            box-sizing: border-box;
+        }
+        .products-col { display: contents; }
+
+        // Undo the desktop offsets: everything is centred and full width
+        .product-card,
+        .products-photo {
+            margin: 0 !important;
+            width: 100% !important;
+            max-width: 640px;
+        }
+        .product-card { margin-top: 17px !important; }    // room for the title on the edge
+        .products-photo--band::before { display: none; } // bands only make sense in the 2-column layout
+    }
+
+    @media (max-width: 767.98px) {
+        .product-card { padding: 0 var(--padding-md) 32px; }
+        .home-btn { min-width: 260px; }
+    }
+}

@@ -48,6 +48,13 @@
       "priority": "0.7"
     },
     {
+      "path": "/poducts",
+      "title": "Curly Hair Products",
+      "description": "Products to care your curls at Studio Within, Chicago's curly hair salon.",
+      "changefreq": "monthly",
+      "priority": "0.7"
+    },
+    {
       "path": "/policies",
       "title": "Salon Policies",
       "description": "Booking, cancellation and appointment policies for Studio Within, a curly hair salon in Chicago. Know what to expect before your curl cut or color visit.",

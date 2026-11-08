@@ -5,7 +5,7 @@ import SEOHead from "../../components/SEOHead/SEOHead"
 import { publicUrl } from "../../utils/publicUrl"
 import { BOOKING_URL } from "../../utils/booking"
 import ButtonLink from "../HomePage/ButtonLink"
-import GallerySection from "../HomePage/GallerySection"
+import GallerySection from "../../components/GallerySection/GallerySection"
 
 // Salon photos in the cream band at the bottom, in the order they appear in Figma
 const gallery = [

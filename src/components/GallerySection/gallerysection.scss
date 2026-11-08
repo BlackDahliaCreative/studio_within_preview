@@ -1,0 +1,25 @@
+    @use '../../pages/shared';
+    // ── Gallery ─────────────────────────────────────────────────────
+    @include shared.gallery(550px, 46px, 23px, "362 / 202");
+    .section-gallery {
+        margin-top: 117px;
+        padding: 32px var(--padding-md) 24px;
+
+        .section-gallery__frame {
+            &:nth-child(2) img {
+                transform: translateY(50px) !important;
+                scale: 185%;
+                object-position: top;
+            }
+            &:nth-child(3) img {
+                transform: translateY(30px) translateX(-30px) !important;
+                scale: 200%;
+                object-position: top;
+            }
+            &:nth-child(4) img {
+                transform: translateY(-10px) translateX(-30px) !important;
+                scale: 145%;
+                object-position: top;
+            }
+        }
+    }

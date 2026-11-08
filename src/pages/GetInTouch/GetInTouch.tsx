@@ -6,7 +6,7 @@ import { publicUrl } from "../../utils/publicUrl"
 import { BOOKING_URL } from "../../utils/booking"
 import { PHONE_HREF } from "../FAQs/faqData"
 import ButtonLink from "../HomePage/ButtonLink"
-import GallerySection from "../HomePage/GallerySection"
+import GallerySection from "../../components/GallerySection/GallerySection"
 
 const EMAIL = 'swssdesk@gmail.com'
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Studio+Within+Salon+5720+N+Western+Ave+Chicago+IL+60659'

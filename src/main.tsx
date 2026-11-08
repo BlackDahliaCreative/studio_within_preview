@@ -6,7 +6,8 @@ import React from 'react'
 import App from './App'
 
 import './style/fonts'
-import './style/index.scss' 
+import './style/index.scss'
+// import './style/mangomint.scss'
 
 const container = document.getElementById('root') as HTMLElement
 

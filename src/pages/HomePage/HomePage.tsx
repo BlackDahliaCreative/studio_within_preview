@@ -5,7 +5,7 @@ import SEOHead from "../../components/SEOHead/SEOHead"
 import { publicUrl } from "../../utils/publicUrl"
 import ReviewsMarquee from "./ReviewsMarquee"
 import SustainSection from "./SustainSection"
-import GallerySection from "./GallerySection"
+import GallerySection from "../../components/GallerySection/GallerySection"
 import ButtonLink from "./ButtonLink"
 import { BOOKING_URL } from "../../utils/booking"
 
@@ -102,7 +102,7 @@ const HomePage = () => {
                 <ButtonLink to={BOOKING_URL}>Book now</ButtonLink>
             </section>
 
-            <GallerySection photos={gallery} />
+            <GallerySection folder="homepage" photos={gallery} />
         </div>
     )
 }

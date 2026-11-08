@@ -142,6 +142,15 @@
             color: black;
         }
     }
+    .footer__social {
+        position: relative;
+        display: block;
+        img { display: block; }
+        .footer__social-logo { position: absolute; }
+        &--tiktok    .footer__social-logo { left: 5.66px; top: 4.7px; }
+        &--facebook  .footer__social-logo { left: 7.15px; top: 5.04px; }
+        &--instagram .footer__social-logo { left: 4.57px; top: 4.37px; }
+    }
     .stylist_card_body {
         padding: 0px 170px;
         display: flex;

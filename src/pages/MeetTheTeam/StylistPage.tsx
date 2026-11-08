@@ -36,6 +36,7 @@ const StylistPage = () => {
 
                     <h1 className="stylist_header">{stylist.stylist_name}</h1>
                     <p className="stylist_title">{stylist.stylist_title}</p>
+                    
                     <a
                         className="stylist_instagram"
                         href={`https://www.instagram.com/${stylist.stylist_social_media}`}
@@ -58,7 +59,7 @@ const StylistPage = () => {
                         style={reduceMotion ? undefined : { y: photoY, scale: photoScale }}
                     />
                 </div>
-                <img className="stylist_body_logo mt-10" src={`${publicUrl('/logos/CurlyLogo.svg')}`}></img>
+                <img className="stylist_body_logo mt-45" src={`${publicUrl('/logos/CurlyLogo.svg')}`}></img>
                 <div className="stylist_body">
                     <div className="stylist_body_header">
                         <h2>WHAT’S MY SPECIALTY?</h2>
@@ -90,7 +91,7 @@ const StylistPage = () => {
                             <h1 className="mb-30">Education</h1>
                             {
                                 stylist.stylist_education.map((steps, i) => {
-                                    return <p><strong>{steps.title}</strong> {steps.detail}</p>
+                                    return <p key={i}><strong>{steps.title}</strong> {steps.detail}</p>
                                 })
                             }
                         </div>

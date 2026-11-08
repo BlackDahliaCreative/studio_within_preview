@@ -1,5 +1,6 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion"
 import { publicUrl } from "../../utils/publicUrl"
+import './gallerysection.scss'
 
 type Photo = { src: string, alt: string }
 
@@ -30,7 +31,7 @@ const GallerySection = ({ photos, folder = 'homepage', label = 'Curly hair galle
 
     return (
         <motion.section
-            className="home-gallery"
+            className="section-gallery"
             aria-label={label}
             variants={grid}
             initial={reduceMotion ? false : 'hidden'}
@@ -39,8 +40,8 @@ const GallerySection = ({ photos, folder = 'homepage', label = 'Curly hair galle
         >
             {photos.map(img => (
                 // Frame: reveal. Inner layer: hover zoom (in the SCSS)
-                <motion.div key={img.src} className="home-gallery__frame" variants={tile}>
-                    <div className="home-gallery__zoom">
+                <motion.div key={img.src} className="section-gallery__frame" variants={tile}>
+                    <div className="section-gallery__zoom">
                         <motion.img variants={photo} src={publicUrl(`/images/${folder}/${img.src}`)} alt={img.alt} loading="lazy"/>
                     </div>
                 </motion.div>

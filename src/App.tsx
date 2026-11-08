@@ -13,6 +13,7 @@ import './pages/page.scss'; // shared .page layout, used by every page
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const Landing = lazy(() => import('./pages/Landing/Landing'));
 const Policies = lazy(() => import('./pages/Policies/Policies'));
+const Products = lazy(() => import('./pages/Products/Products'));
 const FAQs = lazy(() => import('./pages/FAQs/FAQs'));
 const Careers = lazy(() => import('./pages/Careers/Careers'));
 const GetInTouch = lazy(() => import('./pages/GetInTouch/GetInTouch'));
@@ -35,6 +36,7 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/home-page" element={<HomePage />} />
             <Route path="/policies" element={<Policies />} />
+            <Route path="/products" element={<Products />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/contact-us" element={<GetInTouch />} />

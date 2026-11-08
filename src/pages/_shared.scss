@@ -39,7 +39,7 @@
 // Cream photo band with a 3-column grid. Used by GallerySection.
 // The page sets the margin, padding and any per-photo crops.
 @mixin gallery($column-max, $column-gap, $row-gap, $aspect-ratio) {
-    .home-gallery {
+    .section-gallery {
         background: var(--cream-color);
         display: grid;
         grid-template-columns: repeat(3, minmax(0, $column-max));
@@ -47,8 +47,8 @@
         column-gap: $column-gap;
         row-gap: $row-gap;
 
-        .home-gallery__frame { overflow: hidden; }
-        .home-gallery__zoom {
+        .section-gallery__frame { overflow: hidden; }
+        .section-gallery__zoom {
             transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
         img {
@@ -60,10 +60,10 @@
 
         // Hover: the photo under the cursor slowly zooms inside its frame
         @media (hover: hover) {
-            .home-gallery__frame:hover .home-gallery__zoom { transform: scale(1.08); }
+            .section-gallery__frame:hover .section-gallery__zoom { transform: scale(1.08); }
         }
         @media (prefers-reduced-motion: reduce) {
-            .home-gallery__zoom { transition: none; }
+            .section-gallery__zoom { transition: none; }
         }
     }
 }

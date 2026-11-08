@@ -4,7 +4,7 @@ export const HOME_PATH = '/home-page/'
 export const navLinks = [
     { to: '/home-page/', label: 'Home' },
     { to: '/meet-the-team/', label: 'Meet the Team' },
-    { to: '/product/', label: 'Product' },
+    { to: '/products/', label: 'Products' },
     { to: '/services/', label: 'Services' },
 ]
 

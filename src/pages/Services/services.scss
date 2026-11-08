@@ -56,17 +56,17 @@
     }
     .service-group {
         display: grid;
-        grid-template-columns: minmax(min(380px, 100%), 1fr) minmax(0, var(--photo-w));
+        grid-template-columns: 1.3fr 2.1fr;
         align-items: center;
         column-gap: band(60);
-        padding: 56px band(162);
+        padding: 56px ;
 
         &--grey  { background: #EEEEEE; }
         &--cream { background: rgba(235, 219, 189, 0.36); } // --primary-color at 36%
 
         // Photo on the left: swap the columns
         &--photo-left {
-            grid-template-columns: minmax(0, var(--photo-w)) minmax(min(380px, 100%), 1fr);
+            grid-template-columns: 2.1fr 1.1fr;
             .service-group__photo { order: -1; }
         }
     }
@@ -81,7 +81,7 @@
         margin: 0 0 20px;
         padding: 0 12px 2px 8px;
         border-bottom: 1px solid #000;
-        font-size: 20pt;
+        font-size: 17pt;
         font-weight: 600;
         font-style: italic;
         line-height: 1.4;
@@ -93,7 +93,7 @@
         margin: 0;
         padding: 0;
         list-style: none;
-        font-size: 16pt;
+        font-size: 13pt;
         font-weight: 400;
         line-height: 1.75;
         letter-spacing: 1pt;
@@ -102,12 +102,15 @@
     // Photo frame: the image inside drifts on scroll (see Photo in Services.tsx)
     .service-group__photo {
         width: 100%;
+        height: 100%;
+        max-height: 600px;
         justify-self: center;
         overflow: hidden;
         img {
             display: block;
             width: 100%;
             height: 100%;
+            flex: 1;
             object-fit: cover;
         }
     }
