@@ -11,12 +11,12 @@ import "./products.scss"
 
 // Salon photos in the cream band at the bottom, in the order they appear in Figma
 const gallery = [
-    { src: 'policies6.webp', alt: 'Row of black shampoo chairs under pendant lights' },
-    { src: 'policies2.webp', alt: 'Styling stations with arched mirrors and leather chairs' },
-    { src: 'policies9.webp', alt: 'Powder room with tropical wallpaper and a wooden console' },
-    { src: 'policies4.webp', alt: 'Front desk surrounded by shelves of curl care products' },
-    { src: 'policies7.webp', alt: 'Styling chairs beside a tall wooden mirror and plants' },
-    { src: 'policies5.webp', alt: 'Black arched front door opening into the salon' },
+    { src: 'products1.webp', alt: 'Row of black shampoo chairs under pendant lights' },
+    { src: 'products2.webp', alt: 'Styling stations with arched mirrors and leather chairs' },
+    { src: 'products3.webp', alt: 'Powder room with tropical wallpaper and a wooden console' },
+    { src: 'products4.webp', alt: 'Front desk surrounded by shelves of curl care products' },
+    { src: 'products5.webp', alt: 'Styling chairs beside a tall wooden mirror and plants' },
+    { src: 'products6.webp', alt: 'Black arched front door opening into the salon' },
 ]
 const shopifyFluff2 = 'https://kkcurls.myshopify.com/products/2-more-fluff'
 const shopifyFluff3 = 'https://kkcurls.myshopify.com/products/3-the-most-fluff'
@@ -26,7 +26,7 @@ const Photo = ({ src, alt, className }: { src: string, alt: string, className: s
     const frameRef = useRef<HTMLDivElement>(null)
     const reduceMotion = useReducedMotion()
     const { scrollYProgress } = useScroll({ target: frameRef, offset: ['start end', 'end start'] })
-    const y = useTransform(scrollYProgress, [0, 1], ['17%', '-17%'])
+    const y = useTransform(scrollYProgress, [0, 1], ['20%', '-20%'])
     const scaleScr = useTransform(scrollYProgress, [0, 1], ['1', '1.1'])
 
     return (
@@ -61,7 +61,7 @@ const products = () => {
                     <Photo className="products-photo products-photo--band" src="product1.png" alt="Bright waiting lounge with a living plant wall and white sofa" />
                     <div className="product-card">
                         <h2 className="product-card__title">#2 MORE FLUFF</h2>
-                        <h3 className="product-card__body">A little fluff goes a long way.  Embrace soft, effortless volume and beautifully defined curls. More Fluff is all about enhancing your natural texture while keeping your curls full of life, movement, and personality.  Because great curls deserve a little extra.</h3>
+                        <h3 className="product-card__body pb-25">A little fluff goes a long way.  Embrace soft, effortless volume and beautifully defined curls. More Fluff is all about enhancing your natural texture while keeping your curls full of life, movement, and personality.  Because great curls deserve a little extra.</h3>
                         <ButtonLink to={shopifyFluff2}  variant="dark">Order Now</ButtonLink>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ const products = () => {
                 </div>
             </div>
 
-            <GallerySection photos={gallery} folder="policies" label="Inside the salon" />
+            <GallerySection photos={gallery} folder="product" label="Inside the salon" />
         </div>
     )
 }

@@ -36,17 +36,20 @@ const StylistPage = () => {
 
                     <h1 className="stylist_header">{stylist.stylist_name}</h1>
                     <p className="stylist_title">{stylist.stylist_title}</p>
-                    
-                    <a
-                        className="stylist_instagram"
-                        href={`https://www.instagram.com/${stylist.stylist_social_media}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${stylist.stylist_name} on Instagram`}
-                    >
-                        <img src={publicUrl('/images/meet_the_team/instagram-color.svg')} alt="" width="24" height="24" />
-                        <span>@{stylist.stylist_social_media}</span>
-                    </a>
+                    {
+                        stylist.stylist_social_media !== '' ?
+                        <a
+                            className="stylist_instagram"
+                            href={`https://www.instagram.com/${stylist.stylist_social_media}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${stylist.stylist_name} on Instagram`}
+                        >
+                            <img src={publicUrl('/images/meet_the_team/instagram-color.svg')} alt="" width="24" height="24" />
+                            <span>@{stylist.stylist_social_media}</span>
+                        </a>
+                        : <></>
+                    }
                 </div>
 
             </header>

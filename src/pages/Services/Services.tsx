@@ -151,7 +151,6 @@ const Services = () => {
                     <section
                         key={group.id}
                         className={`service-group service-group--${group.tone} service-group--photo-${group.photoSide}`}
-                        style={{ '--photo-w': `${group.photo.width}px` } as React.CSSProperties}
                         aria-labelledby={`service-${group.id}`}
                     >
                         <div className="service-group__text">

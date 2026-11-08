@@ -113,6 +113,23 @@ const GetInTouch = () => {
                 <ButtonLink to={BOOKING_URL}>Book now</ButtonLink>
             </div>
 
+            <div id="stay_in_the_loop">
+                <img src={publicUrl('/images/get_in_touch/stay-in-the-loop2.webp')} alt="" />
+                <div id="stay_in_the_loop_form">
+                    <h3>Stay in the Loop!</h3>
+                    <p>
+                        Join us for updates, inspiration, and
+                        first dibs on what’s happening at 
+                        Studio Within.
+                    </p>
+                    <form id="stay_in_the_loop_subscribe">
+                        <input type="text" placeholder="First Name"/>
+                        <input type="email" placeholder="Email address"/>
+                        <button className="home-btn home-btn--dark">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
             <GallerySection photos={gallery} folder="get_in_touch" label="Curly hair gallery" />
         </div>
     )

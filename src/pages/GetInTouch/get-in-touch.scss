@@ -163,6 +163,7 @@
         display: flex;
         justify-content: center;
         margin-top: 80px;
+        margin-bottom: 80px;
     }
 
     // ── Gallery ─────────────────────────────────────────────────────
@@ -173,6 +174,55 @@
         // Tall photos: keep the faces in frame, as cropped in Figma
         .home-gallery__frame:nth-child(3) img { object-position: center 12%; } // red curls by the tree
         .home-gallery__frame:nth-child(5) img { object-position: center 25%; } // curl spray
+    }
+
+    #stay_in_the_loop {
+        position: relative;
+        width: 100%;
+        height: 70dvh;
+        padding: 0px 10%;
+        overflow: hidden;
+        display: flex;
+    
+        img {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            object-fit: cover;
+            // width: 80%;
+            justify-self: center;
+        }
+        #stay_in_the_loop_form {
+            z-index: 22;
+            position: absolute;
+            right: calc(10% + 150px);
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            top: 15dvh;
+            align-items: center;
+            row-gap: 20px;
+            h3, p {
+                margin: 0px;
+                text-align: center;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                width: 300px;
+                align-items: center;
+                row-gap: 10px;
+                input {
+                    width: 100%;
+                    padding: 15px;
+                    background-color: var(--primary-color);
+                    border: 0px;
+                }
+                button {
+                    width: 100%;
+                }
+            }
+        }
     }
 
     // ── Smaller screens ─────────────────────────────────────────────
