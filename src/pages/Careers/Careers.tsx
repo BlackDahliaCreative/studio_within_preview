@@ -7,9 +7,9 @@ import "./careers.scss"
 import ButtonLink from "../HomePage/ButtonLink"
 
 const EMAILJS = {
-    publicKey: "o69p_GM3kd5oX3hnI",
-    serviceId: "service_x0umwzb",
-    templateId: "template_1viir1c",
+    publicKey: "6dud9bQzU8mtqbQjU",
+    serviceId: "service_1eoa9mk",
+    templateId: "studio_within_careers",
 }
 emailjs.init(EMAILJS.publicKey)
 

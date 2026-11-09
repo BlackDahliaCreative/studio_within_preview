@@ -26,7 +26,7 @@ const hours = [
 const gallery = [
     { src: 'get_in_touch4.webp', alt: 'Close-up of a woman’s face framed by brown curls' },
     { src: 'get_in_touch6.webp', alt: 'Smiling woman with a full black afro in a white sweater' },
-    { src: 'get_in_touch8.webp', alt: 'Woman with long red curls leaning on a tree' },
+    { src: 'test1.png', alt: 'Woman with long red curls leaning on a tree' },
     { src: 'get_in_touch5.webp', alt: 'Smiling woman resting her hand by her loose curls' },
     { src: 'get_in_touch7.webp', alt: 'Woman spraying a curl product into long auburn curls' },
     { src: 'get_in_touch9.webp', alt: 'Laughing woman with big copper curls and yellow sunglasses' },

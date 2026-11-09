@@ -1,20 +1,20 @@
 import { Link, useParams } from "react-router-dom"
-import SEOHead from "../../components/SEOHead/SEOHead"
-import { BOOKING_URL } from "../../utils/booking"
-import { publicUrl } from "../../utils/publicUrl"
-import ButtonLink from "../HomePage/ButtonLink"
-import { stylist_info } from "./stylists_info"
-import NotFound from "../NotFound"
-import "./meet-the-team.scss" 
 import { useRef } from "react"
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
 
+import SEOHead from "../../components/SEOHead/SEOHead"
+import NotFound from "../NotFound"
+
+import { publicUrl } from "../../utils/publicUrl"
+import { stylist_info } from "./stylists_info"
+
+import "./meet-the-team.scss" 
+
 const StylistPage = () => {
-   const { stylistId } = useParams()
+    
+    const { stylistId } = useParams()
     const stylist = stylist_info.find((s) => s.stylist_id === stylistId)
 
-    // Same drift as the Services / Get in Touch photos: the photo moves a little slower
-    // than the page while it scrolls past, zoomed in enough that no edge ever shows.
     const photoFrameRef = useRef<HTMLDivElement>(null)
     const reduceMotion = useReducedMotion()
     const { scrollYProgress } = useScroll({ target: photoFrameRef, offset: ['start end', 'end start'] })
