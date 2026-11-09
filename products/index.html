@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         CLIENT CONFIG — update these placeholders before launch
+         ═══════════════════════════════════════════════════════════════════
+         SITE_LANG      → html lang attribute, e.g. "it" or "en"
+         SITE_NAME      → brand name, e.g. "Acme Studio"
+         SITE_URL       → canonical root, e.g. "https://www.acme.com"
+         SITE_TAGLINE   → short description used in the default title
+         SITE_DESC      → default meta description (≤160 chars)
+         SITE_OG_IMAGE  → absolute URL to a 1200×630 social-share image
+         GTM_ID         → Google Tag Manager container ID, e.g. "GTM-XXXXXXX"
+                          Set to empty string "" to disable GTM entirely
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <!-- Favicon / PWA (Vite adds the preview base path automatically) -->
+    <link rel="icon"             href="/studio_within_preview/favicon.ico" sizes="any" />
+    <link rel="icon"             href="/studio_within_preview/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon"             href="/studio_within_preview/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/studio_within_preview/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest"         href="/studio_within_preview/site.webmanifest" />
+
+    <!-- Preload the font used above the fold (the menu), so it arrives with the page.     -->
+    <!-- Preload only 1-2 fonts that every page uses (the "latin" file); the rest load later. -->
+    <!-- Fontsource files are in node_modules/@fontsource(-variable)/<name>/files/          -->
+    <link rel="preload" href="/studio_within_preview/assets/inter-latin-wght-normal-Dx4kXJAl.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Performance: preconnect to any third-party origins used site-wide -->
+    <!-- Add / remove entries to match your actual external resources       -->
+    <!-- Uncomment together with Google Tag Manager below:                  -->
+    <!-- <link rel="preconnect" href="https://www.googletagmanager.com" />  -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />       -->
+    <!-- <link rel="preconnect" href="https://use.typekit.net" crossorigin /> -->
+
+    <!-- Title, description, canonical, Open Graph and Twitter tags for each page come from
+         SEOHead (values in src/site.config.json). The build writes them in here: -->
+    <title data-rh="true">Studio Within Salon | Curly Hair Products</title>
+    <meta data-rh="true" name="description" content="Products to care your curls at Studio Within, Chicago&#x27;s curly hair salon."/><meta data-rh="true" name="robots" content="noindex, nofollow"/><meta data-rh="true" property="og:type" content="website"/><meta data-rh="true" property="og:site_name" content="Studio Within Salon"/><meta data-rh="true" property="og:title" content="Studio Within Salon | Curly Hair Products"/><meta data-rh="true" property="og:description" content="Products to care your curls at Studio Within, Chicago&#x27;s curly hair salon."/><meta data-rh="true" property="og:url" content="https://blackdahliacreative.github.io/studio_within_preview/products/"/><meta data-rh="true" property="og:image" content="https://blackdahliacreative.github.io/studio_within_preview/images/share/studio-within-share.jpg"/><meta data-rh="true" property="og:image:width" content="1200"/><meta data-rh="true" property="og:image:height" content="630"/><meta data-rh="true" name="twitter:card" content="summary_large_image"/><meta data-rh="true" name="twitter:title" content="Studio Within Salon | Curly Hair Products"/><meta data-rh="true" name="twitter:description" content="Products to care your curls at Studio Within, Chicago&#x27;s curly hair salon."/><meta data-rh="true" name="twitter:image" content="https://blackdahliacreative.github.io/studio_within_preview/images/share/studio-within-share.jpg"/>
+    <link data-rh="true" rel="canonical" href="https://www.studiowithinchicago.com/products/"/>
+    
+
+    <!-- Same on every page -->
+    <meta property="og:locale"       content="en_US" />
+    <meta property="og:image:alt"    content="Studio Within Salon" />
+    <meta name="twitter:image:alt"   content="Studio Within Salon" />
+
+    <script>window.Mangomint = window.Mangomint || {}; window.Mangomint.CompanyId = 959799;</script>
+    <script src="https://booking.mangomint.com/app.js" async></script>
+
+    <!-- Google Tag Manager — replace GTM_ID or remove this block if not used -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM_ID');</script> -->
+    <!-- End Google Tag Manager -->
+
+    <!-- Organization JSON-LD — validate at: https://search.google.com/test/rich-results       -->
+    <!-- Studio Within Salon, https://www.studiowithinchicago.com, Studio Within is Chicago's curly hair salon. Certified curl specialists for custom curly haircuts, curly hair color, styling and curl care near Lincoln Square. and https://www.studiowithinchicago.com/images/share/studio-within-share.jpg are filled in from             -->
+    <!-- src/site.config.json at build time. Fill in the social links, or use "LocalBusiness" etc. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "HairSalon",
+          "@id": "https://www.studiowithinchicago.com/#organization",
+          "name": "Studio Within Salon",
+          "alternateName": ["Studio Within", "Studio Within Salon/Spa", "The Curl Spot"],
+          "slogan": "The Curl Spot",
+          "url": "https://www.studiowithinchicago.com",
+          "logo": "https://www.studiowithinchicago.com/logos/black_primary_logo.png",
+          "image": "https://www.studiowithinchicago.com/logos/black_primary_logo.png",
+          "description": "Studio Within is Chicago's curly hair salon. Certified curl specialists for custom curly haircuts, curly hair color, styling and curl care near Lincoln Square.",
+          "telephone": "+1-773-348-9323",
+          "email": "swssdesk@gmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "5720 N Western Ave",
+            "addressLocality": "Chicago",
+            "addressRegion": "IL",
+            "postalCode": "60659",
+            "addressCountry": "US"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Chicago" },
+            { "@type": "Place", "name": "Lincoln Square, Chicago" },
+            { "@type": "Place", "name": "Arcadia Terrace, Chicago" }
+          ],
+          "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday",   "opens": "10:00", "closes": "19:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "11:00", "closes": "19:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday",  "opens": "12:00", "closes": "21:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday",    "opens": "10:00", "closes": "20:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday",  "opens": "09:00", "closes": "18:00" }
+          ],
+          "knowsAbout": [
+            "Curly hair",
+            "Curly haircuts",
+            "Curly hair color",
+            "Curl styling",
+            "Textured hair",
+            "Wavy hair",
+            "Curl care products",
+            "Kinky Curls"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Curly hair services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Customized curly haircut" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Curly hair color" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Curl styling" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Curl consultation and curl care" } }
+            ]
+          },
+          "sameAs": [
+            "https://www.instagram.com/studiowithin/",
+            "https://www.facebook.com/studiowithin"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.studiowithinchicago.com/#website",
+          "url": "https://www.studiowithinchicago.com",
+          "name": "Studio Within Salon",
+          "publisher": { "@id": "https://www.studiowithinchicago.com/#organization" },
+          "inLanguage": "en"
+        }
+      ]
+    }
+    </script>
+
+    <script type="module" crossorigin src="/studio_within_preview/assets/index-D_-KYNs0.js"></script>
+    <link rel="stylesheet" crossorigin href="/studio_within_preview/assets/style-CH1cxz0l.css">
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) — keep in sync with GTM_ID above -->
+    <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM_ID"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Skip-to-content link: only visible on keyboard focus, lets users skip the navbar -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- The build puts each page's full HTML inside #root (scripts/prerender.js) -->
+    <div id="root" data-path="/products"><div class="App flex flex-column col-12"><div class="nav-desktop"><nav aria-label="Main navigation" class="navBar "><a class="navBar__logo" href="/studio_within_preview/home-page/"><img src="/studio_within_preview/logos/black_primary_logo-400.webp" width="400" height="330" alt="Studio Within Salon, home"/></a><div class="navBar__links pl-50"><a class="navLinks" href="/studio_within_preview/home-page/">Home</a><a class="navLinks" href="/studio_within_preview/meet-the-team/">Meet the Team</a><a class="navLinks" href="/studio_within_preview/products/">Products</a><a class="navLinks" href="/studio_within_preview/services/">Services</a><div class="navDropdown "><button type="button" class="navLinks navDropdown__toggle " aria-expanded="false" aria-controls="getInTouchMenu">Get In Touch<span class="navDropdown__chevron" aria-hidden="true"></span></button><div class="navDropdown__menu" id="getInTouchMenu"><ul><li><a class="navDropdown__link" href="/studio_within_preview/contact-us/">Contact Us</a></li><li><a class="navDropdown__link" href="/studio_within_preview/faqs/">FAQs</a></li><li><a class="navDropdown__link" href="/studio_within_preview/policies/">Policies</a></li><li><a class="navDropdown__link" href="/studio_within_preview/careers/">Careers</a></li></ul></div></div></div></nav></div><div class="nav-mobile"><div class="navSm__bar"><a class="navSm__logo" href="/studio_within_preview/home-page/"><img src="/studio_within_preview/logos/black_primary_logo-400.webp" width="400" height="330" alt="Studio Within Salon, home"/></a></div><button class="hambContainer" aria-expanded="false" aria-controls="smallScreenMenu" aria-label="Open navigation menu"><div class="hamburger-menu" aria-hidden="true"><div class="bar" id="bar1"></div><div class="bar" id="bar2"></div><div class="bar" id="bar3"></div></div></button></div><main id="main-content"><!--$--><div class="page" id="productsPage"><header class="git-intro"><h1 class="git-title">Meet KK Curls!</h1><p class="git-subtitle mb-20"><span>A celebration of natural texture and individuality.  Created by master curl specialist Kristy, this collection is all about embracing what makes your curls uniquely yours.</span></p></header><div class="products-layout"><div class="products-col products-col--left"><div class="products-photo products-photo products-photo--band"><div class="products-photo__frame"><img src="/studio_within_preview/images/product/product1.png" alt="Bright waiting lounge with a living plant wall and white sofa" loading="lazy" style="transform:translateY(20%)"/></div></div><div class="product-card"><h2 class="product-card__title">#2 MORE FLUFF</h2><h3 class="product-card__body pb-25">A little fluff goes a long way.  Embrace soft, effortless volume and beautifully defined curls. More Fluff is all about enhancing your natural texture while keeping your curls full of life, movement, and personality.  Because great curls deserve a little extra.</h3><a class="home-btn home-btn--dark" href="https://kkcurls.myshopify.com/products/2-more-fluff">Order Now</a></div></div><div class="products-col products-col--right"><div class="product-card"><h2 class="product-card__title">#3 THE MOST FLUFF</h2><h3 class="product-card__body">For curls that refuse to be ordinary.  Turn up the volume and celebrate every coil, curl, and twist. The Most Fluff is made for embracing your natural texture and creating a fuller, more expressive curl look.  More texture. More personality. The most fluff.</h3><a class="home-btn home-btn--dark" href="https://kkcurls.myshopify.com/products/3-the-most-fluff">Order Now</a></div><div class="products-photo products-photo products-photo--band"><div class="products-photo__frame"><img src="/studio_within_preview/images/product/product2.png" alt="Studio Within salon floor with styling chairs under an arched opening" loading="lazy" style="transform:translateY(20%)"/></div></div></div></div><section class="section-gallery" aria-label="Inside the salon"><div class="section-gallery__frame" style="opacity:0.5;transform:translateY(20px)"><div class="section-gallery__zoom"><img src="/studio_within_preview/images/product/products1.webp" alt="Row of black shampoo chairs under pendant lights" loading="lazy" style="transform:none"/></div></div><div class="section-gallery__frame" style="opacity:0.5;transform:translateY(20px)"><div class="section-gallery__zoom"><img src="/studio_within_preview/images/product/products2.webp" alt="Styling stations with arched mirrors and leather chairs" loading="lazy" style="transform:none"/></div></div><div class="section-gallery__frame" style="opacity:0.5;transform:translateY(20px)"><div class="section-gallery__zoom"><img src="/studio_within_preview/images/product/products3.webp" alt="Powder room with tropical wallpaper and a wooden console" loading="lazy" style="transform:none"/></div></div><div class="section-gallery__frame" style="opacity:0.5;transform:translateY(20px)"><div class="section-gallery__zoom"><img src="/studio_within_preview/images/product/products4.webp" alt="Front desk surrounded by shelves of curl care products" loading="lazy" style="transform:none"/></div></div><div class="section-gallery__frame" style="opacity:0.5;transform:translateY(20px)"><div class="section-gallery__zoom"><img src="/studio_within_preview/images/product/products5.webp" alt="Styling chairs beside a tall wooden mirror and plants" loading="lazy" style="transform:none"/></div></div><div class="section-gallery__frame" style="opacity:0.5;transform:translateY(20px)"><div class="section-gallery__zoom"><img src="/studio_within_preview/images/product/products6.webp" alt="Black arched front door opening into the salon" loading="lazy" style="transform:none"/></div></div></section></div><!--/$--></main><footer class="footer"><span class="footer__mark" style="mask-image:url(&quot;/studio_within_preview/images/footer/mark-mask.svg&quot;);-webkit-mask-image:url(&quot;/studio_within_preview/images/footer/mark-mask.svg&quot;)"><img src="/studio_within_preview/images/footer/mark.svg" alt=""/></span><img class="footer__wordmark" src="/studio_within_preview/images/footer/wordmark.svg" alt="Studio Within Salon, The Curl Spot" width="296" height="34"/><nav class="footer__nav" aria-label="Footer navigation"><a href="/studio_within_preview/home-page/">Home</a><a href="/studio_within_preview/meet-the-team/">Meet the team</a><a href="/studio_within_preview/policies/">Policies</a><a href="/studio_within_preview/faqs/">FAQ&#x27;s</a><a href="/studio_within_preview/services/">Services</a><a href="/studio_within_preview/contact-us/">Get in touch</a></nav><div class="footer__socials"><a class="footer__social footer__social--tiktok" href="#" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><img src="/studio_within_preview/images/footer/tiktok-frame.svg" alt=""/><img class="footer__social-logo" src="/studio_within_preview/images/footer/tiktok-logo.svg" alt=""/></a><a class="footer__social footer__social--facebook" href="https://www.facebook.com/studiowithin" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><img src="/studio_within_preview/images/footer/facebook-frame.svg" alt=""/><img class="footer__social-logo" src="/studio_within_preview/images/footer/facebook-logo.svg" alt=""/></a><a class="footer__social footer__social--instagram" href="https://www.instagram.com/studiowithin/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><img src="/studio_within_preview/images/footer/instagram-frame.svg" alt=""/><img class="footer__social-logo" src="/studio_within_preview/images/footer/instagram-logo.svg" alt=""/></a></div><p class="footer__credit">Website by: Black Dahlia Creative</p></footer></div></div>
+  </body>
+</html>
