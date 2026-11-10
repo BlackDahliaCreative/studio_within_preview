@@ -1,17 +1,16 @@
 import { useEffect, useRef, useState } from "react"
-import emailjs from "@emailjs/browser"
 import Dropdown from "../../components/DropdownSelect/DropdownSelect"
 import SEOHead from "../../components/SEOHead/SEOHead"
 import "../page.scss"
 import "./careers.scss"
 import ButtonLink from "../HomePage/ButtonLink"
 
-const EMAILJS = {
-    publicKey: "6dud9bQzU8mtqbQjU",
-    serviceId: "service_1eoa9mk",
-    templateId: "studio_within_careers",
+// Black Dahlia email service (Cloudflare Worker). The form's recipient,
+// subject and email design live in the email-service repo under this form name.
+const EMAIL_SERVICE = {
+    url: "https://email-service.blackdahlia.workers.dev",
+    form: "studio-within-careers",
 }
-emailjs.init(EMAILJS.publicKey)
 
 const POSITIONS = [
     "Stylist",
@@ -21,7 +20,7 @@ const POSITIONS = [
 ]
 
 const MAX_ABOUT_LENGTH = 600
-const MAX_RESUME_MB = 5
+const MAX_RESUME_MB = 10 // must match the email service's limit
 
 const emptyForm = {
     first_name: "",
@@ -68,10 +67,11 @@ const Careers = () => {
     if (values.phone.replace(/\D/g, "").length < 10) errors.phone = true
     if (!values.years_experience.trim()) errors.years_experience = true
     if (!values.position) errors.position = true
-    if (!values.portfolio.trim()) errors.portfolio = true
+    // if (!values.portfolio.trim()) errors.portfolio = true
     if (!resumeName) errors.resume = true
     if (!values.start_date) errors.start_date = true
     if (!values.about.trim()) errors.about = true
+
     const isFormValid = Object.keys(errors).length === 0
     const errorFor = (field: Field) => (showErrors ? errors[field] : undefined)
 
@@ -102,8 +102,11 @@ const Careers = () => {
         try {
             setIsSubmitting(true)
             setStatus("idle")
-            // sendForm sends every named field, plus the resume file if the template allows it
-            await emailjs.sendForm(EMAILJS.serviceId, EMAILJS.templateId, formRef.current)
+            // Sends every named field plus the resume file
+            const data = new FormData(formRef.current)
+            data.append("_form", EMAIL_SERVICE.form)
+            const res = await fetch(EMAIL_SERVICE.url, { method: "POST", body: data })
+            if (!res.ok) throw new Error(`Email service replied ${res.status}: ${await res.text()}`)
             setStatus("sent")
             setValues(emptyForm)
             setResumeName("")

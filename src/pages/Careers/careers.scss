@@ -9,6 +9,14 @@
 
 }
 
+// The prompt text every empty pill shows: placeholders, the dropdown prompt,
+// and the "Upload Resume" / "Available Start Date" labels. One look for all.
+@mixin pill-prompt {
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
 // ── Application form (Figma "Let's get to know you") ───────────────
 // Cream pills in a 2-column grid inside a cream-outlined card.
 .careers-form {
@@ -50,17 +58,18 @@
         box-sizing: border-box;
         width: 100%;
         min-height: var(--pill-height);
-        padding: 0 18px;
+        padding: 10px 20px;
         background: var(--cream-color);
         border: 1px solid transparent;
         border-radius: 999px;
-        color: #000;
-        // font: inherit;
+        color: #000000;
+        font: inherit;
         font-size: 20px;
-        font-weight: 300px !important;
-        letter-spacing: 0.06em;
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 26px;
         transition: border-color 0.2s ease;
-        &::placeholder { color: #000; opacity: 1; font-weight: 300; letter-spacing: 2px;}
+        &::placeholder { @include pill-prompt; opacity: 1; }
         &:focus, &:focus-within { outline: none; border-color: var(--text-brown-color); }
         &[aria-invalid='true'], &.is-invalid { border-color: #c24141; }
     }
@@ -73,13 +82,14 @@
         min-width: 0;
         .dropdown__button {
             justify-content: space-between;
-            padding: 0 22px 0 18px;
+            padding: 10px 20px;
             background: var(--cream-color);
             border: 1px solid transparent;
             border-radius: 999px;
             text-align: left;
             transition: border-radius 0.15s ease, border-color 0.2s ease;
             .dropdown__button-text { font-size: inherit; }
+            .dropdown__button-text--placeholder { @include pill-prompt; }
             .dropdown__icon { margin-left: 12px; font-size: inherit; }
             &[aria-expanded='true'] {
                 border-radius: 22px 22px 0 0;
@@ -97,8 +107,7 @@
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
             .dropdown__option {
                 padding: 9px 20px;
-                font-size: 13px;
-                letter-spacing: 0.06em;
+                @include pill-prompt;
                 &.dropdown__option--active { background: var(--cream-color); }
                 &.dropdown__option--selected { font-weight: 500; }
             }
@@ -123,7 +132,7 @@
         justify-content: space-between;
         gap: 16px;
         cursor: pointer;
-        > span:first-child { white-space: nowrap; }
+        > span:first-child { @include pill-prompt; white-space: nowrap; }
     }
     &__hint {
         overflow: hidden;
@@ -174,7 +183,7 @@
         border-radius: 999px;
         color: #000;
         font: inherit;
-        font-size: 14px;
+        font-size: 18px;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         cursor: pointer;

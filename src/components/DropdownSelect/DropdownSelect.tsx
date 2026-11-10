@@ -204,7 +204,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                 name={name}
                 id={id}
             >
-                <span className="dropdown__button-text" id={valueId}>
+                <span className={`dropdown__button-text ${selectedOption ? "" : "dropdown__button-text--placeholder"}`} id={valueId}>
                     {selectedOption ? selectedOption.label : placeholder}
                 </span>
                 <span className="dropdown__icon">
