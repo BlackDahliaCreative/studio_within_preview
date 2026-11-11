@@ -11,7 +11,7 @@ type ConfirmationProps = {
 const Confirmation = ({ isOpen, onClose, className = "" }: ConfirmationProps) => {
 
     return (
-        <Popup isOpen={isOpen} onClose={onClose} className={`popup--success ${className}`}>
+        <Popup isOpen={isOpen} onClose={onClose} className={`careers-thanks ${className}`}>
             <h2 className="git-title" style={{fontSize: '40px'}}>Thanks for reaching out!</h2>
             <img src={publicUrl('/images/meet_the_team/meet_the_pugs.webp')} alt="Pugs Pic" />
             <p id="lower_text">Your information is in our hands, and we’re excited to learn a little more about you. If there’s a potential fit, we’ll be in touch.</p>

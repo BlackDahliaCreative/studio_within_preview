@@ -32,7 +32,8 @@ const PolicyCard = ({ id, title, className = '', children }: {
 
 // The photo drifts a little slower than the page while it scrolls past.
 // It's zoomed in slightly so the drift never shows an edge.
-const Photo = ({ src, alt, className }: { src: string, alt: string, className: string }) => {
+// priority: the photo near the top of the page, so it loads right away instead of lazily
+const Photo = ({ src, alt, className, priority = false }: { src: string, alt: string, className: string, priority?: boolean }) => {
     const frameRef = useRef<HTMLDivElement>(null)
     const reduceMotion = useReducedMotion()
     const { scrollYProgress } = useScroll({ target: frameRef, offset: ['start end', 'end start'] })
@@ -45,7 +46,8 @@ const Photo = ({ src, alt, className }: { src: string, alt: string, className: s
                 <motion.img
                     src={publicUrl(`/images/policies/${src}`)}
                     alt={alt}
-                    loading="lazy"
+                    loading={priority ? "eager" : "lazy"}
+                    fetchPriority={priority ? "high" : "auto"}
                     style={reduceMotion ? undefined : { y, scale: scaleScr }}
                 />
             </div>
@@ -72,7 +74,7 @@ const Policies = () => {
                         </div>
                     </PolicyCard>
 
-                    <Photo className="policies-photo--lounge policies-photo--band" src="policies3.webp" alt="Bright waiting lounge with a living plant wall and white sofa" />
+                    <Photo priority className="policies-photo--lounge policies-photo--band" src="policies3.webp" alt="Bright waiting lounge with a living plant wall and white sofa" />
 
                     <PolicyCard id="policy-guests" title="Guest Policy" className="policy-card--guests">
                         <p>We love that our guests feel at home at Studio Within, and we strive to maintain a peaceful, relaxing atmosphere for everyone.</p>

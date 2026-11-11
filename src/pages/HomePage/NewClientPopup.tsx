@@ -74,7 +74,7 @@ const NewClientPopup = ({isOpen, onClose, className}: NewClientPopupProps) => {
         }, [isOpen, onClose])
 
         return (
-            <Popup isOpen={isOpen} onClose={onClose} className={`popup--success ${className}`}>
+            <Popup isOpen={isOpen} onClose={onClose} className={className}>
                 
                 <header className="flex flex-column flex-justifyContent-center flex-alignItems-center">
                     <h3 className="git-title">Welcome to Studio Within Salon!</h3>
@@ -158,7 +158,7 @@ const NewClientPopup = ({isOpen, onClose, className}: NewClientPopupProps) => {
                     <p className="text-center">By continuing to book, you acknowledge that you have reviewed our salon policies.</p>
                 </section>
 
-                <section ref={bookingButtonsRef} className="mt-30 flex flex-justifyContent-center" style={{columnGap:'40px'}}>
+                <section ref={bookingButtonsRef} className="new-client__actions">
                     <ButtonLink to={CONSULTATION_LINK}>Schedule a Consultation</ButtonLink>
                     <ButtonLink to={BOOKING_URL}>book An appointment</ButtonLink>
                 </section>

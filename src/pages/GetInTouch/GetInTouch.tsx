@@ -26,7 +26,7 @@ const hours = [
 const gallery = [
     { src: 'get_in_touch4.webp', alt: 'Close-up of a woman’s face framed by brown curls' },
     { src: 'get_in_touch6.webp', alt: 'Smiling woman with a full black afro in a white sweater' },
-    { src: 'test1.png', alt: 'Woman with long red curls leaning on a tree' },
+    { src: 'test1.webp', alt: 'Woman with long red curls leaning on a tree' },
     { src: 'get_in_touch5.webp', alt: 'Smiling woman resting her hand by her loose curls' },
     { src: 'get_in_touch7.webp', alt: 'Woman spraying a curl product into long auburn curls' },
     { src: 'get_in_touch9.webp', alt: 'Laughing woman with big copper curls and yellow sunglasses' },
@@ -34,7 +34,8 @@ const gallery = [
 
 // The photo drifts a little slower than the page while it scrolls past,
 // zoomed in enough that the drift never shows an edge (same as Services).
-const Photo = ({ src, alt, className }: { src: string, alt: string, className: string }) => {
+// priority: the photo near the top of the page, so it loads right away instead of lazily
+const Photo = ({ src, alt, className, priority = false }: { src: string, alt: string, className: string, priority?: boolean }) => {
     const frameRef = useRef<HTMLDivElement>(null)
     const reduceMotion = useReducedMotion()
     const { scrollYProgress } = useScroll({ target: frameRef, offset: ['start end', 'end start'] })
@@ -46,7 +47,8 @@ const Photo = ({ src, alt, className }: { src: string, alt: string, className: s
                 <motion.img
                     src={publicUrl(`/images/get_in_touch/${src}`)}
                     alt={alt}
-                    loading="lazy"
+                    loading={priority ? "eager" : "lazy"}
+                    fetchPriority={priority ? "high" : "auto"}
                     style={reduceMotion ? undefined : { y, scale: 1.25 }}
                 />
             </div>
@@ -68,7 +70,7 @@ const GetInTouch = () => {
 
             {/* Salon photo + contact details */}
             <section className="git-contact" aria-label="Contact details">
-                <Photo className="git-photo--salon" src="get_in_touch1.webp" alt="Studio Within styling stations with wooden mirrors under a white arch" />
+                <Photo priority className="git-photo--salon" src="get_in_touch1.webp" alt="Studio Within styling stations with wooden mirrors under a white arch" />
                 <div className="git-contact__details">
                     <address>
                         <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">

@@ -22,7 +22,8 @@ const shopifyFluff2 = 'https://kkcurls.myshopify.com/products/2-more-fluff'
 const shopifyFluff3 = 'https://kkcurls.myshopify.com/products/3-the-most-fluff'
 // The photo drifts a little slower than the page while it scrolls past.
 // It's zoomed in slightly so the drift never shows an edge.
-const Photo = ({ src, alt, className }: { src: string, alt: string, className: string }) => {
+// priority: the photo near the top of the page, so it loads right away instead of lazily
+const Photo = ({ src, alt, className, priority = false }: { src: string, alt: string, className: string, priority?: boolean }) => {
     const frameRef = useRef<HTMLDivElement>(null)
     const reduceMotion = useReducedMotion()
     const { scrollYProgress } = useScroll({ target: frameRef, offset: ['start end', 'end start'] })
@@ -35,7 +36,8 @@ const Photo = ({ src, alt, className }: { src: string, alt: string, className: s
                 <motion.img
                     src={publicUrl(`/images/product/${src}`)}
                     alt={alt}
-                    loading="lazy"
+                    loading={priority ? "eager" : "lazy"}
+                    fetchPriority={priority ? "high" : "auto"}
                     style={reduceMotion ? undefined : { y, scale: scaleScr }}
                 />
             </div>
@@ -58,11 +60,11 @@ const products = () => {
 
             <div className="products-layout">
                 <div className="products-col products-col--left">
-                    <Photo className="products-photo products-photo--band" src="product1.png" alt="Bright waiting lounge with a living plant wall and white sofa" />
+                    <Photo priority className="products-photo products-photo--band" src="product1.webp" alt="Bright waiting lounge with a living plant wall and white sofa" />
                     <div className="product-card">
                         <h2 className="product-card__title">#2 MORE FLUFF</h2>
                         <h3 className="product-card__body pb-25">A little fluff goes a long way.  Embrace soft, effortless volume and beautifully defined curls. More Fluff is all about enhancing your natural texture while keeping your curls full of life, movement, and personality.  Because great curls deserve a little extra.</h3>
-                        <ButtonLink to={shopifyFluff2}  variant="dark">Order Now</ButtonLink>
+                        <ButtonLink to={shopifyFluff2} variant="dark" target="_blank">Order Now</ButtonLink>
                     </div>
                 </div>
 
@@ -70,9 +72,9 @@ const products = () => {
                     <div className="product-card">
                         <h2 className="product-card__title">#3 THE MOST FLUFF</h2>
                         <h3 className="product-card__body">For curls that refuse to be ordinary.  Turn up the volume and celebrate every coil, curl, and twist. The Most Fluff is made for embracing your natural texture and creating a fuller, more expressive curl look.  More texture. More personality. The most fluff.</h3>
-                        <ButtonLink to={shopifyFluff3} variant="dark">Order Now</ButtonLink>
+                        <ButtonLink to={shopifyFluff3} variant="dark" target="_blank">Order Now</ButtonLink>
                     </div>
-                    <Photo className="products-photo products-photo--band" src="product2.png" alt="Studio Within salon floor with styling chairs under an arched opening" />
+                    <Photo className="products-photo products-photo--band" src="product2.webp" alt="Studio Within salon floor with styling chairs under an arched opening" />
                 
                 </div>
             </div>

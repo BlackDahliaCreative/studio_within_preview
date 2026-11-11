@@ -221,47 +221,34 @@
         text-align: center;
     }
 }
-.popup {
+// Careers "thanks" popup only. Scoped with its own class: once this file has loaded it
+// stays loaded on every page, so a plain `.popup` rule here would restyle the
+// home page's new-client popup too. Shared popup rules live in components/Popup/popup.scss.
+.popup.careers-thanks {
     * {margin:0px}
-    border: none;
-    padding: 40px !important;
-    max-width: min(90vw, 820px) !important;
+    padding: 40px;
+    max-width: min(90vw, 820px);
     max-height: 95dvh;
-    &::backdrop { background: rgba(0, 0, 0, 0.6); }
-    // Only when open: a plain `display` would override the browser's
-    // "hide closed dialogs" rule and the popup would never go away.
-    &[open] {
-        display: flex;
-        flex-direction: column;
+    justify-content: center;
+    .git-title {
+        font-size: 38px;
+        letter-spacing: 1px;
+        width: 100%;
+        text-align: center;
     }
-    //   position: relative;
-    &--success {
-        justify-content: center;
-        .popup__close {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-        }
-        .git-title {
-            font-size: 38px;
-            letter-spacing: 1px;
-            width: 100%;
-            text-align: center;
-        }
-        img {
-            width: 90%;
-            max-height: 50dvh;
-            object-fit: cover;
-            object-position: top;
-            margin: 40px 0px 50px 0px;
-            align-self: center;
-        }
-        #lower_text {
-            font-size: 20px;
-            letter-spacing: 1.5px;
-            text-align: center;
-            padding-bottom: 30px;
-        }
+    img {
+        width: 90%;
+        max-height: 50dvh;
+        object-fit: cover;
+        object-position: top;
+        margin: 40px 0px 50px 0px;
+        align-self: center;
+    }
+    #lower_text {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        text-align: center;
+        padding-bottom: 30px;
     }
 }
 

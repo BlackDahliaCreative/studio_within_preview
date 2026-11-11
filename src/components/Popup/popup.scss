@@ -1,21 +1,32 @@
+// Shared by every popup. Each popup adds its own class for size and content styles
+// (keep those scoped to that class, not to `.popup`, so popups don't restyle each other).
 .popup {
   border: none;
   padding: 0;
   max-width: min(90vw, 600px);
+  max-height: 90dvh;
   &::backdrop { background: rgba(0, 0, 0, 0.6); }
+
+  // Only when open: a plain `display` would override the browser's
+  // "hide closed dialogs" rule and the popup would never go away.
+  &[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
   .popup__close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
     background-color: transparent;
     border: none;
-    font-size: 30px;
-    font-weight: 200 !important;
-       path {
-        transition: stroke-width 0.2s ease;
+    cursor: pointer;
+    path {
+      transition: stroke-width 0.2s ease;
     }
-    &:hover { cursor: pointer;}
-
     &:hover path,
     &:focus-visible path {
-        stroke-width: 3.5;
+      stroke-width: 3.5;
     }
   }
 }

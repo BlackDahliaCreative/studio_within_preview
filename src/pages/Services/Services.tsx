@@ -111,7 +111,8 @@ const groups: ServiceGroup[] = [
 
 // The photo drifts a little slower than the page while it scrolls past.
 // It's zoomed in enough that the drift never shows an edge.
-const Photo = ({ src, alt }: ServiceGroup['photo']) => {
+// priority: the first group's photo is near the top, so it loads right away instead of lazily
+const Photo = ({ src, alt, priority = false }: ServiceGroup['photo'] & { priority?: boolean }) => {
     const frameRef = useRef<HTMLDivElement>(null)
     const reduceMotion = useReducedMotion()
     const { scrollYProgress } = useScroll({ target: frameRef, offset: ['start end', 'end start'] })
@@ -126,7 +127,8 @@ const Photo = ({ src, alt }: ServiceGroup['photo']) => {
             <motion.img
                 src={publicUrl(`/images/services/${src}`)}
                 alt={alt}
-                loading="lazy"
+                loading={priority ? "eager" : "lazy"}
+                fetchPriority={priority ? "high" : "auto"}
                 style={reduceMotion ? undefined : { y, scale: scaleFr }}
             />
         </div>
@@ -147,7 +149,7 @@ const Services = () => {
             </header>
 
             <div className="services-list">
-                {groups.map(group => (
+                {groups.map((group, i) => (
                     <section
                         key={group.id}
                         className={`service-group service-group--${group.tone} service-group--photo-${group.photoSide}`}
@@ -160,7 +162,7 @@ const Services = () => {
                             </ul>
                             <ButtonLink to={BOOKING_URL}>Book now</ButtonLink>
                         </div>
-                        <Photo {...group.photo} />
+                        <Photo {...group.photo} priority={i === 0} />
                     </section>
                 ))}
             </div>

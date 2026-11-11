@@ -6,17 +6,37 @@
     justify-content: center;
     width: 100%;
 
-    &__spinner {
-        animation: spin 0.9s linear infinite;
-        // Brown on the white page background (it used to be white on white)
-        border: 3px solid rgba(84, 73, 57, 0.15);
-        border-radius: 50%;
-        border-top-color: var(--text-brown-color);
-        height: 48px;
-        width: 48px;
+    // Fades in after a short wait, so a page that loads quickly
+    // doesn't flash the logo for a split second
+    animation: page-loader-appear 0.3s ease 0.2s both;
+
+    &__logo {
+        width: 88px;
+        height: auto;
+        animation: page-loader-pulse 1.6s ease-in-out infinite;
     }
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
+@keyframes page-loader-appear {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+// Gentle "breathing": grows a little and brightens, then settles back
+@keyframes page-loader-pulse {
+    0%, 100% { transform: scale(0.88); opacity: 0.55; }
+    50%      { transform: scale(1.08); opacity: 1; }
+}
+
+// People who ask their device for less motion get a soft fade instead of the scaling
+@media (prefers-reduced-motion: reduce) {
+    .page-loader__logo {
+        animation-name: page-loader-fade;
+        animation-duration: 2s;
+    }
+
+    @keyframes page-loader-fade {
+        0%, 100% { opacity: 0.5; }
+        50%      { opacity: 1; }
+    }
 }
