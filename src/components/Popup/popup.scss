@@ -1,0 +1,21 @@
+.popup {
+  border: none;
+  padding: 0;
+  max-width: min(90vw, 600px);
+  &::backdrop { background: rgba(0, 0, 0, 0.6); }
+  .popup__close {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    font-weight: 200 !important;
+       path {
+        transition: stroke-width 0.2s ease;
+    }
+    &:hover { cursor: pointer;}
+
+    &:hover path,
+    &:focus-visible path {
+        stroke-width: 3.5;
+    }
+  }
+}

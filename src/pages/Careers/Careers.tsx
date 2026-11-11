@@ -4,6 +4,7 @@ import SEOHead from "../../components/SEOHead/SEOHead"
 import "../page.scss"
 import "./careers.scss"
 import ButtonLink from "../HomePage/ButtonLink"
+import Confirmation from "./ConfirmationPopup"
 
 // Black Dahlia email service (Cloudflare Worker). The form's recipient,
 // subject and email design live in the email-service repo under this form name.
@@ -42,9 +43,11 @@ const Careers = () => {
 
     const [values, setValues] = useState<FormValues>(emptyForm)
     const [resumeName, setResumeName] = useState("")
+    const [resumeTooBig, setResumeTooBig] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [status, setStatus] = useState<"idle" | "sent" | "error">("idle")
     const [showErrors, setShowErrors] = useState(false)
+    const [showConfirmation, setShowConfirmation] = useState(false)
 
     const set = (field: keyof FormValues) =>
         (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -77,8 +80,10 @@ const Careers = () => {
 
     const onResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
-        if (file && file.size > MAX_RESUME_MB * 1024 * 1024) {
-            alert(`Please choose a file under ${MAX_RESUME_MB} MB.`)
+        // Too big: clear the picker and show the message under the field
+        const tooBig = Boolean(file && file.size > MAX_RESUME_MB * 1024 * 1024)
+        setResumeTooBig(tooBig)
+        if (tooBig) {
             e.target.value = ""
             setResumeName("")
             return
@@ -112,10 +117,13 @@ const Careers = () => {
             setResumeName("")
             if (resumeRef.current) resumeRef.current.value = ""
             setShowErrors(false)
+            
         } catch (err) {
             console.error("Application not sent", err)
             setStatus("error")
         } finally {
+
+            setShowConfirmation(true)
             setIsSubmitting(false)
         }
     }
@@ -131,7 +139,7 @@ const Careers = () => {
                 className="careers-form__input"
                 id={`careers_${field}`}
                 name={field}
-                placeholder={placeholder}
+                placeholder={`${placeholder}${field !== 'portfolio' ? '*' : ''}`}
                 aria-label={placeholder}
                 value={values[field]}
                 onChange={set(field)}
@@ -191,7 +199,7 @@ const Careers = () => {
                             classNameWrapper={`careers-form__dropdown ${errorFor("position") ? "is-invalid" : ""}`}
                             classNameButton="careers-form__input"
                             customIcon={<span className="careers-form__chevron" aria-hidden="true" />}
-                            placeholder="Select position you’re interested in"
+                            placeholder="Select position you’re interested in*"
                             options={POSITIONS.map(p => ({ value: p, label: p }))}
                             value={values.position}
                             onChange={(position) => setValues(v => ({ ...v, position }))}
@@ -206,8 +214,8 @@ const Careers = () => {
 
                     {/* Resume: the whole pill opens the file picker */}
                     <div className="careers-form__field careers-form__wide">
-                        <label className={`careers-form__input careers-form__split ${errorFor("resume") ? "is-invalid" : ""}`} htmlFor="careers_resume">
-                            <span>Upload Resume</span>
+                        <label className={`careers-form__input careers-form__split ${errorFor("resume") || resumeTooBig ? "is-invalid" : ""}`} htmlFor="careers_resume">
+                            <span>Upload Resume*</span>
                             <span className="careers-form__hint">{resumeName || "choose file"}</span>
                             <input
                                 ref={resumeRef}
@@ -217,18 +225,28 @@ const Careers = () => {
                                 name="resume"
                                 accept=".pdf,.doc,.docx"
                                 onChange={onResumeChange}
-                                aria-invalid={Boolean(errorFor("resume"))}
+                                aria-invalid={Boolean(errorFor("resume")) || resumeTooBig}
+                                aria-describedby="careers_resume_note"
                                 required
                             />
                         </label>
+                        <span
+                            id="careers_resume_note"
+                            className={`careers-form__note ${resumeTooBig ? "is-error" : ""}`}
+                            role={resumeTooBig ? "alert" : undefined}
+                        >
+                            {resumeTooBig
+                                ? `That file is over ${MAX_RESUME_MB}MB. Please choose a smaller one.`
+                                : `Max upload: ${MAX_RESUME_MB}MB`}
+                        </span>
                     </div>
 
                     {/* Start date: label on the left, the date picker on the right */}
                     <div className="careers-form__field careers-form__wide">
                         <label className={`careers-form__input careers-form__split ${errorFor("start_date") ? "is-invalid" : ""}`} htmlFor="careers_start_date">
-                            <span>Available Start Date</span>
+                            <span className={`${values.start_date !== '' ? 'dateSelected':''}`}>Available Start Date*</span>
                             <input
-                                className="careers-form__date"
+                                className={`careers-form__date ${values.start_date !== '' ? 'selected':''}`}
                                 type="date"
                                 id="careers_start_date"
                                 name="start_date"
@@ -246,7 +264,7 @@ const Careers = () => {
                             id="careers_about"
                             name="about"
                             rows={4}
-                            placeholder="Tell us a little bit about yourself."
+                            placeholder="Tell us a little bit about yourself.*"
                             aria-label="Tell us a little bit about yourself"
                             maxLength={MAX_ABOUT_LENGTH}
                             value={values.about}
@@ -267,6 +285,8 @@ const Careers = () => {
                     {status === "error" && "Sorry, something went wrong. Please try again or give us a call."}
                 </p>
             </form>
+
+            <Confirmation isOpen={showConfirmation} onClose={() => setShowConfirmation(false)} />
         </div>
     )
 }

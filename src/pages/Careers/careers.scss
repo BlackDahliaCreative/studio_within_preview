@@ -12,8 +12,8 @@
 // The prompt text every empty pill shows: placeholders, the dropdown prompt,
 // and the "Upload Resume" / "Available Start Date" labels. One look for all.
 @mixin pill-prompt {
-    color: rgba(0, 0, 0, 0.9);
-    font-weight: 400;
+    color: #000000bb;
+    font-weight: 300;
     letter-spacing: 2px;
 }
 
@@ -71,7 +71,12 @@
         transition: border-color 0.2s ease;
         &::placeholder { @include pill-prompt; opacity: 1; }
         &:focus, &:focus-within { outline: none; border-color: var(--text-brown-color); }
-        &[aria-invalid='true'], &.is-invalid { border-color: #c24141; }
+        &[aria-invalid='true'], &.is-invalid { border-color: #ec0000; }
+        .dateSelected {
+            color: #000 !important;
+            font-weight: 400 !important;
+        }
+
     }
 
     // Position: the shared DropdownSelect, restyled to the design.
@@ -108,7 +113,11 @@
             .dropdown__option {
                 padding: 9px 20px;
                 @include pill-prompt;
-                &.dropdown__option--active { background: var(--cream-color); }
+
+                &.dropdown__option--active { 
+                    background: var(--cream-color); 
+                    color: #000;
+                }
                 &.dropdown__option--selected { font-weight: 500; }
             }
         }
@@ -156,6 +165,7 @@
         font: inherit;
         cursor: pointer;
         &:focus { outline: none; color: #000; }
+        &.selected {color: #000;}
     }
 
     &__textarea {
@@ -170,6 +180,17 @@
         padding-right: 12px;
         color: #8a8a8a;
         font-size: 11px;
+    }
+
+    // Small note under a field, on the right (e.g. resume "Max upload")
+    &__note {
+        align-self: flex-end;
+        padding-right: 12px;
+        color: #8a8a8a;
+        font-size: 11px;
+        text-align: right;
+
+        &.is-error { color: #c0392b; }
     }
 
     &__submit {
@@ -199,6 +220,49 @@
         font-size: 14px;
         text-align: center;
     }
+}
+.popup {
+* {margin:0px}
+  border: none;
+  padding: 40px !important;
+  max-width: min(90vw, 820px) !important;
+  max-height: 95dvh;
+  &::backdrop { background: rgba(0, 0, 0, 0.6); }
+  // Only when open: a plain `display` would override the browser's
+  // "hide closed dialogs" rule and the popup would never go away.
+  &[open] {
+    display: flex;
+    flex-direction: column;
+  }
+//   position: relative;
+  &--success {
+    justify-content: center;
+    .popup__close {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+    .git-title {
+        font-size: 38px;
+        letter-spacing: 1px;
+        width: 100%;
+        text-align: center;
+    }
+    img {
+        width: 90%;
+        max-height: 50dvh;
+        object-fit: cover;
+        object-position: top;
+        margin: 40px 0px 50px 0px;
+        align-self: center;
+    }
+    #lower_text {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+  }
 }
 
 @media screen and (max-width: 900px) {
