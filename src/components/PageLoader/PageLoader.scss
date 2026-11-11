@@ -8,9 +8,10 @@
 
     &__spinner {
         animation: spin 0.9s linear infinite;
-        border: 3px solid rgba(255, 255, 255, 0.15);
+        // Brown on the white page background (it used to be white on white)
+        border: 3px solid rgba(84, 73, 57, 0.15);
         border-radius: 50%;
-        border-top-color: var(--color-primary, #fff);
+        border-top-color: var(--text-brown-color);
         height: 48px;
         width: 48px;
     }

@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import "./home-page.scss"
 import SEOHead from "../../components/SEOHead/SEOHead"
@@ -8,6 +8,7 @@ import SustainSection from "./SustainSection"
 import GallerySection from "../../components/GallerySection/GallerySection"
 import ButtonLink from "./ButtonLink"
 import { BOOKING_URL } from "../../utils/booking"
+import NewClientPopup from "./NewClientPopup"
 
 // Reviews in the scrolling row, in the order they appear in Figma
 const reviews = [
@@ -44,6 +45,8 @@ const HomePage = () => {
     const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '5%'])
     const wellcomeY = useTransform(scrollYProgress, [0, 1], [60, -60])
 
+    const [openPopup, setOpenPopup] = useState(false)
+
     return(
         <div className="page" id="homePage">
             <SEOHead path="/home-page" />
@@ -64,10 +67,12 @@ const HomePage = () => {
                     <p>Lincoln Square, Chicago</p>
                 </div>
                 <div className="hero_buttons">
-                    <ButtonLink to={BOOKING_URL} variant="light">I am a new client</ButtonLink>
+                    <button onClick={() => {setOpenPopup(true)}} className="home-btn --light" >I am a new client</button>
                     <ButtonLink to={BOOKING_URL} variant="light">I've been here before</ButtonLink>
                 </div>
             </section>
+            
+            <NewClientPopup isOpen={openPopup} onClose={() => {setOpenPopup(false)}} className="newClientPopup"></NewClientPopup>
 
             <section className="home-welcome">
 
