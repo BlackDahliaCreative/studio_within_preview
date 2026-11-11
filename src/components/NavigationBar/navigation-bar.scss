@@ -143,6 +143,15 @@
         padding: 0;
         background: transparent;
         .navLinks { color: #fff; }
+        transition: opacity 0.4s ease;
+
+        // While the page loader shows, the white links vanish on the white loader
+        // and only the active link's underline would show, floating on its own.
+        // So the see-through home menu hides until the page is there, then fades in.
+        .App:has(.page-loader) & {
+            opacity: 0;
+            pointer-events: none;
+        }
     }
 
     // Narrower desktops: smaller links so they still fit beside the logo
