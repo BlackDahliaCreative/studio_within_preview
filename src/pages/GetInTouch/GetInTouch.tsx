@@ -7,6 +7,7 @@ import { BOOKING_URL } from "../../utils/booking"
 import { PHONE_HREF } from "../FAQs/faqData"
 import ButtonLink from "../HomePage/ButtonLink"
 import GallerySection from "../../components/GallerySection/GallerySection"
+import NewsletterForm from "./NewsletterForm"
 
 const EMAIL = 'swssdesk@gmail.com'
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Studio+Within+Salon+5720+N+Western+Ave+Chicago+IL+60659'
@@ -124,11 +125,7 @@ const GetInTouch = () => {
                         first dibs on what’s happening at 
                         Studio Within.
                     </p>
-                    <form id="stay_in_the_loop_subscribe">
-                        <input type="text" placeholder="First Name"/>
-                        <input type="email" placeholder="Email address"/>
-                        <button className="home-btn home-btn--dark">Subscribe</button>
-                    </form>
+                    <NewsletterForm />
                 </div>
             </div>
 

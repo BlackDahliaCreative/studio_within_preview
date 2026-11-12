@@ -217,9 +217,17 @@
                     padding: 15px;
                     background-color: var(--primary-color);
                     border: 0px;
+                    &[aria-invalid="true"] {
+                        outline: 1px solid #b3261e;
+                    }
                 }
                 button {
                     width: 100%;
+                }
+                .stay_in_the_loop_status {
+                    min-height: 1.2em;
+                    font-size: 10pt;
+                    text-align: center;
                 }
             }
         }
