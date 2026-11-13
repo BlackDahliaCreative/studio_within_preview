@@ -1,0 +1,1 @@
+import{j as t,L as a}from"./index-DuHRV_FZ.js";const i=({to:e,children:n,variant:r="dark",onClick:s,target:o="_self"})=>t.jsx(a,{className:`home-btn home-btn--${r}`,to:e,onClick:s,target:o,rel:o==="_blank"?"noopener noreferrer":void 0,children:n});export{i as B};
