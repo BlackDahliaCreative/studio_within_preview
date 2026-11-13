@@ -422,9 +422,18 @@
             user-select: none;
             -webkit-user-select: none;
         }
+        // All cards (reviews + their copies) sit straight in this row. It's as wide
+        // as the screen; the cards run on past its edge, side by side, and the row
+        // is slid with `transform`. Don't size it to its content (max-content):
+        // Safari measures that as if every review were one unwrapped line, which
+        // left a long empty stretch in the loop. The loop length is measured from
+        // the cards themselves in ReviewsMarquee.tsx.
         .home-reviews__track {
+            flex: 1 0 100%;
+            min-width: 0;
             display: flex;
-            width: max-content;
+            align-items: stretch;
+            gap: 12px;
             will-change: transform;
         }
         .home-reviews__arrow {
@@ -452,12 +461,6 @@
             &--left  { left: 24px; }
             &--right { right: 24px; }
         }
-        .home-reviews__list {
-            display: flex;
-            align-items: stretch;
-            gap: 12px;
-            padding-right: 12px; // same gap where the two copies meet
-        }
         .home-review {
             flex: 0 0 569px;
             min-height: 236px;
@@ -475,10 +478,7 @@
                 text-transform: capitalize;
             }
         }
-        // Hover grow, for devices with a real mouse only.
-        // Phones get none of this on purpose: iPhone Safari drew cards with
-        // `position` + a `scale` transition at old positions while the row moved,
-        // stacking them on top of each other. Phones can't hover anyway.
+        // Hover grow, for devices with a real mouse only (phones can't hover).
         @media (hover: hover) and (pointer: fine) {
             // Cut off the cards at the sides only, so a hovered card can grow up and
             // down as much as it likes. Must be `clip`, not `hidden`: with `hidden` on
