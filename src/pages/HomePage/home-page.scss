@@ -667,19 +667,41 @@
         // ── Phones ──────────────────────────────────────────
         @media (max-width: 767.98px) {
             --ncp-gutter: 20px;
-            width: 94vw;
-            max-width: 94vw;
+            max-width: 100dvw;
+            max-height: 100dvh ;
+            width: 100dvw;
+            height: 100dvh ;
             padding: 56px 0 32px;
 
             header .git-title { font-size: 24px; }
-            header h4 { font-size: 18px; }
+            header h4 { font-size: 18px; letter-spacing: 0px; }
+            .new-client__things-to-know h4 {
+                color: var(--brown-color);
+                font-size: 17px;
+                letter-spacing: 0px;
+                font-weight: 700;
+                margin-bottom: 32px;
+            }
+            #homePage .newClientPopup .new-client__things-to-know .few-things-subsec h5 {
+                font-size: 14pt;
+                font-weight: 500;
+                letter-spacing: 0.3px;
+                margin-bottom: 6px;
+            } 
             // The 130% underline would run off a narrow screen
             .new-client__things-to-know h4.titleInView::after { width: 100%; }
             .new-client-hours {
                 grid-template-columns: 1fr;
-                row-gap: 24px;
+                row-gap: 22px;
+                table {
+                    font-size: 15pt;
+                }
             }
-            .new-client__actions .home-btn { min-width: 0; width: 100%; }
+            .new-client__actions .home-btn { 
+                min-width: 0; 
+                width: 100%; 
+                font-size: 12pt;
+            }
         }
     }
 

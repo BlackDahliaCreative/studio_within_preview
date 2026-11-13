@@ -134,6 +134,12 @@ const ReviewsMarquee = ({ reviews }: { reviews: string[] }) => {
         setHoveredCard(null)
     }
     const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+        if (e.pointerType === "mouse") {
+            // While the row slides a card into view, the cards move under a
+            // still mouse: keep the same card until the slide is done
+            if (!sliding.current) setHoveredCard((e.target as HTMLElement).closest<HTMLElement>(".home-review"))
+            return
+        }
         const d = drag.current
         if (!d || e.pointerId !== d.id) return
         const dx = e.clientX - d.x
@@ -170,14 +176,11 @@ const ReviewsMarquee = ({ reviews }: { reviews: string[] }) => {
             <div
                 ref={viewportRef}
                 className="home-reviews__viewport"
-                onMouseEnter={() => { hovered.current = true }}
-                onMouseMove={e => {
-                    // While the row slides a card into view, the cards move under a
-                    // still mouse: keep the same card until the slide is done
-                    if (sliding.current) return
-                    setHoveredCard((e.target as HTMLElement).closest<HTMLElement>(".home-review"))
-                }}
-                onMouseLeave={() => { hovered.current = false; setHoveredCard(null) }}
+                // Hover (pause + grow) only for a real mouse. Phones also send fake
+                // mouse events after a tap, which would leave a card stuck grown
+                // over its neighbours, so mouse events aren't used here.
+                onPointerEnter={e => { if (e.pointerType === "mouse") hovered.current = true }}
+                onPointerLeave={e => { if (e.pointerType === "mouse") { hovered.current = false; setHoveredCard(null) } }}
                 onPointerDown={onPointerDown}
                 onPointerMove={onPointerMove}
                 onPointerUp={onPointerEnd}
