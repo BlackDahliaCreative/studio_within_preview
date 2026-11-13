@@ -229,12 +229,24 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
 
     @media (max-width: 767.98px) {
         .policies-title {
-            margin-top: 32px;
-            font-size: 34px;
+            font-size: 45px;
             line-height: 42px;
             span::before { left: -12px; top: 22px; height: 20px; }
         }
         .policy-card { padding: 0 var(--padding-md) 32px; }
+        // Fixed, bigger size on phones; long titles may wrap to two lines
+        .policy-card__title {
+            transform: translateY(-7px) !important;
+            font-size: 18pt;
+            line-height: 1;
+            margin-bottom: -10px;
+        }
+        .policy-card__body {
+            margin-top: 24px;
+            font-size: 14pt;
+            line-height: 21pt !important;
+            letter-spacing: 0.5pt !important;
+        }
         .home-btn { min-width: 260px; }
         .policies-next .home-btn { min-width: 260px; height: 51px; }
         .policies-next__text { font-size: 26px; }

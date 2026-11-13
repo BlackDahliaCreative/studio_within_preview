@@ -18,10 +18,23 @@ const StylistPage = () => {
     const photoFrameRef = useRef<HTMLDivElement>(null)
     const reduceMotion = useReducedMotion()
     const { scrollYProgress } = useScroll({ target: photoFrameRef, offset: ['start end', 'end start'] })
-    const photoY = useTransform(scrollYProgress, [0, 1], ['-20%', '20%'])
-    const photoScale = useTransform(scrollYProgress, [0, 1], ['1', '1.3'])
+    const photoY = useTransform(scrollYProgress, [0.5, 1], ['0%', '20%'])
+    const photoScale = useTransform(scrollYProgress, [0.5, 1], ['1', '1.1'])
 
     if (!stylist) return <NotFound />
+
+    // Rendered twice: under the bio on phones (before the book button),
+    // and in its own section below the band on bigger screens. CSS shows one.
+    const education = stylist.stylist_education.length > 0 ?
+        <div>
+            <h1 className="mb-30">Education</h1>
+            {
+                stylist.stylist_education.map((steps, i) => {
+                    return <p key={i}><strong>{steps.title}</strong> {steps.detail}</p>
+                })
+            }
+        </div>
+    : null
 
     return (
         <main className="stylist_single_page">
@@ -73,6 +86,7 @@ const StylistPage = () => {
                             return <p className="stylist_bio_paragraph mt-10" key={i}>{paragraph}</p>
                         })}
                     </div>
+                    {education && <div className="stylist_education stylist_education--mobile">{education}</div>}
                     {/* Sits across the bottom edge of the cream band (see .stylist_body_links) */}
                     <div className="stylist_body_links">
                         {   stylist.stylist_info_body.body_is_stylist === 'yes' ?
@@ -87,19 +101,8 @@ const StylistPage = () => {
                     </div>
                 </div>
             </section>
-            <section className="stylist_education">
-                {
-                    stylist.stylist_education.length > 0 ?
-                        <div>
-                            <h1 className="mb-30">Education</h1>
-                            {
-                                stylist.stylist_education.map((steps, i) => {
-                                    return <p key={i}><strong>{steps.title}</strong> {steps.detail}</p>
-                                })
-                            }
-                        </div>
-                    : <></>
-                }
+            <section className="stylist_education stylist_education--desktop">
+                {education}
             </section>
         </main>
     )
