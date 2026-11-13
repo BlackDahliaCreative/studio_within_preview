@@ -23,3 +23,32 @@
             }
         }
     }
+    @media screen and (max-width: 767px) {
+        .section-gallery {
+            grid-template-columns: repeat(2, minmax(0, 400px));
+            justify-content: center;
+            column-gap: 10px;
+            row-gap: 10px;
+
+            .section-gallery__frame {
+                img {
+                    aspect-ratio: 362 / 230;
+                }
+                &:nth-child(2) img {
+                    transform: translateY(15px) !important;
+                    scale: 155%;
+                }
+                &:nth-child(3) img {
+                    transform: translateY(0px) translateX(-10px) !important;
+                    scale: 120%;
+                    object-position: top;
+                }
+                &:nth-child(4) img {
+                    transform: translateY(-10px) translateX(-30px) !important;
+                    scale: 145%;
+                    object-position: top;
+                }
+            }
+        }
+        
+    }

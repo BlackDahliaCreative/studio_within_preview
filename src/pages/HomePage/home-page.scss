@@ -24,8 +24,8 @@
 
     .home-heading {
         margin: 0;
-        font-size: 32pt;
-        line-height: 48pt;
+        font-size: 32px;
+        line-height: 48px;
         letter-spacing: 0.04em;
         text-align: center;
         font-family: var(--secondary-font-family);
@@ -38,12 +38,12 @@
         }
         &--italic {
             // font-style: italic;
-            font-weight: 300;
+            font-weight: 500;
             text-transform: uppercase;
         }
         &--light {
-            font-size: 36pt;
-            font-weight: 300;
+            font-size: 36px;
+            font-weight: 500;
             letter-spacing: 0.06em;
             text-transform: capitalize;
         }
@@ -68,8 +68,8 @@
         #logo_home {
             position: absolute;
             z-index: 1;
-            right: 15%;
-            bottom: 30%;
+            right: 7%;
+            bottom: 27%;
 
             .logo_partner {
                 width: min(50vw, 420px);
@@ -97,10 +97,11 @@
             gap: 96px;
             padding: 0 var(--padding-md);
             button {
-                background-color: var(--cream-color) !important;
-                color: #000;
+                background-color: transparent !important;
+                color: #ffffff !important;
                 border: none;
                 cursor: pointer;
+                border: 1px solid #fff;
             }
         }
 
@@ -131,21 +132,21 @@
         #home_hero {
             animation:
                 hero-photo-settle 2.8s $hero-ease both,
-                hero-photo-drift 30s ease-in-out infinite alternate;
+                hero-photo-drift 20s ease-in-out infinite alternate;
         }
         #logo_home {
             z-index: 2; // above the veil
             .logo_partner {
-                animation: hero-rise-in 1.4s $hero-ease 0.6s both;
+                animation: hero-rise-in 1s $hero-ease 0.7s both;
             }
             p {
-                animation: hero-spread-in 1.6s $hero-ease 1.1s both;
+                animation: hero-spread-in 1s $hero-ease 1s both;
             }
         }
         .hero_buttons {
             z-index: 2;
             // Both together, a slow fade with a small lift (no blur), so they don't "pop"
-            > * { animation: hero-buttons-in 1.6s ease-out 1.4s both; }
+            > * { animation: hero-buttons-in 1s ease-out 1s both; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -171,8 +172,9 @@
     // from phones to 3440px ultra-wide. If you make the drift or turn bigger,
     // raise the 1.1 above too.
     @keyframes hero-photo-drift {
-        from { translate: -1.5% 0; rotate: y -6deg; }
-        to   { translate: 1.5% 0;  rotate: y 6deg; }
+        0%   {scale: 1.2; translate: -3% 0; rotate: 0 1 0 -7deg; animation-timing-function: ease-in; }
+        50%  { translate: 0 0;   rotate: 1 0 0 3deg;  animation-timing-function: ease-out; }
+        100% {scale: 1.2; translate: 3% 0;  rotate: 0 1 0 7deg; }
     }
     @keyframes hero-buttons-in {
         from { opacity: 0; translate: 0 8px; }
@@ -219,10 +221,10 @@
             }
         }
         .home-welcome__text {
-            max-width: 1013px;
+            max-width: 1000px;
             margin: 44px 0 19px;
-            font-size: 16pt;
-            line-height: 28.8pt;
+            font-size: 16px;
+            line-height: 28.8px;
             letter-spacing: 0.02em;
             text-transform: capitalize;
             text-align: justify;
@@ -243,9 +245,9 @@
             margin: 0;
             padding: 11px var(--padding-sm);
             background: var(--primary-color);
-            font-size: clamp(16pt, 0.015vw, 22pt);
+            font-size: clamp(12pt, 0.015vw, 22pt);
             font-weight: 600;
-            line-height: 28.8px;
+            line-height: 26.8px;
             letter-spacing: 0.06em;
             text-align: center;
             text-transform: uppercase;
@@ -256,6 +258,7 @@
             max-width: 1600px;
             height: 715px;
             isolation: isolate;
+            overflow: hidden;
             img {
                 position: relative;
                 width: 100%;
@@ -298,13 +301,15 @@
         }
         .home-about__card {
             position: relative;
-            width: min(1338px, 100%);
+            width: min(1000px, 100%);
             margin-top: -489px; // overlaps the lower part of the photo
             padding: 47px 29px 55px 30px;
             background: rgba(249, 249, 249, 0.85);
-            font-size: 17pt;
-            line-height: 30pt;
+            font-size: 17px;
+            line-height: 30px;
             letter-spacing: 0.02em;
+            text-align: justify;
+            text-justify: inter-word;
             p { margin: 0; }
         }
     }
@@ -406,7 +411,21 @@
             width: calc(100% + 2 * var(--padding-md)); // runs edge to edge
             margin: 87px 0 93px;
         }
-        .home-reviews__viewport { overflow: hidden; }
+        // Cut off the cards at the sides only, so a hovered card can grow up and
+        // down as much as it likes. Must be `clip`, not `hidden`: with `hidden` on
+        // one axis, the browser turns `visible` on the other into `auto`, which cuts
+        // off the top and bottom too.
+        .home-reviews__viewport {
+            overflow-x: clip;
+            overflow-y: visible;
+            display: flex;
+            align-items: center;
+            // Sideways finger swipes drag the row (ReviewsMarquee.tsx);
+            // up/down swipes still scroll the page
+            touch-action: pan-y;
+            user-select: none;
+            -webkit-user-select: none;
+        }
         .home-reviews__track {
             display: flex;
             width: max-content;
@@ -449,7 +468,17 @@
             margin: 0;
             padding: 29px 28px 20px;
             background: var(--primary-color);
+            position: relative; // lets the hovered card sit above its neighbours
+            transition: scale 0.35s ease, box-shadow 0.35s ease;
             img { display: block; }
+
+            // Added by ReviewsMarquee.tsx while the mouse is over the card.
+            // The row first slides an edge card fully into view, then it grows.
+            &.is-hovered {
+                z-index: 1;
+                scale: 1.1;
+                box-shadow: 0 10px 28px rgba(0, 0, 0, 0.263);
+            }
             blockquote {
                 margin: 11px 0 0;
                 font-size: 14pt;
@@ -685,12 +714,35 @@
 
     @media (max-width: 767.98px) {
         #landing_hero {
-            #logo_home { right: 50%; transform: translateX(50%); bottom: 40%; }
+            margin-top: 0px !important;
+            #logo_home { 
+                right: 50%; 
+                transform: translateX(50%); 
+                bottom: 30%; 
+                p {
+                    font-size: 11px !important;
+                    z-index: 2;
+                }
+                &::after {
+                    content: '';
+                    height: 100%;
+                    width: 100%;
+                    background-color: #0000006e;
+                    position: absolute;
+                }
+            }
             .hero_buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 16px;
-                bottom: 40px;
+                bottom: 12%;
+                width: 100% !important;
+                button, a {
+                    width: 100% !important;
+                    background-color: transparent;
+                    color: #fff;
+                    border: 1px solid #fff;
+                }
 
             }
         }
@@ -701,12 +753,23 @@
             line-height: 36px;
             &--light { font-size: 28px; }
         }
-        .home-welcome { padding: 48px var(--padding-md) 60px; }
+        .home-welcome { 
+            padding: 48px var(--padding-md) 60px; 
+            &__text {
+                margin-top: 18px !important;
+                line-height: 23px !important;
+            }
+        }
         .home-about {
             padding-top: 60px;
             .home-about__image { height: 280px; }
-            .home-about__card { margin-top: 0; padding: 24px var(--padding-md); font-size: 16px; line-height: 28px; }
+            .home-about__card { margin-top: 0; padding: 0px; font-size: 16px; line-height: 26px; }
             .home-btn { margin-top: 24px; }
+            .home-about__label {
+                font-size: 20pt;
+                text-align: center;
+                left: auto;
+            }
         }
         .home-sustain {
             padding: 48px 0 60px;
@@ -719,16 +782,15 @@
             .side-label--sustain { left: 14px; top: 48px; }
             .home-sustain__title { font-size: 24px; line-height: 36px; }
             .home-sustain__content {
-                p { margin: 24px 0 0; }
+                p { margin: 24px 0 0; line-height: 24pt; }
                 .home-sustain__more { margin-left: 0; }
                 .home-btn { margin: 23px 0 0; }
             }
         }
         .home-reviews {
             .home-reviews__marquee { margin: 40px 0; }
-            .home-reviews__arrow { width: 38px; height: 38px; }
-            .home-reviews__arrow--left  { left: 10px; }
-            .home-reviews__arrow--right { right: 10px; }
+            // Phones swipe the row with a finger instead
+            .home-reviews__arrow { display: none; }
             .home-review { flex-basis: 300px; padding: 20px; }
         }
         .home-gallery {

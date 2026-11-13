@@ -60,7 +60,7 @@
 
         // Hover: the photo under the cursor slowly zooms inside its frame
         @media (hover: hover) {
-            .section-gallery__frame:hover .section-gallery__zoom { transform: scale(1.08); }
+            .section-gallery__frame:hover .section-gallery__zoom { transform: scale(1.04); }
         }
         @media (prefers-reduced-motion: reduce) {
             .section-gallery__zoom { transition: none; }

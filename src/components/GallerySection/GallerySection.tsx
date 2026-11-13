@@ -17,7 +17,7 @@ const tile: Variants = {
 }
 const photo: Variants = {
     hidden: { scale: 1 },
-    show: { scale: 1.15, transition: { duration: 1.2, ease } },
+    show: { scale: 1.1, transition: { duration: 1.2, ease } },
 }
 
 type Props = {

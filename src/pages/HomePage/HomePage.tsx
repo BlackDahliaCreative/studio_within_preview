@@ -35,6 +35,27 @@ const gallery = [
     { src: 'homepage5.webp', alt: 'Woman in a denim shirt with big dark curls' },
 ]
 
+const Photo = ({ src, alt, className, priority = false }: { src: string, alt: string, className: string, priority?: boolean }) => {
+    const frameRef = useRef<HTMLDivElement>(null)
+    const reduceMotion = useReducedMotion()
+    const { scrollYProgress } = useScroll({ target: frameRef, offset: ['start end', 'end start'] })
+    const y = useTransform(scrollYProgress, [0, 1], ['-10%', '10%'])
+    const scale = useTransform(scrollYProgress, [0, 1], ['1', '1.1'])
+
+    return (
+        <div className={`git-photo ${className}`}>
+            <div className="git-photo__frame" ref={frameRef}>
+                <motion.img
+                    src={publicUrl(`/images/homepage/${src}`)}
+                    alt={alt}
+                    loading={priority ? "eager" : "lazy"}
+                    fetchPriority={priority ? "high" : "auto"}
+                    style={reduceMotion ? undefined : { y, scale: scale }}
+                />
+            </div>
+        </div>
+    )
+}
 
 const HomePage = () => {
     // Hero photo slowly zooms in and drifts down while the hero scrolls out of view
@@ -46,7 +67,7 @@ const HomePage = () => {
     const wellcomeY = useTransform(scrollYProgress, [0, 1], [60, -60])
 
     const [openPopup, setOpenPopup] = useState(false)
-
+    
     return(
         <div className="page" id="homePage">
             <SEOHead path="/home-page" />
@@ -87,7 +108,7 @@ const HomePage = () => {
             <section className="home-about">
                 <h2 className="home-about__band">A Chicago Salon for Over 20 Years, Now Dedicated to Curls</h2>
                 <div className="home-about__image">
-                    <img src={publicUrl('/images/homepage/homepage1.webp')} alt="Three people with different curly hair types, seen from behind" loading="lazy"/>
+                    <Photo className="git-photo--salon" src='homepage1.webp' alt="Three people with different curly hair types, seen from behind" priority/>
                     <h3 className="home-about__label">Who we are</h3>
                 </div>
                 <div className="home-about__card">

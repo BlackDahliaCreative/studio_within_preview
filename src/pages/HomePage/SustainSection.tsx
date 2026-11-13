@@ -7,12 +7,12 @@ const ease = [0.22, 1, 0.36, 1] as const
 
 // 1. Reveal: plays once when the section scrolls into view
 const block: Variants = {
-    hidden: { x: '-60%' },
-    show: { x: 0, transition: { duration: 0.6, ease } },
+    hidden: { x: '-30%' },
+    show: { x: 0, transition: { duration: 2.5, ease } },
 }
 const photo: Variants = {
     hidden: { opacity: 0, scale: 1.08 },
-    show: { opacity: 1, scale: 1, transition: { duration: 1.1, ease, delay: 0.25 } },
+    show: { opacity: 1, scale: 1, transition: { duration: 2, ease, delay: 0.25 } },
 }
 // The label is rotated in CSS; framer replaces the transform, so the rotation is kept here
 const label: Variants = {
@@ -42,7 +42,7 @@ const SustainSection = ({ bookingUrl }: { bookingUrl: string }) => {
             ref={sectionRef}
             initial={reduceMotion ? false : 'hidden'}
             whileInView="show"
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: false, amount: 0 }}
         >
             <div className="home-sustain__media">
                 <motion.span className="home-sustain__block" variants={block} aria-hidden="true" />
