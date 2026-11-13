@@ -136,6 +136,7 @@
         }
         #logo_home {
             z-index: 2; // above the veil
+            animation: hero-rise-in 1s $hero-ease 0.7s both;
             .logo_partner {
                 animation: hero-rise-in 1s $hero-ease 0.7s both;
             }
@@ -719,16 +720,10 @@
                 right: 50%; 
                 transform: translateX(50%); 
                 bottom: 30%; 
+                background-color: #08080858;
                 p {
                     font-size: 11px !important;
                     z-index: 2;
-                }
-                &::after {
-                    content: '';
-                    height: 100%;
-                    width: 100%;
-                    background-color: #0000006e;
-                    position: absolute;
                 }
             }
             .hero_buttons {
