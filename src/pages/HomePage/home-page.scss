@@ -412,13 +412,8 @@
             width: calc(100% + 2 * var(--padding-md)); // runs edge to edge
             margin: 87px 0 93px;
         }
-        // Cut off the cards at the sides only, so a hovered card can grow up and
-        // down as much as it likes. Must be `clip`, not `hidden`: with `hidden` on
-        // one axis, the browser turns `visible` on the other into `auto`, which cuts
-        // off the top and bottom too.
         .home-reviews__viewport {
-            overflow-x: clip;
-            overflow-y: visible;
+            overflow: hidden;
             display: flex;
             align-items: center;
             // Sideways finger swipes drag the row (ReviewsMarquee.tsx);
@@ -469,17 +464,7 @@
             margin: 0;
             padding: 29px 28px 20px;
             background: var(--primary-color);
-            position: relative; // lets the hovered card sit above its neighbours
-            transition: scale 0.35s ease, box-shadow 0.35s ease;
             img { display: block; }
-
-            // Added by ReviewsMarquee.tsx while the mouse is over the card.
-            // The row first slides an edge card fully into view, then it grows.
-            &.is-hovered {
-                z-index: 1;
-                scale: 1.1;
-                box-shadow: 0 10px 28px rgba(0, 0, 0, 0.263);
-            }
             blockquote {
                 margin: 11px 0 0;
                 font-size: 14pt;
@@ -490,6 +475,33 @@
                 text-transform: capitalize;
             }
         }
+        // Hover grow, for devices with a real mouse only.
+        // Phones get none of this on purpose: iPhone Safari drew cards with
+        // `position` + a `scale` transition at old positions while the row moved,
+        // stacking them on top of each other. Phones can't hover anyway.
+        @media (hover: hover) and (pointer: fine) {
+            // Cut off the cards at the sides only, so a hovered card can grow up and
+            // down as much as it likes. Must be `clip`, not `hidden`: with `hidden` on
+            // one axis, the browser turns `visible` on the other into `auto`, which
+            // cuts off the top and bottom too.
+            .home-reviews__viewport {
+                overflow-x: clip;
+                overflow-y: visible;
+            }
+            .home-review {
+                position: relative; // lets the hovered card sit above its neighbours
+                transition: scale 0.35s ease, box-shadow 0.35s ease;
+
+                // Added by ReviewsMarquee.tsx while the mouse is over the card.
+                // The row first slides an edge card fully into view, then it grows.
+                &.is-hovered {
+                    z-index: 1;
+                    scale: 1.1;
+                    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.263);
+                }
+            }
+        }
+
         // The button sits half in, half out of the grey band
         .home-btn { margin-bottom: -20px; position: relative; z-index: 1; }
     }
