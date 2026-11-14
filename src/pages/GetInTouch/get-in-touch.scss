@@ -176,40 +176,45 @@
         .home-gallery__frame:nth-child(5) img { object-position: center 25%; } // curl spray
     }
 
+    // Newsletter: 16:9 photo with the form on the white wall to the right of
+    // the model. Everything is sized from the photo, so it scales together.
+    // Under 900px the form moves below the photo (see the media queries).
     #stay_in_the_loop {
         position: relative;
-        width: 100%;
-        height: 70dvh;
-        padding: 0px 10%;
+        width: min(100% - 2 * var(--padding-md), 1120px);
+        margin: 0 auto;
+        aspect-ratio: 16 / 9;
         overflow: hidden;
-        display: flex;
-    
+
         img {
             position: absolute;
             inset: 0;
+            width: 100%;
             height: 100%;
             object-fit: cover;
-            // width: 80%;
-            justify-self: center;
+            object-position: left center;
         }
         #stay_in_the_loop_form {
-            z-index: 22;
+            z-index: 1;
             position: absolute;
-            right: calc(10% + 150px);
+            right: 6%;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            width: 300px;
-            top: 15dvh;
+            width: clamp(260px, 30%, 340px);
             align-items: center;
             row-gap: 20px;
             h3, p {
                 margin: 0px;
                 text-align: center;
             }
+            h3 { font-size: 16pt; }
+            p { font-size: 11pt; line-height: 1.5; }
             form {
                 display: flex;
                 flex-direction: column;
-                width: 300px;
+                width: 100%;
                 align-items: center;
                 row-gap: 10px;
                 input {
@@ -252,7 +257,7 @@
         .git-contact { margin-top: 48px; }
         .git-contact__details { align-items: center; text-align: center; }
         .git-contact__phone { justify-content: center; }
-        .git-storefront { margin-top: 64px; padding: 0 var(--padding-md); }
+        .git-storefront { margin-top: 64px; padding: 0 var(--padding-md); margin-bottom: 20px;}
         .git-hours { margin-top: 48px; }
         .git-photo--hallway { max-width: 440px; justify-self: center; width: 100%; }
 
@@ -262,13 +267,49 @@
         }
     }
 
+    // Newsletter on phones: the form no longer fits on the wall, so the full
+    // photo sits on top with just the heading on the wall (where she's
+    // pointing), and the rest of the form goes underneath.
+    @media (max-width: 767.98px) {
+        #stay_in_the_loop {
+            aspect-ratio: auto;
+            container-type: inline-size; // cqi below = % of the section width
+            img {
+                position: static;
+                display: block;
+                aspect-ratio: 16 / 9;
+            }
+            #stay_in_the_loop_form {
+                position: static; // so the heading positions against the photo
+                transform: none;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+                padding: 24px 0 8px;
+                row-gap: 16px;
+                h3 {
+                    position: absolute;
+                    top: 0;
+                    right: 2%;
+                    width: 40%;
+                    height: 56.25cqi; // the photo's height (16:9)
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: clamp(14pt, 6cqi, 20pt);
+                    line-height: 1.2;
+                }
+            }
+        }
+    }
+
     @media (max-width: 767.98px) {
         .git-intro { margin-top: 32px; }
         .git-title { font-size: 34px; }
         .git-subtitle { font-size: 14px; }
         .git-contact__details address { font-size: 20px; line-height: 40px; }
         .git-hours__title { font-size: 26px; }
-        .git-hours table { font-size: 18px; th, td { height: 56px; } }
+        .git-hours table { font-size: 16px; th, td { height: 46px; } }
         .git-storefront::before { top: 30%; height: 40%; }
         .home-gallery { grid-template-columns: minmax(0, 1fr); padding: 32px var(--padding-md); }
     }
