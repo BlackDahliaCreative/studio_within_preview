@@ -54,8 +54,8 @@ export const stylist_info = [
     {
         stylist_id: 'Jacob-Greenfield',
         stylist_name: 'Jacob Greenfield',
-        stylist_title: 'Curl Specialist · Colorist',
-        stylist_short_title: 'Curl Specialist · Colorist',
+        stylist_title: 'Master Curl Specialist · Colorist',
+        stylist_short_title: 'Master Curl Specialist · Colorist',
         stylist_social_media: 'jg_hairartist',
         stylist_info_body: {
             body_stylist_pic: 'jacob.webp',

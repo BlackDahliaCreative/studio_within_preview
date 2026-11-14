@@ -7,6 +7,7 @@ export type FaqGroup = { title: string, items: Faq[] }
 
 export const PHONE_DISPLAY = '(773) 348-9323'
 export const PHONE_HREF = 'tel:+17733489323'
+export const GIFT_CARDS_URL = 'https://clients.mangomint.com/gift-cards/studiowithinsalonandspa'
 
 export const faqGroups: FaqGroup[] = [
     {
@@ -93,7 +94,7 @@ export const faqGroups: FaqGroup[] = [
             },
             {
                 q: 'Do you offer gift cards?',
-                a: [`Yes! Please call, text, or ask us during your next visit if you'd like to purchase one for yourself or someone else: [${PHONE_DISPLAY}](${PHONE_HREF}).`],
+                a: [`Yes! You can [buy a gift card online](${GIFT_CARDS_URL}), or call, text, or ask us during your next visit if you'd like to purchase one for yourself or someone else: [${PHONE_DISPLAY}](${PHONE_HREF}).`],
             },
         ],
     },

@@ -49,7 +49,7 @@ const StylistPage = () => {
 
     return (
         // A div, not <main>: the app layout already wraps every page in <main>
-        <div className="stylist_single_page">
+        <div className={`stylist_single_page stylist_page--${stylist.stylist_id}`}>
             <SEOHead
                 path={`/meet-the-team/${stylist.stylist_id}`}
                 title={stylist.stylist_name}

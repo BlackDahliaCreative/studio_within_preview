@@ -112,7 +112,7 @@
             display: block;
             height: 100%;
             object-fit: contain;
-            object-position: center bottom;
+            object-position: bottom;
             transition: translate 0.4s ease;
             width: 100%;
         }
@@ -123,6 +123,11 @@
             --shadow-blur: 5px;
             height: auto;
             transform: translateY(-8%);
+        }
+        .stylist_card--Bette-Schwarz .stylist_image,
+        .stylist_card--Gina-Ceja .stylist_image {
+            transform: scale(0.9);
+            transform-origin: center bottom;
         }
         .stylist_card--Jacob-Greenfield .stylist_image {
             object-fit: cover;
@@ -447,4 +452,16 @@
             padding: 0 0 50px;
         }
     }
+}
+
+.stylist_page--Kristy-Kladzyk .stylist_card_body .stylist_img img {
+    aspect-ratio: 1000 / 1150;
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+.stylist_page--biggie2pac .stylist_card_body .stylist_img img {
+    aspect-ratio: 1000 / 860;
+    object-fit: cover;
+    object-position: center bottom;
 }
