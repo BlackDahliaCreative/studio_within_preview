@@ -13,13 +13,11 @@
     box-sizing: border-box;
     position: relative;
 
-    /**  Section containing the "active image" and eventually the folder buttons*/
     .carouselContent{
         display: flex;
         height: 100%;
         width: 100%;
 
-        /** Right section for button folders*/
         .multiFoldersBtnsSection{
             width: 30%;
             height: 100%;
@@ -39,7 +37,6 @@
             }
         }
 
-        /** Picture section for the "active image" and eventually the arrows*/
         .carouselPictures{
             width: calc(70% - 20px);
             box-sizing: border-box;
@@ -63,7 +60,7 @@
             .animatedPic{
                 height: 100%;
                 width: 100%;
-                position: absolute; /* Ensures it covers the parent container */
+                position: absolute;
                 top: 0;
                 left: 0;
                 .carouselSinglePic{
@@ -87,7 +84,6 @@
         }
     }
 
-    /** Preview section for all the pictures available*/
     .carouselPreview{
         margin-top: 10px;
         width: calc(90% - 40px);
@@ -107,7 +103,6 @@
             align-self: center;
         }
         .allPics{
-            // height: 120px;
             display: flex;
             img {
                 width: 100px;
@@ -118,7 +113,6 @@
                 &.active { border: 1px solid red; }
                 &:not(:last-child) { margin-right: 10px;}
             }
-            /* Scrollbar styles */
         }
         &::-webkit-scrollbar { height: 0px; }
         &::-webkit-scrollbar-thumb:hover { background-color: #555; }

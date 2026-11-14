@@ -85,6 +85,7 @@ const NavigationBarSmallScreen = () => {
                 {/* Two lines that cross into an X when open */}
                 <span className={isExpanded ? 'hamburger-menu openHam' : 'hamburger-menu'} aria-hidden="true">
                     <span className="bar bar--top"></span>
+                    <span className="bar bar--middle"></span>
                     <span className="bar bar--bottom"></span>
                 </span>
             </button>

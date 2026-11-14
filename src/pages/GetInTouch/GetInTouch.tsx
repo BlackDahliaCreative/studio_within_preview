@@ -9,6 +9,7 @@ import ButtonLink from "../HomePage/ButtonLink"
 import GallerySection from "../../components/GallerySection/GallerySection"
 import NewsletterForm from "./NewsletterForm"
 import { fetchPriority } from "../../utils/fetchPriority"
+import { useNewTabOnDesktop } from "../../utils/useMediaQuery"
 
 const EMAIL = 'swssdesk@gmail.com'
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Studio+Within+Salon+5720+N+Western+Ave+Chicago+IL+60659'
@@ -59,6 +60,8 @@ const Photo = ({ src, alt, className, priority = false }: { src: string, alt: st
 }
 
 const GetInTouch = () => {
+    // Links to other sites: new tab on desktop, same tab on phones and tablets
+    const newTab = useNewTabOnDesktop()
     return(
         <div className="page" id="getInTouchPage">
             <SEOHead path="/contact-us" />
@@ -75,7 +78,7 @@ const GetInTouch = () => {
                 <Photo priority className="git-photo--salon" src="get_in_touch1.webp" alt="Studio Within styling stations with wooden mirrors under a white arch" />
                 <div className="git-contact__details">
                     <address>
-                        <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
+                        <a href={MAPS_URL} {...newTab}>
                             5720 N Western Ave<br />Chicago, IL 60659
                         </a>
                         <br />

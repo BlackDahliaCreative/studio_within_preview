@@ -10,8 +10,11 @@ import { stylist_info } from "./stylists_info"
 
 import "./meet-the-team.scss" 
 import { fetchPriority } from "../../utils/fetchPriority"
+import { useNewTabOnDesktop } from "../../utils/useMediaQuery"
 
 const StylistPage = () => {
+    // Links to other sites: new tab on desktop, same tab on phones and tablets
+    const newTab = useNewTabOnDesktop()
     
     const { stylistId } = useParams()
     const stylist = stylist_info.find((s) => s.stylist_id === stylistId)
@@ -63,8 +66,7 @@ const StylistPage = () => {
                         <a
                             className="stylist_instagram"
                             href={`https://www.instagram.com/${stylist.stylist_social_media}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            {...newTab}
                             aria-label={`${stylist.stylist_name} on Instagram`}
                         >
                             <img src={publicUrl('/images/meet_the_team/instagram-color.svg')} alt="" width="24" height="24" />

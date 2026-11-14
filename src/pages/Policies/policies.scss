@@ -1,25 +1,21 @@
 @use 'sass:math';
 @use '../shared';
 
-// Policies page. Measurements come from the Figma "policies" frame (1442px wide),
-// laid out as two columns of 721px. Horizontal sizes are percentages of a column,
-// so the layout keeps its proportions as the window narrows.
 @function col($px) {
     @return math.percentage(math.div($px, 721));
 }
 
-$card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
+$card-bg: rgba(235, 219, 189, 0.37);
 
 #policiesPage {
     padding: 0 !important;
     overflow-x: clip;
-    isolation: isolate; // keeps the grey bands (z-index: -1) behind the page content
+    isolation: isolate;
     color: var(--primary-font-color);
 
     @include shared.buttons;
     @include shared.gallery(442px, 31px, 26px, "442 / 248");
 
-    // ── Heading ─────────────────────────────────────────────────────
     .policies-title {
         margin: 40px 0 0;
         padding: 0 var(--padding-md);
@@ -31,7 +27,6 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
         letter-spacing: -1pt;
         color: var(--text-brown-color);
 
-        // Soft beige bar behind the lower half of the heading
         span {
             position: relative;
             &::before {
@@ -47,7 +42,6 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
         }
     }
 
-    // ── Two-column layout ───────────────────────────────────────────
     .policies-layout {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -61,26 +55,23 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
         align-items: flex-start;
     }
 
-    // ── Cards ───────────────────────────────────────────────────────
     .policy-card {
         position: relative;
         box-sizing: border-box;
         width: col(574);
         padding: 0 54px 64px 68px;
         background: $card-bg;
-        container-type: inline-size; // lets the title size itself to the card (cqi below)
+        container-type: inline-size;
     }
     .policy-card__title {
         margin: 0;
-        transform: translateY(-17px); // sits on the card's top edge
+        transform: translateY(-17px);
         font-family: var(--primary-font-family);
-        // Shrinks with the card so the longest title ("Cancellations + No Shows",
-        // about 16.5x its font size wide) stays on one line. 24pt is the Figma size.
-        font-size: 20pt; // browsers without container units
+        font-size: 20pt;
         font-size: clamp(12pt, 100cqi / 16.5, 24pt);
         font-weight: 500;
         line-height: 28.8pt;
-        letter-spacing: 0.042em; // 1pt at 24pt, and shrinks with the text
+        letter-spacing: 0.042em;
         text-transform: uppercase;
     }
     .policy-card__body {
@@ -93,7 +84,6 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
         p { margin: 0; }
         .policy-card__gap { margin-top: 28.8px; }
     }
-    // Button inside the cancellations card
     .policy-card__action {
         margin-top: 20px;
         padding-left: 150px;
@@ -101,14 +91,12 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
     }
     .policy-card--cancel { padding-bottom: 22px; }
 
-    // Button centred under a card
     .policies-action {
         display: flex;
         justify-content: center;
         width: col(574);
     }
 
-    // ── Photos ──────────────────────────────────────────────────────
     .policies-photo {
         position: relative;
         img {
@@ -118,12 +106,10 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
             object-fit: cover;
         }
     }
-    // Clips the photo while it drifts on scroll (see Photo in Policies.tsx)
     .policies-photo__frame {
         height: 100%;
         overflow: hidden;
     }
-    // Full-width grey band that starts a little above the photo
     .policies-photo--band::before {
         content: '';
         position: absolute;
@@ -135,7 +121,6 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
         background: var(--secondary-color);
     }
 
-    // ── Left column (positions from Figma) ──────────────────────────
     .policy-card--cancel        { margin: 119px 0 0 col(59); }
     .policies-photo--lounge     { margin: 114px 0 0 col(70);  width: col(632); aspect-ratio: 632 / 422; }
     .policy-card--guests        { margin: 141px 0 0 col(99); }
@@ -144,7 +129,6 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
     .policies-photo--hallway    { margin: 50px 0 0 col(134); width: col(456); aspect-ratio: 456 / 684; }
     .policies-photo--hallway::before { top: -35px; }
 
-    // ── Right column ────────────────────────────────────────────────
     .policies-photo--salon      { margin-left: col(-48); width: col(722); aspect-ratio: 722 / 480; }
     .policy-card--children      { margin: 167px 0 0 col(30); }
     .policies-action--children  { margin: 17px 0 0 col(30); }
@@ -169,19 +153,16 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
         text-align: center;
     }
 
-    // ── Gallery ─────────────────────────────────────────────────────
     .home-gallery {
         margin-top: 97px;
         padding: 32px 24px;
     }
 
-    // ── Smaller screens ─────────────────────────────────────────────
     @media (max-width: 1199.98px) {
         .policy-card { padding: 0 32px 48px 40px; }
         .policy-card__action { padding-left: 0; text-align: center; }
     }
 
-    // One column, in reading order
     @media (max-width: 999.98px) {
         .policies-layout {
             display: flex;
@@ -194,7 +175,6 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
         }
         .policies-col { display: contents; }
 
-        // Undo the desktop offsets: everything is centred and full width
         .policy-card,
         .policies-photo,
         .policies-action,
@@ -203,9 +183,9 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
             width: 100% !important;
             max-width: 640px;
         }
-        .policies-action { margin-top: -24px !important; } // keep each button close to its card
-        .policy-card { margin-top: 17px !important; }      // room for the title on the edge
-        .policies-photo--band::before { display: none; }   // bands only make sense in the 2-column layout
+        .policies-action { margin-top: -24px !important; }
+        .policy-card { margin-top: 17px !important; }
+        .policies-photo--band::before { display: none; }
 
         .policy-card--cancel       { order: 1; }
         .policies-photo--salon     { order: 2; }
@@ -234,7 +214,6 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
             span::before { left: -12px; top: 22px; height: 20px; }
         }
         .policy-card { padding: 0 var(--padding-md) 32px; }
-        // Fixed, bigger size on phones; long titles may wrap to two lines
         .policy-card__title {
             transform: translateY(-7px) !important;
             font-size: 18pt;

@@ -1,6 +1,5 @@
 .page {
     box-sizing: border-box;
-    // padding: var(--padding-lg);
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -10,7 +9,6 @@
         justify-content: center;
     }
 
-    // ── Heading ─────────────────────────────────────────────────────
     .git-intro {
         margin-top: 40px;
         padding: 0 var(--padding-md);
@@ -18,7 +16,7 @@
     }
     .git-title {
         margin: 0;
-        font-size: clamp(34px, 4.4vw, 48pt); // 48pt (Figma) on wide screens; narrower so it clears the logo box
+        font-size: clamp(34px, 4.4vw, 48pt);
         font-weight: 500;
         line-height: 1.1;
         letter-spacing: 1pt;
@@ -37,6 +35,5 @@
             box-decoration-break: clone;
         }
     }
-
 
 }

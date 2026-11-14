@@ -50,7 +50,7 @@
         transition:
             transform 0.18s ease-out,
             opacity 0.18s ease-out,
-            visibility 0s linear 0.18s; // hide after animation
+            visibility 0s linear 0.18s;
         &.dropdown__list--open {
             transform: scaleY(1);
             opacity: 1;
@@ -59,7 +59,7 @@
             transition:
                 transform 0.18s ease-out,
                 opacity 0.18s ease-out,
-                visibility 0s; // visible immediately
+                visibility 0s;
         }
         .dropdown__option {
             color: #000;
@@ -71,9 +71,3 @@
         
     }
 }
-
-
-
-
-
-

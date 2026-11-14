@@ -1,25 +1,4 @@
-// ═══════════════════════════════════════════════════════════════════
-// FONTS
-// ═══════════════════════════════════════════════════════════════════
-// Google Fonts → installed with npm and imported in src/style/fonts.ts (Fontsource).
-//                Nothing to download by hand and nothing loaded from Google.
-//
-// Other fonts  → (commercial, or not on Google) put the .ttf/.otf in src/style/fonts/<Name>/,
-//                run `npm run fonts` to make a small .woff2, and add an @font-face below
-//                pointing to the .woff2 (copy one of the existing ones).
-//
-// Every class has fallbacks, shown for a moment while the font loads (font-display: swap).
 
-// ── Local fonts (not on Google Fonts) ─────────────────────────────────
-// None yet. Example:
-// @font-face {
-// 	font-family: 'Bison';
-// 	src: url('../fonts/Bison/Bison-Bold.woff2') format('woff2');
-// 	font-display: swap;
-// }
-
-// ── Font classes ──────────────────────────────────────────────────────
-// Google fonts (see src/style/fonts.ts)
 .font-inter {
 	font-family: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif !important;
 }

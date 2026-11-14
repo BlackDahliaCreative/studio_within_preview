@@ -1,5 +1,4 @@
     @use '../../pages/shared';
-    // ── Gallery ─────────────────────────────────────────────────────
     @include shared.gallery(550px, 46px, 23px, "362 / 202");
     .section-gallery {
         margin-top: 117px;

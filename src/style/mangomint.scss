@@ -1,11 +1,6 @@
-// Mangomint booking side panel (added to the page by booking.mangomint.com/app.js).
-// Only the overlay and the iframe's frame can be styled; the booking content inside
-// the iframe is on Mangomint's domain and can't be reached from here.
-// Mangomint sets some of these as inline styles, hence the !important.
 
 .mangomint-booking-app-container {
-    // Warm brown tint instead of flat black, with a soft blur behind it
-    background-color: rgba(255, 153, 0, 0.55) !important; // --text-brown-color
+    background-color: rgba(255, 153, 0, 0.55) !important;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
 
@@ -40,7 +35,6 @@
     }
 }
 
-// Mangomint only fades the overlay in, so slide the panel in from the left
 .mangomint-booking-app-container-visible .mangomint-booking-app-iframe {
     animation: mangomint-panel-in 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -56,7 +50,6 @@
     }
 }
 
-// Full width on phones
 @media (max-width: 500px) {
     .mangomint-booking-app-iframe {
         max-width: 100% !important;

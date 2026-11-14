@@ -112,7 +112,11 @@ const Landing = () => {
             <div className="flex flex-column flex-alignItems-center" id="logo_btn_landing">
                 {/* The logo is the page's main heading (search engines and screen readers need one) */}
                 <h1 className="landingHero__title">
-                    <img className="logo_partner" src={publicUrl('/logos/black_primary_logo.png')} width={840} height={694} alt="Studio Within Salon" />
+                    {/* Black logo on phones, white on bigger screens. The browser downloads only one. */}
+                    <picture>
+                        <source media="(max-width: 767.98px)" srcSet={publicUrl('/logos/black_primary_logo-400.webp')} width={400} height={330} />
+                        <img className="logo_partner" src={publicUrl('/logos/white_primary_logo-840.webp')} width={840} height={694} alt="Studio Within Salon" />
+                    </picture>
                 </h1>
                 <p className="landingHero__tagline">Chicago’s curly hair salon · Curl cuts, color &amp; care</p>
                 <Link to={'/home-page'} className="linkBtn">ENTER HERE</Link>

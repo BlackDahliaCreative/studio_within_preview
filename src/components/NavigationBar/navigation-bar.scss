@@ -19,7 +19,6 @@
         white-space: nowrap;
         &:not(:last-child) { margin-right: 27px; }
         position: relative;
-        // &:hover { text-decoration: underline; text-underline-offset: 6px; }
         &::after {
             content: '';
             position: absolute;
@@ -41,7 +40,6 @@
         padding-left: 30px;
     }
 
-    // "Get In Touch" dropdown. Shows on hover, or when clicked (--open).
     .navDropdown {
         position: relative;
 
@@ -64,7 +62,6 @@
             transition: transform 0.25s ease, margin 0.25s ease;
         }
 
-        // padding-top bridges the gap under the label so hover isn't lost on the way down
         &__menu {
             position: absolute;
             top: 100%;
@@ -137,7 +134,6 @@
         }
     }
 
-    // Home page: no bar colour, white links centred over the hero photo
     &--home {
         justify-content: center;
         padding: 0;
@@ -145,16 +141,12 @@
         .navLinks { color: #fff; }
         transition: opacity 0.4s ease;
 
-        // While the page loader shows, the white links vanish on the white loader
-        // and only the active link's underline would show, floating on its own.
-        // So the see-through home menu hides until the page is there, then fades in.
         .App:has(.page-loader) & {
             opacity: 0;
             pointer-events: none;
         }
     }
 
-    // Narrower desktops: smaller links so they still fit beside the logo
     @media (max-width: 1199.98px) {
         .navLinks {
             font-size: 11pt;

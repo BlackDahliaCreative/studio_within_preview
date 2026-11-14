@@ -11,6 +11,7 @@ import ButtonLink from "./ButtonLink";
 import { BOOKING_URL } from "../../utils/booking";
 
 import '../GetInTouch/get-in-touch.scss'
+import { useNewTabOnDesktop } from "../../utils/useMediaQuery"
 
 const EMAIL = 'swssdesk@gmail.com'
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Studio+Within+Salon+5720+N+Western+Ave+Chicago+IL+60659'
@@ -54,6 +55,8 @@ const Photo = ({ src, alt, className }: { src: string, alt: string, className: s
 }
 
 const NewClientPopup = ({isOpen, onClose, className}: NewClientPopupProps) => {
+    // Links to other sites: new tab on desktop, same tab on phones and tablets
+    const newTab = useNewTabOnDesktop()
         const { ref: thingsToDo, inView: thingsToDoInView } = useInView({
             threshold: 1,
             triggerOnce: false, // keep toggling when leaving/entering view
@@ -144,7 +147,7 @@ const NewClientPopup = ({isOpen, onClose, className}: NewClientPopupProps) => {
                 <section className="new-client-contact mt-30" aria-label="Contact details">
                     <div className="new-client-contact__details flex flex-justifyContent-center">
                         <address>
-                            <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
+                            <a href={MAPS_URL} {...newTab}>
                                 5720 N Western Ave<br />Chicago, IL 60659
                             </a>
                         </address>

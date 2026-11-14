@@ -6,11 +6,8 @@
     flex-direction: column;
     justify-content: center;
 
-
 }
 
-// The prompt text every empty pill shows: placeholders, the dropdown prompt,
-// and the "Upload Resume" / "Available Start Date" labels. One look for all.
 @mixin pill-prompt {
     color: #000000bb;
     font-weight: 300;
@@ -23,8 +20,6 @@
     font-size: 14px !important;
 }
 
-// ── Application form (Figma "Let's get to know you") ───────────────
-// Cream pills in a 2-column grid inside a cream-outlined card.
 .careers-form {
     --pill-height: 44px;
     width: 100%;
@@ -59,7 +54,6 @@
         min-width: 0;
     }
 
-    // Shared pill look for inputs, the select, the textarea and the file/date rows
     &__input {
         box-sizing: border-box;
         width: 100%;
@@ -85,8 +79,6 @@
 
     }
 
-    // Position: the shared DropdownSelect, restyled to the design.
-    // Closed it's a pill; open, the pill squares off at the bottom and a white list hangs under it.
     &__dropdown.dropdown {
         display: block;
         width: 100%;
@@ -139,9 +131,8 @@
         transition: transform 0.2s ease, margin 0.2s ease;
     }
 
-    // Resume and start date: label on the left, value on the right
     &__split {
-        position: relative; // keeps the hidden file input inside the pill
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -151,11 +142,10 @@
     }
     &__hint {
         overflow: hidden;
-        color: #666666; // 4.9:1 on the cream pills (WCAG AA)
+        color: #666666;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    // The real file input is invisible; the pill around it opens the picker
     &__file {
         position: absolute;
         width: 1px;
@@ -164,7 +154,6 @@
         pointer-events: none;
     }
     &__date {
-        // Take the space left of the label (and no more), date text next to the icon
         flex: 1 1 auto;
         min-width: 0;
         width: fit-content;
@@ -172,7 +161,7 @@
         padding: 0;
         background: transparent;
         border: 0;
-        color: #666666; // 4.9:1 on the cream pills (WCAG AA)
+        color: #666666;
         font: inherit;
         cursor: pointer;
         &:focus { outline: none; color: #000; }
@@ -189,15 +178,14 @@
     &__count {
         align-self: flex-end;
         padding-right: 12px;
-        color: #666666; // 4.9:1 on the cream pills (WCAG AA)
+        color: #666666;
         font-size: 11px;
     }
 
-    // Small note under a field, on the right (e.g. resume "Max upload")
     &__note {
         align-self: flex-end;
         padding-right: 12px;
-        color: #666666; // 4.9:1 on the cream pills (WCAG AA)
+        color: #666666;
         font-size: 11px;
         text-align: right;
 
@@ -232,9 +220,6 @@
         text-align: center;
     }
 }
-// Careers "thanks" popup only. Scoped with its own class: once this file has loaded it
-// stays loaded on every page, so a plain `.popup` rule here would restyle the
-// home page's new-client popup too. Shared popup rules live in components/Popup/popup.scss.
 .popup.careers-thanks {
     * {margin:0px}
     padding: 40px;

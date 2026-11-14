@@ -2,6 +2,7 @@ import './footer.scss'
 import { Link, useLocation } from 'react-router-dom'
 import { publicUrl } from '../../utils/publicUrl'
 import { navLinks, navLinksDropdown } from '../NavigationBar/navLinks'
+import { useNewTabOnDesktop } from "../../utils/useMediaQuery"
 
 // Same links as the navbar (shared list), so the two menus never drift apart
 const links = [...navLinks, ...navLinksDropdown]
@@ -14,6 +15,8 @@ const socials = [
 ]
 
 const Footer = () => {
+    // Links to other sites: new tab on desktop, same tab on phones and tablets
+    const newTab = useNewTabOnDesktop()
     const pageShowing = useLocation().pathname
     return (
         <footer className={ pageShowing === '/' ? 'hide': 'footer'}>
@@ -31,7 +34,7 @@ const Footer = () => {
 
             <div className="footer__socials">
                 {socials.filter(s => s.href !== '#').map(s => (
-                    <a key={s.name} className={`footer__social footer__social--${s.name}`} href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer">
+                    <a key={s.name} className={`footer__social footer__social--${s.name}`} href={s.href} aria-label={s.label} {...newTab}>
                         <img src={publicUrl(`/images/footer/${s.name}-frame.svg`)} alt="" />
                         <img className="footer__social-logo" src={publicUrl(`/images/footer/${s.name}-logo.svg`)} alt="" />
                     </a>
@@ -40,7 +43,7 @@ const Footer = () => {
 
             <p className="footer__credit">
                 Website by:{' '}
-                <a href="https://blackdahliacreative.com" target="_blank" rel="noopener noreferrer">Black Dahlia Creative</a>
+                <a href="https://blackdahliacreative.com" {...newTab}>Black Dahlia Creative</a>
             </p>
         </footer>
     )

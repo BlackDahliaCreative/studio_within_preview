@@ -2,6 +2,7 @@ import { useRef } from "react"
 import { motion, useReducedMotion, useScroll, useTransform, type Variants } from "framer-motion"
 import { publicUrl } from "../../utils/publicUrl"
 import ButtonLink from "./ButtonLink"
+import { useNewTabOnDesktop } from "../../utils/useMediaQuery"
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -29,6 +30,8 @@ const item: Variants = {
 }
 
 const SustainSection = ({ bookingUrl }: { bookingUrl: string }) => {
+    // Links to other sites: new tab on desktop, same tab on phones and tablets
+    const newTab = useNewTabOnDesktop()
     const sectionRef = useRef<HTMLElement>(null)
     const reduceMotion = useReducedMotion()
 
@@ -54,7 +57,7 @@ const SustainSection = ({ bookingUrl }: { bookingUrl: string }) => {
             <motion.div className="home-sustain__content" variants={content}>
                 <motion.h2 className="home-sustain__title" variants={item}>Care that goes beyond the chair...</motion.h2>
                 <motion.p variants={item}>At Studio Within, caring for your hair also means caring about the world around us. Through our partnership with Green Circle Salons, we’re able to divert and repurpose up to 85–95% of salon waste, including foils, color tubes, hair, plastics, and excess color. It’s one small way we’re working to leave things a little better than we found them.</motion.p>
-                <motion.a className="home-sustain__more" variants={item} href="https://greencirclesalons.com" target="_blank" rel="noopener noreferrer">Read more →</motion.a>
+                <motion.a className="home-sustain__more" variants={item} href="https://greencirclesalons.com" {...newTab}>Read more →</motion.a>
                 <motion.div variants={item}>
                     <ButtonLink to={bookingUrl}>Book now</ButtonLink>
                 </motion.div>

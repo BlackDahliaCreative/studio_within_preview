@@ -36,9 +36,6 @@ main {
   }
 }
 
-// Both menus are always in the page; CSS shows the right one for the screen size.
-// (Switching them with JavaScript made phone pages jump once the page loaded.)
-// Keep the breakpoint in sync with $sm-min-breakpoint in settings/_layout.scss.
 .nav-desktop { display: block; }
 .nav-mobile  { display: none; }
 
@@ -50,4 +47,3 @@ main {
 body {
   background-color: var(--page-primary-background);
 }
-

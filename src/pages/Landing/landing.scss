@@ -23,7 +23,6 @@
         }
     }
 
-    
     #logo_btn_landing {
         position: absolute;
         right: 8%;
@@ -47,7 +46,7 @@
             letter-spacing: 0.12em;
             text-align: center;
             text-transform: uppercase;
-            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45); // readable over the moving video
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
             max-width: calc(100vw - 48px);
             @media (max-width: 767.98px) {
                 font-size: 9pt;

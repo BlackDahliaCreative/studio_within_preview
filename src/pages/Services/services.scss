@@ -1,9 +1,6 @@
 @use 'sass:math';
 @use '../shared';
 
-// Services page. Measurements come from the Figma "services" frame (1440px wide).
-// Each service sits in a 1279px band; text and photo share the band, and the
-// side the photo is on alternates.
 @function band($px) {
     @return math.percentage(math.div($px, 1279));
 }
@@ -16,7 +13,6 @@
 
     @include shared.buttons;
 
-    // ── Heading ─────────────────────────────────────────────────────
     .services-intro {
         margin-top: 40px;
         padding: 0 var(--padding-md);
@@ -37,7 +33,6 @@
         font-weight: 400;
         line-height: 26pt;
         letter-spacing: 1pt;
-        // Soft grey bar behind the first sentence
         span {
             background: rgba(223, 223, 223, 0.37);
             -webkit-box-decoration-break: clone;
@@ -45,7 +40,6 @@
         }
     }
 
-    // ── Service bands ───────────────────────────────────────────────
     .services-list {
         display: flex;
         flex-direction: column;
@@ -62,9 +56,8 @@
         padding: 56px ;
 
         &--grey  { background: #EEEEEE; }
-        &--cream { background: rgba(235, 219, 189, 0.36); } // --primary-color at 36%
+        &--cream { background: rgba(235, 219, 189, 0.36); }
 
-        // Photo on the left: swap the columns
         &--photo-left {
             grid-template-columns: 2.1fr 1.1fr;
             .service-group__photo { order: -1; }
@@ -99,7 +92,6 @@
         letter-spacing: 1pt;
     }
 
-    // Photo frame: the image inside drifts on scroll (see Photo in Services.tsx)
     .service-group__photo {
         width: 100%;
         height: 100%;
@@ -115,7 +107,6 @@
         }
     }
 
-    // ── Pricing note + stylist button ───────────────────────────────
     .services-pricing {
         display: flex;
         flex-direction: column;
@@ -133,12 +124,10 @@
         letter-spacing: 1pt;
     }
 
-    // ── Smaller screens ─────────────────────────────────────────────
     @media (max-width: 1199.98px) {
         .service-group { padding: 48px var(--padding-lg); column-gap: 40px; }
     }
 
-    // One column: photo on top, then the list
     @media (max-width: 899.98px) {
         .services-list { gap: 20px; }
         .service-group,

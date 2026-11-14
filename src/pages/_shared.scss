@@ -1,7 +1,4 @@
-// Styles shared by several pages. Include them inside a page's id selector
-// (e.g. `#homePage { @include shared.buttons; }`) so they stay scoped to that page.
 
-// Brown "book now" button (dark) and the cream one used on photos (light). Used by ButtonLink.
 @mixin buttons {
     .home-btn {
         display: inline-flex;
@@ -36,8 +33,6 @@
     }
 }
 
-// Cream photo band with a 3-column grid. Used by GallerySection.
-// The page sets the margin, padding and any per-photo crops.
 @mixin gallery($column-max, $column-gap, $row-gap, $aspect-ratio) {
     .section-gallery {
         background: var(--cream-color);
@@ -53,12 +48,11 @@
         }
         img {
             width: 100%;
-            aspect-ratio: #{$aspect-ratio}; // passed as a string, e.g. "362 / 202"
+            aspect-ratio: #{$aspect-ratio};
             object-fit: cover;
             display: block;
         }
 
-        // Hover: the photo under the cursor slowly zooms inside its frame
         @media (hover: hover) {
             .section-gallery__frame:hover .section-gallery__zoom { transform: scale(1.04); }
         }

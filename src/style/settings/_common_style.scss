@@ -24,21 +24,16 @@
 
 }
 
-/* ── Accessibility: keyboard focus ───────────────────────────────────────── */
-
-/* Remove default outline only when not navigating by keyboard */
 *:focus:not(:focus-visible) {
     outline: none;
 }
 
-/* Visible focus ring for keyboard users */
 *:focus-visible {
     outline: 2px solid var(--color-focus, #4a90e2);
     outline-offset: 3px;
     border-radius: 3px;
 }
 
-/* Skip-to-content link — hidden off-screen until focused */
 .skip-link {
     background: var(--color-focus, #4a90e2);
     color: #fff;
@@ -59,7 +54,6 @@
     }
 }
 
-/* Hamburger button reset — removes default button appearance */
 button.hambContainer {
     background: none;
     border: none;
@@ -67,7 +61,6 @@ button.hambContainer {
     padding: 0;
 }
 
-/* ── SCROLLBAR SETTINGS ──────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
 	width: 8px !important;
 }

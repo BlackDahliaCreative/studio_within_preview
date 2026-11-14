@@ -9,17 +9,14 @@ $secondary-color: #D9D9D9;
 
     --primary-color: #EBDBBD;
     --secondary-color: #D9D9D9;
-    --brown-color: #7B725F;        /* buttons */
-    --text-brown-color: #544939;   /* soft body text */
-    --cream-color: #F1ECE2;        /* light buttons, gallery band */
-    --light-gray-color: #EEEEEE;   /* section backgrounds */
-    --accent-purple-color: #B610AB; /* band behind the "who we are" photo */
+    --brown-color: #7B725F;
+    --text-brown-color: #544939;
+    --cream-color: #F1ECE2;
+    --light-gray-color: #EEEEEE;
+    --accent-purple-color: #B610AB;
 
+    --color-focus: #EBDBBD;
 
-    /*==== ACCESSIBILITY ====*/
-    --color-focus: #EBDBBD;         /* keyboard focus ring — update to match brand */
-
-    /*==== GENERAL ====*/
     --padding-xs: 5px;
     --padding-sm: 10px;
     --padding-md: 20px;
@@ -27,14 +24,11 @@ $secondary-color: #D9D9D9;
     --padding-xl: 40px;
     --h-100: 100;
 
-
-    /*==== NAVIGATION BAR ====*/
     --navbar-height: 82px;
     --navbar-background: #ffffff;
     --navbar-fontsize: 16pt;
     --navbar-fontFamily: var(--primary-font-family);
     --navbar-fontWeight: 500;
 
-    /*==== FOOTER ====*/
     --footer-height: 60px;
 }

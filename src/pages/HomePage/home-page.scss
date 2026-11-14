@@ -1,15 +1,12 @@
 @use '../shared';
 
-// Home page. Measurements come from the Figma "Home" frame (1440px wide).
 #homePage {
     padding: 0px !important;
     overflow-x: clip;
     color: var(--primary-font-color);
 
-    // ── Shared bits ─────────────────────────────────────────────────
     @include shared.buttons;
 
-    // Vertical label on the left side of a section
     .side-label {
         position: absolute;
         margin: 0;
@@ -29,7 +26,6 @@
         letter-spacing: 0.04em;
         text-align: center;
         font-family: var(--secondary-font-family);
-        // White bar behind the lower half of the heading
         .highlight {
             padding: 0 18px;
             background: linear-gradient(to bottom, transparent 52%, #fff 52%, #fff 92%, transparent 92%);
@@ -37,7 +33,6 @@
             box-decoration-break: clone;
         }
         &--italic {
-            // font-style: italic;
             font-weight: 500;
             text-transform: uppercase;
         }
@@ -49,14 +44,13 @@
         }
     }
 
-    // ── Hero ────────────────────────────────────────────────────────
     #landing_hero {
         height: 100dvh;
         min-height: 600px;
         width: 100%;
         margin-top: calc(var(--navbar-height) * -1);
         position: relative;
-        overflow: hidden; // keeps the zoomed photo inside the hero
+        overflow: hidden;
         #home_hero {
             will-change: transform;
             object-fit: cover;
@@ -105,15 +99,8 @@
             }
         }
 
-        // ── Entrance animation (plays once when the page opens) ─────────────
-        // Pure CSS, so it also runs on the pre-rendered page before JavaScript loads.
-        // Uses the separate `scale` / `translate` properties: they stack on top of
-        // the scroll zoom (framer-motion's inline `transform` on the photo) and the
-        // phone layout's `transform` on the logo instead of replacing them.
-        // Timeline: veil lifts + photo settles → logo → location → buttons.
-        $hero-ease: cubic-bezier(0.22, 1, 0.36, 1); // quick start, long soft settle
+        $hero-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-        // Cream veil over the photo that lifts away
         &::after {
             content: '';
             position: absolute;
@@ -122,12 +109,6 @@
             pointer-events: none;
             animation: hero-veil 1.6s ease-out both;
         }
-        // Settles in while it starts gliding slowly left and right and turning a little,
-        // like she's turning her face, forever: 30s each way, easing gently at each end.
-        // It stays at 110%, not 100%: that spare room keeps the photo's edges hidden
-        // while it drifts and turns.
-        // Depth for the turn (smaller = stronger 3D effect). Grows with the screen width,
-        // so the turn looks the same on a phone and on an ultra-wide monitor.
         perspective: max(1500px, 110vw);
         #home_hero {
             animation:
@@ -135,7 +116,7 @@
                 hero-photo-drift 20s ease-in-out infinite alternate;
         }
         #logo_home {
-            z-index: 2; // above the veil
+            z-index: 2;
             animation: hero-rise-in 1s $hero-ease 0.7s both;
             .logo_partner {
                 animation: hero-rise-in 1s $hero-ease 0.7s both;
@@ -146,12 +127,10 @@
         }
         .hero_buttons {
             z-index: 2;
-            // Both together, a slow fade with a small lift (no blur), so they don't "pop"
             > * { animation: hero-buttons-in 1s ease-out 1s both; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            // Keep it calm: just soft fades, no zoom or movement
             #home_hero { animation: none; }
             &::after { animation-duration: 0.8s; }
             #logo_home .logo_partner,
@@ -168,10 +147,6 @@
         from { scale: 1.16; }
         to   { scale: 1.1; }
     }
-    // Drift + turn around the vertical axis. Checked to keep the edges covered
-    // (with scale 1.1 and the perspective above): 15-35px to spare on every screen
-    // from phones to 3440px ultra-wide. If you make the drift or turn bigger,
-    // raise the 1.1 above too.
     @keyframes hero-photo-drift {
         0%   {scale: 1.2; translate: -3% 0; rotate: 0 1 0 -7deg; animation-timing-function: ease-in; }
         50%  { translate: 0 0;   rotate: 1 0 0 3deg;  animation-timing-function: ease-out; }
@@ -194,7 +169,6 @@
         to   { opacity: 1; }
     }
 
-    // ── Welcome ─────────────────────────────────────────────────────
     .home-welcome {
         position: relative;
         background: var(--light-gray-color);
@@ -210,8 +184,6 @@
             font-weight: 500;
             z-index: 3;
             rotate: 180deg;
-            // transform: rotate(180deg);
-            // Tan bar behind the label
             &::before {
                 content: '';
                 position: absolute;
@@ -233,7 +205,6 @@
         }
     }
 
-    // ── Who we are ──────────────────────────────────────────────────
     .home-about {
         position: relative;
         padding: 101px 45px 94px;
@@ -252,6 +223,7 @@
             letter-spacing: 0.06em;
             text-align: center;
             text-transform: uppercase;
+            display: block;
         }
         .home-about__image {
             position: relative;
@@ -271,7 +243,7 @@
         .home-about__label {
             position: absolute;
             top: 100px;
-            left: 50%; // true centre at every width
+            left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
             margin: 0;
@@ -288,13 +260,10 @@
             width: fit-content;
             justify-self: center;
             z-index: 22;
-            //  mix-blend-mode: overlay;
             &::after {
-                // content: '';
                 display: block;
                 width: 110%;
                 height: 20px;
-                // background-color: #000;
                 position: absolute;
                 bottom: 15px;
                 left: -5%;
@@ -305,7 +274,7 @@
         .home-about__card {
             position: relative;
             width: min(1000px, 100%);
-            margin-top: -489px; // overlaps the lower part of the photo
+            margin-top: -489px;
             padding: 47px 29px 55px 30px;
             background: rgba(249, 249, 249, 0.85);
             font-size: 17px;
@@ -317,7 +286,6 @@
         }
     }
 
-    // ── Sustainability ──────────────────────────────────────────────
     .home-sustain {
         display: flex;
         align-items: flex-start;
@@ -333,7 +301,6 @@
             padding: 121px 0 122px 163px;
             isolation: isolate;
         }
-        // Tan block behind the photo; it stretches to the left edge of the screen
         .home-sustain__block {
             position: absolute;
             top: 0;
@@ -343,7 +310,6 @@
             background: var(--primary-color);
             z-index: -1;
         }
-        // Photo frame: the photo zooms inside it, and the frame moves for the parallax
         .home-sustain__photo {
             width: 496px;
             height: 568px;
@@ -400,7 +366,6 @@
         }
     }
 
-    // ── Reviews ─────────────────────────────────────────────────────
     .home-reviews {
         background: var(--light-gray-color);
         padding: 46px var(--padding-md) 0;
@@ -408,28 +373,19 @@
         flex-direction: column;
         align-items: center;
 
-        // Row of reviews that scrolls left on its own (see ReviewsMarquee.tsx)
         .home-reviews__marquee {
             position: relative;
-            width: calc(100% + 2 * var(--padding-md)); // runs edge to edge
+            width: calc(100% + 2 * var(--padding-md)); 
             margin: 87px 0 93px;
         }
         .home-reviews__viewport {
             overflow: hidden;
             display: flex;
             align-items: center;
-            // Sideways finger swipes drag the row (ReviewsMarquee.tsx);
-            // up/down swipes still scroll the page
             touch-action: pan-y;
             user-select: none;
             -webkit-user-select: none;
         }
-        // All cards (reviews + their copies) sit straight in this row. It's as wide
-        // as the screen; the cards run on past its edge, side by side, and the row
-        // is slid with `transform`. Don't size it to its content (max-content):
-        // Safari measures that as if every review were one unwrapped line, which
-        // left a long empty stretch in the loop. The loop length is measured from
-        // the cards themselves in ReviewsMarquee.tsx.
         .home-reviews__track {
             flex: 1 0 100%;
             min-width: 0;
@@ -480,22 +436,14 @@
                 text-transform: capitalize;
             }
         }
-        // Hover grow, for devices with a real mouse only (phones can't hover).
         @media (hover: hover) and (pointer: fine) {
-            // Cut off the cards at the sides only, so a hovered card can grow up and
-            // down as much as it likes. Must be `clip`, not `hidden`: with `hidden` on
-            // one axis, the browser turns `visible` on the other into `auto`, which
-            // cuts off the top and bottom too.
             .home-reviews__viewport {
                 overflow-x: clip;
                 overflow-y: visible;
             }
             .home-review {
-                position: relative; // lets the hovered card sit above its neighbours
+                position: relative; 
                 transition: scale 0.35s ease, box-shadow 0.35s ease;
-
-                // Added by ReviewsMarquee.tsx while the mouse is over the card.
-                // The row first slides an edge card fully into view, then it grows.
                 &.is-hovered {
                     z-index: 1;
                     scale: 1.1;
@@ -503,12 +451,9 @@
                 }
             }
         }
-
-        // The button sits half in, half out of the grey band
         .home-btn { margin-bottom: -20px; position: relative; z-index: 1; }
     }
 
-    // ── New Client Popup ─────────────────────────────────────────────────────
     .newClientPopup {
         --ncp-gutter: 64px;
         width: min(92vw, 1160px);
@@ -518,7 +463,6 @@
         padding: 56px 0 48px;
         h3, h4, h5, p { margin: 0; }
 
-        // ── Intro ───────────────────────────────────────
         header {
             padding: 0 var(--ncp-gutter);
             text-align: center;
@@ -542,7 +486,6 @@
             }
         }
 
-        // ── Things To Know ───────────────────────────────────────
         .new-client__things-to-know {
             padding: 0 var(--ncp-gutter);
             margin-top: 48px;
@@ -551,7 +494,7 @@
                 font-size: 18px;
                 letter-spacing: 0.3px;
                 font-weight: 500;
-                margin-bottom: 28px; // room for the animated underline
+                margin-bottom: 28px;
                 position: relative;
                 width: fit-content;
                 &::after {
@@ -564,7 +507,7 @@
                     width: 0%;
                 }
                 &.titleInView::after {
-                    width: 130%;
+                    width: 103%;
                 }
             }
             p {
@@ -592,7 +535,6 @@
                 letter-spacing: 0.3px;
                 margin-top: 28px;
                 a {
-                    // text-decoration: none;
                     color: black;
                     text-underline-offset: 2px;
                     font-style: italic;
@@ -603,7 +545,6 @@
         address a {
             color: #000 !important;
         }
-        // ── Hours ───────────────────────────────────────
         .new-client-hours {
             background-color: #ebdbbd63;
             display: grid;
@@ -664,7 +605,6 @@
             }
         }
 
-        // ── Address, notes and booking buttons ──────────────────
         .new-client-contact {
             padding: 0 var(--ncp-gutter);
             p { margin-top: 12px; line-height: 1.6; }
@@ -678,7 +618,6 @@
             padding: 0 var(--ncp-gutter);
         }
 
-        // ── Phones ──────────────────────────────────────────
         @media (max-width: 767.98px) {
             --ncp-gutter: 20px;
             max-width: 100dvw;
@@ -702,7 +641,6 @@
                 letter-spacing: 0.3px;
                 margin-bottom: 6px;
             } 
-            // The 130% underline would run off a narrow screen
             .new-client__things-to-know h4.titleInView::after { width: 100%; }
             .new-client-hours {
                 grid-template-columns: 1fr;
@@ -719,7 +657,6 @@
         }
     }
 
-    // ── Smaller screens ─────────────────────────────────────────────
     @media (max-width: 1199.98px) {
         .home-sustain {
             flex-direction: column;
@@ -750,6 +687,10 @@
     }
 
     @media (max-width: 767.98px) {
+        .home-about__band {
+            display: flex !important;
+            flex-direction: column;
+        }
         #landing_hero {
             margin-top: 0px !important;
             #logo_home { 
@@ -799,7 +740,7 @@
             .home-about__label {
                 font-size: 20pt;
                 line-height: 1.2;
-                top: 22%; // up on the hair colours
+                top: 22%;
             }
         }
         .home-sustain {
@@ -820,7 +761,6 @@
         }
         .home-reviews {
             .home-reviews__marquee { margin: 40px 0; }
-            // Phones swipe the row with a finger instead
             .home-reviews__arrow { display: none; }
             .home-review { flex-basis: 300px; padding: 20px; }
         }
