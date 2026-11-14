@@ -6,6 +6,7 @@ import { publicUrl } from "../../utils/publicUrl"
 import { BOOKING_URL } from "../../utils/booking"
 import ButtonLink from "../HomePage/ButtonLink"
 import { fetchPriority } from "../../utils/fetchPriority"
+import GiftCardSection from "../../components/GiftCardSection/GiftCardSection"
 
 type ServiceGroup = {
     id: string
@@ -172,6 +173,8 @@ const Services = () => {
                 <p className="services-pricing__text">Pricing is based on your stylist and service needs.</p>
                 <ButtonLink to="/meet-the-team/">Find the stylist that’s right for you</ButtonLink>
             </section>
+
+            <GiftCardSection />
         </div>
     )
 }

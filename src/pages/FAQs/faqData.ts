@@ -2,12 +2,13 @@
 // Each answer is a list of paragraphs. Links use [label](href):
 // "/..." goes to a page on the site, "tel:..." opens the phone app.
 
+import { GIFT_CARDS_URL } from "../../utils/booking"
+
 export type Faq = { q: string, a: string[] }
 export type FaqGroup = { title: string, items: Faq[] }
 
 export const PHONE_DISPLAY = '(773) 348-9323'
 export const PHONE_HREF = 'tel:+17733489323'
-export const GIFT_CARDS_URL = 'https://clients.mangomint.com/gift-cards/studiowithinsalonandspa'
 
 export const faqGroups: FaqGroup[] = [
     {

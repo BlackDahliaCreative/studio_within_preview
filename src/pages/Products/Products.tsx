@@ -9,6 +9,7 @@ import GallerySection from "../../components/GallerySection/GallerySection"
 
 import "./products.scss"
 import { fetchPriority } from "../../utils/fetchPriority"
+import GiftCardSection from "../../components/GiftCardSection/GiftCardSection"
 
 // Salon photos in the cream band at the bottom, in the order they appear in Figma
 const gallery = [
@@ -79,6 +80,8 @@ const products = () => {
                 
                 </div>
             </div>
+
+            <GiftCardSection />
 
             <GallerySection photos={gallery} folder="product" label="Inside the salon" />
         </div>

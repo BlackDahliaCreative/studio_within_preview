@@ -4,7 +4,7 @@
     @include shared.buttons;
 
     .git-intro {
-        margin-top: 40px;
+        margin-top: 110px;
         padding: 0 var(--padding-md);
         text-align: center;
     }
@@ -188,7 +188,7 @@
         }
     }
 
-    @media (min-width: 1301px) {
+    @media (min-width: 1250px) {
         #stylist_cards_section .single_stylist_card {
             flex: 0 0 calc((100% - 3 * var(--card-gap)) / 4);
         }
@@ -203,6 +203,9 @@
             .single_stylist_card {
                 flex: 0 0 calc((100% - var(--card-gap)) / 2);
             }
+        }
+        .stylist_card--Jacob-Greenfield .stylist_image {
+            transform: scale(1);
         }
     }
     @media (max-width: 480px) {

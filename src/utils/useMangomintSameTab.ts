@@ -1,7 +1,8 @@
 import { useEffect } from "react"
 
 // Mangomint's script (booking.mangomint.com/app.js, loaded in index.html) catches every
-// click on a booking.mangomint.com link. On desktop it opens its booking overlay in the
+// click on a booking.mangomint.com link, and on clients.mangomint.com/gift-cards/<company id>
+// links (gift cards). On desktop it opens its booking overlay in the
 // page, which is fine. On iPhones/iPads and screens up to 767px it calls
 // window.open(url, "_blank") instead, so phones got a new tab for every "Book now".
 //
@@ -16,7 +17,8 @@ export const useMangomintSameTab = () => {
         const onClick = (e: MouseEvent) => {
             // Let ctrl/cmd/shift/middle clicks do what the visitor asked for
             if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
-            const link = (e.target as Element | null)?.closest?.<HTMLAnchorElement>('a[href*="booking.mangomint.com"]')
+            // Booking links and clients.mangomint.com links (gift cards, memberships, packages)
+            const link = (e.target as Element | null)?.closest?.<HTMLAnchorElement>('a[href*="booking.mangomint.com"], a[href*="clients.mangomint.com"]')
             if (!link || !mangomintWouldOpenNewTab()) return
             e.stopPropagation() // Mangomint never sees the click
             e.preventDefault()

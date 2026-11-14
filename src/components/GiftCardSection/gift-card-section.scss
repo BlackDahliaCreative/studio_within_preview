@@ -1,0 +1,55 @@
+@use '../../pages/shared';
+
+.gift-card-section {
+    @include shared.buttons;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    padding: 56px var(--padding-md);
+    text-align: center;
+
+    &__title {
+        margin: 0;
+        color: var(--text-brown-color);
+        font-size: 24pt;
+        font-weight: 400;
+        line-height: 1.3;
+        letter-spacing: 1pt;
+    }
+
+    &__text {
+        max-width: 520px;
+        margin: 14px 0 28px;
+        font-size: 12pt;
+        font-weight: 300;
+        line-height: 1.7;
+        letter-spacing: 0.5pt;
+    }
+
+    .home-btn {
+        min-width: 297px;
+        border: 1px solid var(--text-brown-color);
+        color: var(--text-brown-color);
+    }
+
+    @media (max-width: 767.98px) {
+        padding: 40px var(--padding-md);
+
+        &__title {
+            font-size: 18pt;
+        }
+
+        &__text {
+            font-size: 11pt;
+        }
+
+        .home-btn {
+            min-width: 0;
+            width: 100%;
+            max-width: 416px;
+        }
+    }
+}
