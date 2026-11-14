@@ -8,6 +8,7 @@ import { PHONE_HREF } from "../FAQs/faqData"
 import ButtonLink from "../HomePage/ButtonLink"
 import GallerySection from "../../components/GallerySection/GallerySection"
 import NewsletterForm from "./NewsletterForm"
+import { fetchPriority } from "../../utils/fetchPriority"
 
 const EMAIL = 'swssdesk@gmail.com'
 const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Studio+Within+Salon+5720+N+Western+Ave+Chicago+IL+60659'
@@ -49,7 +50,7 @@ const Photo = ({ src, alt, className, priority = false }: { src: string, alt: st
                     src={publicUrl(`/images/get_in_touch/${src}`)}
                     alt={alt}
                     loading={priority ? "eager" : "lazy"}
-                    fetchPriority={priority ? "high" : "auto"}
+                    {...fetchPriority(priority ? "high" : "auto")}
                     style={reduceMotion ? undefined : { y, scale: 1.25 }}
                 />
             </div>

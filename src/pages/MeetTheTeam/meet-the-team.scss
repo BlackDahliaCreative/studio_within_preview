@@ -348,14 +348,14 @@
     .stylist_education {
         margin-top: 70px;
         padding: 0px 170px ;
-        h1, p {
+        h2, p {
             font-size: 14px;
             letter-spacing: 2px;
         }
         strong {
             font-weight: 500;
         }
-        h1 {
+        h2 {
             
             font-weight: 500;
             text-decoration: underline;
@@ -442,7 +442,7 @@
             .stylist_body_bio { padding-bottom: 30px; }
         }
         .stylist_education {
-            h1, p { letter-spacing: 1px; }
+            h2, p { letter-spacing: 1px; }
         }
         // Swap which Education copy is visible
         .stylist_education--desktop { display: none; }

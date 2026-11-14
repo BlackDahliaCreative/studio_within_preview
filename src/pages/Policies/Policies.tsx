@@ -6,6 +6,7 @@ import { publicUrl } from "../../utils/publicUrl"
 import { BOOKING_URL } from "../../utils/booking"
 import ButtonLink from "../HomePage/ButtonLink"
 import GallerySection from "../../components/GallerySection/GallerySection"
+import { fetchPriority } from "../../utils/fetchPriority"
 
 // Salon photos in the cream band at the bottom, in the order they appear in Figma
 const gallery = [
@@ -47,7 +48,7 @@ const Photo = ({ src, alt, className, priority = false }: { src: string, alt: st
                     src={publicUrl(`/images/policies/${src}`)}
                     alt={alt}
                     loading={priority ? "eager" : "lazy"}
-                    fetchPriority={priority ? "high" : "auto"}
+                    {...fetchPriority(priority ? "high" : "auto")}
                     style={reduceMotion ? undefined : { y, scale: scaleScr }}
                 />
             </div>

@@ -12,7 +12,8 @@
  *   - build/404.html for unknown URLs (noindex)
  *   - build/sitemap.xml and build/robots.txt (official build only)
  *
- * Pages come from src/site.config.json — add new pages there.
+ * Pages come from src/site.config.json — add new pages there — plus the data-driven
+ * pages exported as `extraPages` from src/entry-server.tsx (one per stylist).
  *
  * Runs at the end of `npm run build:preview` / `npm run build:official`, after:
  *   1. vite build        → build/        (the site for browsers)
@@ -75,7 +76,9 @@ const main = async () => {
         console.warn('WARNING: siteUrl in src/site.config.json is still a placeholder, so canonical links are wrong.')
     }
 
-    const { render } = await import(pathToFileURL(serverEntry).href)
+    const { render, extraPages = [] } = await import(pathToFileURL(serverEntry).href)
+    // site.config.json pages plus data-driven ones (stylist bios) from entry-server.tsx
+    const pages = [...site.pages, ...extraPages]
 
     const renderToFile = async (pagePath, outFile) => {
         const { html, head } = await render(pagePath)
@@ -90,7 +93,7 @@ const main = async () => {
         return html
     }
 
-    for (const page of site.pages) {
+    for (const page of pages) {
         const folder = page.path.replace(/^\/+|\/+$/g, '')
         const html = await renderToFile(page.path, path.join(BUILD_DIR, folder, 'index.html'))
         if (/page not found/i.test(html)) {
@@ -108,7 +111,7 @@ const main = async () => {
         console.warn('WARNING: skipping sitemap.xml until siteUrl is filled in.')
     } else {
         const today = new Date().toISOString().slice(0, 10)
-        const urls = site.pages.map((p) => [
+        const urls = pages.map((p) => [
             '  <url>',
             `    <loc>${escapeText(canonicalUrl(p.path))}</loc>`,
             `    <lastmod>${today}</lastmod>`,
@@ -125,7 +128,7 @@ const main = async () => {
             path.join(BUILD_DIR, 'robots.txt'),
             `User-agent: *\nAllow: /\n\nSitemap: ${site.siteUrl}/sitemap.xml\n`
         )
-        console.log(`  ✓ sitemap.xml (${site.pages.length} pages) and robots.txt`)
+        console.log(`  ✓ sitemap.xml (${pages.length} pages) and robots.txt`)
     }
 
     // The Node copy of the app is only needed for this step.

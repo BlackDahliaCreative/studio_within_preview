@@ -9,6 +9,7 @@ import GallerySection from "../../components/GallerySection/GallerySection"
 import ButtonLink from "./ButtonLink"
 import { BOOKING_URL } from "../../utils/booking"
 import NewClientPopup from "./NewClientPopup"
+import { fetchPriority } from "../../utils/fetchPriority"
 
 // Reviews in the scrolling row, in the order they appear in Figma
 const reviews = [
@@ -49,7 +50,7 @@ const Photo = ({ src, alt, className, priority = false }: { src: string, alt: st
                     src={publicUrl(`/images/homepage/${src}`)}
                     alt={alt}
                     loading={priority ? "eager" : "lazy"}
-                    fetchPriority={priority ? "high" : "auto"}
+                    {...fetchPriority(priority ? "high" : "auto")}
                     style={reduceMotion ? undefined : { y, scale: scale }}
                 />
             </div>
@@ -80,7 +81,7 @@ const HomePage = () => {
                     srcSet={`${publicUrl('/images/homepage/homepage_HERO-800.webp')} 800w, ${publicUrl('/images/homepage/homepage_HERO.webp')} 1400w`}
                     sizes="100vw"
                     alt=""
-                    fetchPriority="high"
+                    {...fetchPriority("high")}
                     style={reduceMotion ? undefined : { scale: heroScale, y: heroY }}
                 />
                 <div className="flex flex-column flex-alignItems-center" id="logo_home">

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import { fetchPriority } from "../../utils/fetchPriority"
 
 // Hero photo that turns her head left and right in fake 3D.
 //
@@ -191,7 +192,7 @@ const HeroDepthPhoto = ({ src, srcSet, sizes }: Props) => {
 
     return (
         <>
-            <img ref={imgRef} src={src} srcSet={srcSet} sizes={sizes} alt="" fetchPriority="high" />
+            <img ref={imgRef} src={src} srcSet={srcSet} sizes={sizes} alt="" {...fetchPriority("high")} />
             <canvas ref={canvasRef} aria-hidden="true" />
         </>
     )

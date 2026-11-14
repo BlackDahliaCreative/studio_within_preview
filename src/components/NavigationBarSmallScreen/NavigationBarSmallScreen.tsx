@@ -1,6 +1,6 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import './navigation-bar-small-screen.scss'
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTransition, animated } from "@react-spring/web";
 import { publicUrl } from "../../utils/publicUrl";
 import { navLinks, navLinksDropdown, HOME_PATH } from "../NavigationBar/navLinks";
@@ -8,10 +8,46 @@ import { navLinks, navLinksDropdown, HOME_PATH } from "../NavigationBar/navLinks
 const NavigationBarSmallScreen = () => {
     const path = useLocation().pathname
     const [isExpanded, setIsExpanded] = useState(false)
+    const toggleRef = useRef<HTMLButtonElement>(null)
+    const menuRef = useRef<HTMLElement>(null)
     const toggleLogic = () => {
         setIsExpanded(prevState => !prevState)
     }
     const close = () => setIsExpanded(false)
+
+    // Keyboard and screen reader support while the menu is open:
+    // focus moves into the menu, Tab stays inside it (menu links + the close button),
+    // Escape closes it and puts focus back on the button, and the page behind can't scroll.
+    useEffect(() => {
+        if (!isExpanded) return
+        const focusables = () => [
+            toggleRef.current,
+            ...Array.from(menuRef.current?.querySelectorAll<HTMLElement>('a[href]') ?? []),
+        ].filter((el): el is HTMLElement => el !== null)
+
+        const firstLinkTimer = window.setTimeout(() => focusables()[1]?.focus(), 50)
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setIsExpanded(false)
+                toggleRef.current?.focus()
+                return
+            }
+            if (e.key !== 'Tab') return
+            const items = focusables()
+            const i = items.indexOf(document.activeElement as HTMLElement)
+            const next = e.shiftKey ? (i <= 0 ? items.length - 1 : i - 1) : (i === items.length - 1 ? 0 : i + 1)
+            e.preventDefault()
+            items[next]?.focus()
+        }
+        const prevOverflow = document.body.style.overflow
+        document.body.style.overflow = 'hidden'
+        document.addEventListener('keydown', onKeyDown)
+        return () => {
+            window.clearTimeout(firstLinkTimer)
+            document.removeEventListener('keydown', onKeyDown)
+            document.body.style.overflow = prevOverflow
+        }
+    }, [isExpanded])
     const transitions = useTransition(isExpanded, {
         from: { opacity: 0, height: '0%', width: '0%' },
         enter: { opacity: 1, height: '100%', width: '100%' },
@@ -39,6 +75,7 @@ const NavigationBarSmallScreen = () => {
             )}
 
             <button
+                ref={toggleRef}
                 className="hambContainer"
                 onClick={toggleLogic}
                 aria-expanded={isExpanded}
@@ -54,7 +91,7 @@ const NavigationBarSmallScreen = () => {
 
             {transitions((style, item) =>
                 item ? (
-                    <animated.div style={style} id="smallScreenMenu" role="dialog" aria-label="Navigation menu">
+                    <animated.div style={style} id="smallScreenMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
                         {/* The logo webp has a ~1.5% black haze where it should be
                             transparent, which shows as a grey box on white.
                             This filter turns that near-zero alpha into zero. */}
@@ -65,7 +102,7 @@ const NavigationBarSmallScreen = () => {
                                 </feComponentTransfer>
                             </filter>
                         </svg>
-                        <nav aria-label="Main navigation" className='navBarSm'>
+                        <nav ref={menuRef} aria-label="Main navigation" className='navBarSm'>
                             <Link className="navSm__menuLogo" onClick={close} to={HOME_PATH}>
                                 <img
                                     src={publicUrl('/logos/black_primary_logo-400.webp')}

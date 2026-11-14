@@ -9,6 +9,7 @@ import { publicUrl } from "../../utils/publicUrl"
 import { stylist_info } from "./stylists_info"
 
 import "./meet-the-team.scss" 
+import { fetchPriority } from "../../utils/fetchPriority"
 
 const StylistPage = () => {
     
@@ -27,7 +28,7 @@ const StylistPage = () => {
     // and in its own section below the band on bigger screens. CSS shows one.
     const education = stylist.stylist_education.length > 0 ?
         <div>
-            <h1 className="mb-30">Education</h1>
+            <h2 className="mb-30">Education</h2>
             {
                 stylist.stylist_education.map((steps, i) => {
                     return <p key={i}><strong>{steps.title}</strong> {steps.detail}</p>
@@ -36,12 +37,20 @@ const StylistPage = () => {
         </div>
     : null
 
+    // Search snippet: who they are, then the start of their bio (kept under ~155 characters)
+    const bioStart = stylist.stylist_info_body.body_stylist_bio[0] ?? ''
+    const intro = `${stylist.stylist_name}, ${stylist.stylist_title} at Studio Within, Chicago's curly hair salon. `
+    const seoDescription = (intro + bioStart).length <= 155
+        ? intro + bioStart
+        : (intro + bioStart).slice(0, 152).replace(/\s+\S*$/, '') + '…' // cut at a word boundary
+
     return (
-        <main className="stylist_single_page">
+        // A div, not <main>: the app layout already wraps every page in <main>
+        <div className="stylist_single_page">
             <SEOHead
                 path={`/meet-the-team/${stylist.stylist_id}`}
                 title={stylist.stylist_name}
-                description={stylist.stylist_title}
+                description={seoDescription}
             />
 
             <header>
@@ -71,11 +80,11 @@ const StylistPage = () => {
                     <motion.img
                         src={publicUrl(`/images/meet_the_team/${stylist.stylist_info_body.body_stylist_pic}`)}
                         alt={stylist.stylist_name}
-                        fetchPriority="high"
+                        {...fetchPriority("high")}
                         style={reduceMotion ? undefined : { y: photoY, scale: photoScale }}
                     />
                 </div>
-                <img className="stylist_body_logo mt-45" src={`${publicUrl('/logos/CurlyLogo.svg')}`}></img>
+                <img className="stylist_body_logo mt-45" src={publicUrl('/logos/CurlyLogo.svg')} alt="" />
                 <div className="stylist_body">
                     <div className="stylist_body_header">
                         <h2>WHAT’S MY SPECIALTY?</h2>
@@ -95,7 +104,7 @@ const StylistPage = () => {
                             <></>
                         }
                         <Link className="backTo" to={'/meet-the-team'}>
-                            <img src={publicUrl(`/images/arrow_left.svg`)} className="mr-10"></img>
+                            <img src={publicUrl(`/images/arrow_left.svg`)} className="mr-10" alt="" />
                             Back to Stylists
                         </Link>
                     </div>
@@ -104,7 +113,7 @@ const StylistPage = () => {
             <section className="stylist_education stylist_education--desktop">
                 {education}
             </section>
-        </main>
+        </div>
     )
 }
 

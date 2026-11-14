@@ -5,6 +5,7 @@ import SEOHead from "../../components/SEOHead/SEOHead"
 import { publicUrl } from "../../utils/publicUrl"
 import { BOOKING_URL } from "../../utils/booking"
 import ButtonLink from "../HomePage/ButtonLink"
+import { fetchPriority } from "../../utils/fetchPriority"
 
 type ServiceGroup = {
     id: string
@@ -128,7 +129,7 @@ const Photo = ({ src, alt, priority = false }: ServiceGroup['photo'] & { priorit
                 src={publicUrl(`/images/services/${src}`)}
                 alt={alt}
                 loading={priority ? "eager" : "lazy"}
-                fetchPriority={priority ? "high" : "auto"}
+                {...fetchPriority(priority ? "high" : "auto")}
                 style={reduceMotion ? undefined : { y, scale: scaleFr }}
             />
         </div>

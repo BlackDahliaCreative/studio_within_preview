@@ -22,7 +22,12 @@ const Landing = () => {
     useEffect(() => {
         const videos = videoRefs.current.filter((v): v is HTMLVideoElement => v !== null)
         if (videos.length !== 2) return
-        
+        // "Reduce motion" set on the device: show the still poster instead of an endless loop
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+            videos.forEach((v) => { v.pause(); v.removeAttribute('autoplay') })
+            return
+        }
+
         videos.forEach((v) => { v.muted = true })
 
         let front = 0
@@ -105,7 +110,11 @@ const Landing = () => {
                 </video>
             ))}
             <div className="flex flex-column flex-alignItems-center" id="logo_btn_landing">
-                <img className="logo_partner" src={publicUrl('/logos/white_primary_logo-840.webp')} width={840} height={694} alt="Studio Within Salon Logo" />
+                {/* The logo is the page's main heading (search engines and screen readers need one) */}
+                <h1 className="landingHero__title">
+                    <img className="logo_partner" src={publicUrl('/logos/white_primary_logo-840.webp')} width={840} height={694} alt="Studio Within Salon" />
+                </h1>
+                <p className="landingHero__tagline">Chicago’s curly hair salon · Curl cuts, color &amp; care</p>
                 <Link to={'/home-page'} className="linkBtn">ENTER HERE</Link>
             </div>
         </div>

@@ -151,7 +151,7 @@
     }
     &__hint {
         overflow: hidden;
-        color: #8a8a8a;
+        color: #666666; // 4.9:1 on the cream pills (WCAG AA)
         text-overflow: ellipsis;
         white-space: nowrap;
     }
@@ -172,7 +172,7 @@
         padding: 0;
         background: transparent;
         border: 0;
-        color: #8a8a8a;
+        color: #666666; // 4.9:1 on the cream pills (WCAG AA)
         font: inherit;
         cursor: pointer;
         &:focus { outline: none; color: #000; }
@@ -189,7 +189,7 @@
     &__count {
         align-self: flex-end;
         padding-right: 12px;
-        color: #8a8a8a;
+        color: #666666; // 4.9:1 on the cream pills (WCAG AA)
         font-size: 11px;
     }
 
@@ -197,7 +197,7 @@
     &__note {
         align-self: flex-end;
         padding-right: 12px;
-        color: #8a8a8a;
+        color: #666666; // 4.9:1 on the cream pills (WCAG AA)
         font-size: 11px;
         text-align: right;
 
