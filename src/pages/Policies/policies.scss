@@ -230,7 +230,7 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
     @media (max-width: 767.98px) {
         .policies-title {
             font-size: 45px;
-            line-height: 42px;
+            line-height: 45px;
             span::before { left: -12px; top: 22px; height: 20px; }
         }
         .policy-card { padding: 0 var(--padding-md) 32px; }
