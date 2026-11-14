@@ -63,10 +63,33 @@
     @media screen and (min-width: 1500px) {
         #logo_btn_landing {
             position: absolute;
-            right: 5%;
+            right: 2%;
             .logo_partner {
                 width: min(60vw, 620px) !important;
             }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        #logo_btn_landing {
+            right: 6% !important;
+        }
+        .logo_partner {
+           width: min(75vw, 420px) !important;
+           background-color: #f1ece260;
+            border: 1px solid var(--cream-color);
+        }
+        .landingHero__tagline {
+            color: #000000 !important;
+            text-shadow: none !important;
+            font-weight: 400;
+            margin-top: 25px !important;
+        }
+        .linkBtn {
+
+            background-color: #f1ece282;
+            color: #000000;
+            border: 1px solid var(--cream-color);
         }
     }
 }

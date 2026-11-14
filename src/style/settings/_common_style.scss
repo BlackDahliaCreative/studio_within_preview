@@ -10,11 +10,12 @@
 .hide {display: none !important;}
 .show {display: flex;}
 .linkBtn {
+    background-color: #f1ece282;
     color: #000000;
-    background-color: #E1D7C3;
+    border: 1px solid var(--cream-color);
     padding: 15px 80px;
     text-decoration: none;
-    font-family: Inter;
+    font-family: var(--primary-font-family);
     font-weight: 400;
     font-size: 22.07px;
     line-height: 40.47px;

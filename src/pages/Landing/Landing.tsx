@@ -112,7 +112,7 @@ const Landing = () => {
             <div className="flex flex-column flex-alignItems-center" id="logo_btn_landing">
                 {/* The logo is the page's main heading (search engines and screen readers need one) */}
                 <h1 className="landingHero__title">
-                    <img className="logo_partner" src={publicUrl('/logos/white_primary_logo-840.webp')} width={840} height={694} alt="Studio Within Salon" />
+                    <img className="logo_partner" src={publicUrl('/logos/black_primary_logo.png')} width={840} height={694} alt="Studio Within Salon" />
                 </h1>
                 <p className="landingHero__tagline">Chicago’s curly hair salon · Curl cuts, color &amp; care</p>
                 <Link to={'/home-page'} className="linkBtn">ENTER HERE</Link>
