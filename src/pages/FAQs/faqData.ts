@@ -12,28 +12,6 @@ export const PHONE_HREF = 'tel:+17733489323'
 
 export const faqGroups: FaqGroup[] = [
     {
-        title: 'Booking + Payments',
-        items: [
-            {
-                q: 'Do I need a deposit to book?',
-                a: ['No deposit is required to book. However, we do require an active card on file (debit or credit) to reserve your appointment. This card will only be charged in the case of a late cancellation, reschedule, or no show. (See our [cancellation policy](/policies/) for details.)'],
-            },
-            {
-                q: 'Do you charge a credit card processing fee?',
-                a: ['Yes — a 3% processing fee applies only to credit card payments. This fee does not apply to debit cards or cash.'],
-            },
-            {
-                q: 'How do I know what a service will cost?',
-                a: ['Our online booking displays starting prices for each service by stylist, so you can see pricing before you book. Final pricing may vary based on hair length, density, and the specific techniques used, and will always be confirmed with you during your consultation.'],
-            },
-            {
-                q: 'How do I book an appointment?',
-                // Placeholder: the Figma answer just repeats the question. Confirm with the salon.
-                a: [`You can book online any time using the Book Now button, or call or text us at [${PHONE_DISPLAY}](${PHONE_HREF}) and we'll help you find the right service and stylist.`],
-            },
-        ],
-    },
-    {
         title: 'Before Your Visit',
         items: [
             {
@@ -92,6 +70,32 @@ export const faqGroups: FaqGroup[] = [
             {
                 q: 'What should I expect at my curly haircut experience?',
                 a: ['Your stylist will have a full consultation with you before starting. You will receive a dry curly haircut, wash and conditioning, a personalized step-by-step tutorial on how to style your curls, drying time, and a refined cut at the end if needed.'],
+            },
+        ],
+    },
+    {
+        title: 'Booking + Payments',
+        items: [
+            {
+                q: 'Do I need a deposit to book?',
+                a: ['No deposit is required to book. However, we do require an active card on file (debit or credit) to reserve your appointment. This card will only be charged in the case of a late cancellation, reschedule, or no show. (See our [cancellation policy](/policies/) for details.)'],
+            },
+            {
+                q: 'Do you charge a credit card processing fee?',
+                a: ['Yes — a 3% processing fee applies only to credit card payments. This fee does not apply to debit cards or cash.'],
+            },
+            {
+                q: 'What is an eco fee?',
+                a: ['A $2 eco fee is added to your appointment to support our partnership with Green Circle Salons. It lets us divert and repurpose up to 85–95% of our salon waste, including foils, color tubes, hair, plastics, and excess color, so it doesn’t simply get thrown away. It’s one small way we’re working to leave things a little better than we found them. [Learn more about Green Circle Salons](https://greencirclesalons.com).'],
+            },
+            {
+                q: 'How do I know what a service will cost?',
+                a: ['Our online booking displays starting prices for each service by stylist, so you can see pricing before you book. Final pricing may vary based on hair length, density, and the specific techniques used, and will always be confirmed with you during your consultation.'],
+            },
+            {
+                q: 'How do I book an appointment?',
+                // Placeholder: the Figma answer just repeats the question. Confirm with the salon.
+                a: [`You can book online any time using the Book Now button, or call or text us at [${PHONE_DISPLAY}](${PHONE_HREF}) and we'll help you find the right service and stylist.`],
             },
             {
                 q: 'Do you offer gift cards?',
