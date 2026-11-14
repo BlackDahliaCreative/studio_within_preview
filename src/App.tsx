@@ -8,6 +8,7 @@ import PageLoader from './components/PageLoader/PageLoader';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { publicUrl } from './utils/publicUrl';
 import { lazyWithImages } from './utils/preloadImages';
+import { useMangomintSameTab } from './utils/useMangomintSameTab';
 
 import './style/App.scss';
 import './pages/page.scss'; // shared .page layout, used by every page
@@ -57,6 +58,9 @@ function App() {
   const firstPath = useRef(pathname)
   const hasNavigated = useRef(false)
   if (pathname !== firstPath.current) hasNavigated.current = true
+
+  // Phones: "Book now" opens Mangomint in the same tab instead of a new one
+  useMangomintSameTab()
 
   return (
     <div className="App flex flex-column col-12">
