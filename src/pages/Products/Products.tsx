@@ -13,12 +13,12 @@ import GiftCardSection from "../../components/GiftCardSection/GiftCardSection"
 
 // Salon photos in the cream band at the bottom, in the order they appear in Figma
 const gallery = [
-    { src: 'products1.webp', alt: 'Row of black shampoo chairs under pendant lights' },
-    { src: 'products2.webp', alt: 'Styling stations with arched mirrors and leather chairs' },
-    { src: 'products3.webp', alt: 'Powder room with tropical wallpaper and a wooden console' },
-    { src: 'products4.webp', alt: 'Front desk surrounded by shelves of curl care products' },
-    { src: 'products5.webp', alt: 'Styling chairs beside a tall wooden mirror and plants' },
-    { src: 'products6.webp', alt: 'Black arched front door opening into the salon' },
+    { src: 'products-gallery1.webp', alt: 'Smiling woman with long red curls looking to the side' },
+    { src: 'products-gallery2.webp', alt: 'Laughing woman with big brown curls on a beach' },
+    { src: 'products-gallery3.webp', alt: 'Woman with dark curly hair and gold hoop earrings' },
+    { src: 'products-gallery4.webp', alt: 'Smiling woman with sunlit blonde ringlet curls' },
+    { src: 'products-gallery5.webp', alt: 'Styling chairs beside a tall wooden mirror and plants' },
+    { src: 'products-gallery6.webp', alt: 'Black arched front door opening into the salon' },
 ]
 const shopifyFluff2 = 'https://kkcurls.myshopify.com/products/2-more-fluff'
 const shopifyFluff3 = 'https://kkcurls.myshopify.com/products/3-the-most-fluff'
@@ -83,7 +83,7 @@ const products = () => {
 
             <GiftCardSection />
 
-            <GallerySection photos={gallery} folder="product" label="Inside the salon" />
+            <GallerySection photos={gallery} folder="product" label="Curly hair gallery" />
         </div>
     )
 }

@@ -281,6 +281,20 @@
                 }
             }
         }
+        .section-gallery .section-gallery__frame:nth-child(3) img {
+            transform: translateY(0) translateX(0px) !important;
+            scale: 132% !important;
+            object-position: top;
+        
+        }
+        .section-gallery .section-gallery__frame:nth-child(2) img {
+            transform: translateY(0) translateX(0);
+            scale: 166%;
+            object-position: top;
+        }
+        .section-gallery .section-gallery__frame:nth-child(4) img {
+            transform: translateY(-10px) translateX(0) !important;
+        }
     }
 
     @media (max-width: 767.98px) {
@@ -292,5 +306,16 @@
         .git-hours table { font-size: 16px; th, td { height: 46px; } }
         .git-storefront::before { top: 30%; height: 40%; }
         .home-gallery { grid-template-columns: minmax(0, 1fr); padding: 32px var(--padding-md); }
+    }
+
+    .section-gallery .section-gallery__frame:nth-child(3) img {
+        transform: translateY(30px) translateX(-30px);
+        scale: 132%;
+        object-position: top;
+    }
+    .section-gallery .section-gallery__frame:nth-child(2) img {
+        transform: translateY(28px) translateX(-35px);
+        scale: 166%;
+        object-position: top;
     }
 }

@@ -16,6 +16,12 @@ $card-bg: rgba(235, 219, 189, 0.37);
     @include shared.buttons;
     @include shared.gallery(442px, 31px, 26px, "442 / 248");
 
+    .section-gallery .section-gallery__frame:is(:nth-child(2), :nth-child(3), :nth-child(4)) img {
+        transform: none !important;
+        scale: 1;
+        object-position: center;
+    }
+
     .git-subtitle {
         width: 60%;
         justify-self: center;
