@@ -87,7 +87,7 @@ const groups: ServiceGroup[] = [
             'Olaplex Add On',
             'Spa Mist Add On',
             'Malibu Treatment',
-            'K-18',
+            'K-18 Treatment',
             'Silent Appointment',
             'Luxe Experience',
             'K-18 Deluxe Add On',
