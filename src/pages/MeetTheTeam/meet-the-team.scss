@@ -130,10 +130,10 @@
             transform-origin: center bottom;
         }
         .stylist_card--Jacob-Greenfield .stylist_image {
-            object-fit: cover;
+            object-fit: contain;
         }
         .stylist_card--Kelley-George .stylist_img_cont {
-            --shadow-bottom: -%;
+            --shadow-bottom: 0%;
             --shadow-width: 50%;
             --shadow-height: 15%;
         }
@@ -194,6 +194,9 @@
         }
     }
     @media (max-width: 600px) {
+        .git-intro {
+            margin-top: 35px;
+        }
         #meetTheTeamPage {
             margin-bottom: -54px;
         }
@@ -402,12 +405,14 @@
     }
 
     @media (max-width: 767.98px) {
+
         header,
         .stylist_card_body,
         .stylist_education {
             padding: 0 20px;
         }
         header {
+            
             .stylist_header { font-size: 30px; }
             .stylist_title {
                 font-size: 15px;
@@ -439,6 +444,8 @@
                 align-self: center;
                 display: inline-flex;
                 align-items: center;
+                position: absolute;
+                bottom: -40px;
             }
         }
         .stylist_card_body {
@@ -465,6 +472,12 @@
 
 .stylist_page--biggie2pac .stylist_card_body .stylist_img img {
     aspect-ratio: 1000 / 860;
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+.stylist_page--Jacob-Greenfield .stylist_card_body .stylist_img img {
+    aspect-ratio: 1000 / 1300;
     object-fit: cover;
     object-position: center bottom;
 }
