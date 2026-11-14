@@ -17,8 +17,8 @@ const gallery = [
     { src: 'products-gallery2.webp', alt: 'Laughing woman with big brown curls on a beach' },
     { src: 'products-gallery3.webp', alt: 'Woman with dark curly hair and gold hoop earrings' },
     { src: 'products-gallery4.webp', alt: 'Smiling woman with sunlit blonde ringlet curls' },
-    { src: 'products-gallery5.webp', alt: 'Styling chairs beside a tall wooden mirror and plants' },
-    { src: 'products-gallery6.webp', alt: 'Black arched front door opening into the salon' },
+    { src: 'products-gallery5.webp', alt: 'Smiling woman with red curls resting her chin on her hands' },
+    { src: 'products-gallery6.webp', alt: 'Woman with long copper waves against a pale wall' },
 ]
 const shopifyFluff2 = 'https://kkcurls.myshopify.com/products/2-more-fluff'
 const shopifyFluff3 = 'https://kkcurls.myshopify.com/products/3-the-most-fluff'

@@ -65,7 +65,7 @@ export const faqGroups: FaqGroup[] = [
             },
             {
                 q: 'Do you offer men’s curly cuts?',
-                a: ['Of course! At Studio Within, curly cuts are listed as Short, Medium, or Long rather than men’s or women’s cuts. That’s because every curl cut is customized to the individual — your curl pattern, density, shape, routine, and goals all play a part. It’s less about fitting into a standard haircut category and more about creating a cut that works for your curls.'],
+                a: ['Of course! At Studio Within, curly cuts are listed as Short or Long rather than men’s or women’s cuts. That’s because every curl cut is customized to the individual — your curl pattern, density, shape, routine, and goals all play a part. It’s less about fitting into a standard haircut category and more about creating a cut that works for your curls.'],
             },
             {
                 q: 'What should I expect at my curly haircut experience?',

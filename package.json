@@ -14,7 +14,7 @@
     "predeploy:preview": "npm run build:preview",
     "deploy:preview": "node scripts/deploy.js live https://github.com/BlackDahliaCreative/studio_within_preview.git",
     "build:official": "npm run scan-images && npm run typecheck && vite build --mode official && vite build --mode official --ssr src/entry-server.tsx --outDir build-ssr && node scripts/prerender.js",
-    "predeploy:official": "npm run build:official && node -e \"require('fs').writeFileSync('build/CNAME','CLIENT_DOMAIN.com')\"",
+    "predeploy:official": "npm run build:official && node -e \"require('fs').writeFileSync('build/CNAME','www.studiowithinchicago.com')\"",
     "deploy:official": "node scripts/deploy.js live https://github.com/BlackDahliaCreative/studio_within_live.git"
   },
   "dependencies": {

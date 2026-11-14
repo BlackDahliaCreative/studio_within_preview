@@ -69,6 +69,7 @@ const Policies = () => {
             <div className="policies-layout">
                 <div className="policies-col policies-col--left">
                     <PolicyCard id="policy-cancellations" title="Cancellations + No Shows" className="policy-card--cancel">
+                        <p>We require a credit or debit card on file per our cancellation policy, which states that if you do not show up to your appointment or cancel within 48 hours of your appointment, we charge 100% of the service.</p>
                         <p>We kindly ask for 48 hours’ notice to cancel or reschedule your appointment. Cancellations or changes made within that window will be charged 100% of the reserved service total using the card on file. We understand things come up, and we appreciate your understanding as this policy helps us respect our stylists’ time and other guests waiting for appointments.</p>
                         <div className="policy-card__action">
                             <ButtonLink to={BOOKING_URL}>Book now</ButtonLink>
@@ -78,7 +79,7 @@ const Policies = () => {
                     <Photo priority className="policies-photo--lounge policies-photo--band" src="policies3.webp" alt="Bright waiting lounge with a living plant wall and white sofa" />
 
                     <PolicyCard id="policy-guests" title="Guest Policy" className="policy-card--guests">
-                        <p>We love that our guests feel at home at Studio Within, and we strive to maintain a peaceful, relaxing atmosphere for everyone.</p>
+                        <p>We love making our guests feel at home at Studio Within, and we strive to maintain a peaceful, relaxing atmosphere for everyone.</p>
                         <p>To help us do so, we kindly ask that you attend your appointment alone. Our space is designed to comfortably accommodate only those receiving services.</p>
                     </PolicyCard>
 
@@ -99,7 +100,7 @@ const Policies = () => {
                     <Photo className="policies-photo--salon" src="policies8.webp" alt="Studio Within salon floor with styling chairs under an arched opening" />
 
                     <PolicyCard id="policy-children" title="Children" className="policy-card--children">
-                        <p>To maintain a calm and safe environment for every guest, please note that Studio Within does not offer separate children’s pricing. Our curly cuts are priced by the service booked—short, medium, or long—regardless of age. Every curl appointment receives the same dedicated time, technique, and individualized care, and appointments for our younger guests often require just as much time and attention.</p>
+                        <p>To maintain a calm and safe environment for every guest, please note that Studio Within does not offer separate children’s pricing. Our curly cuts are priced by the service booked—short or long—regardless of age. Every curl appointment receives the same dedicated time, technique, and individualized care, and appointments for our younger guests often require just as much time and attention.</p>
                         <p>We kindly ask that children under the age of 13 be accompanied by an adult who is not receiving a service, unless prior arrangements have been approved by management.</p>
                         <p>For safety reasons, minor children may not remain on the salon floor or in the lobby while a parent or guardian is receiving a service.</p>
                         <p>If these arrangements cannot be made, the appointment will need to be rescheduled, and a 100% service fee will apply.</p>
