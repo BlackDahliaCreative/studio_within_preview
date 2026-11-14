@@ -1,15 +1,10 @@
 import './footer.scss'
 import { Link, useLocation } from 'react-router-dom'
 import { publicUrl } from '../../utils/publicUrl'
+import { navLinks, navLinksDropdown } from '../NavigationBar/navLinks'
 
-const links = [
-    { to: '/home-page/', label: 'Home' },
-    { to: '/meet-the-team/', label: 'Meet the team' },
-    { to: '/policies/', label: 'Policies' },
-    { to: '/faqs/', label: "FAQ's" },
-    { to: '/services/', label: 'Services' },
-    { to: '/contact-us/', label: 'Get in touch' },
-]
+// Same links as the navbar (shared list), so the two menus never drift apart
+const links = [...navLinks, ...navLinksDropdown]
 
 // Replace the "#" links with the salon's real profiles.
 const socials = [
@@ -43,7 +38,10 @@ const Footer = () => {
                 ))}
             </div>
 
-            <p className="footer__credit">Website by: Black Dahlia Creative</p>
+            <p className="footer__credit">
+                Website by:{' '}
+                <a href="https://blackdahliacreative.com" target="_blank" rel="noopener noreferrer">Black Dahlia Creative</a>
+            </p>
         </footer>
     )
 }

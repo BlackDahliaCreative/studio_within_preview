@@ -45,22 +45,32 @@ const NavigationBarSmallScreen = () => {
                 aria-controls="smallScreenMenu"
                 aria-label={isExpanded ? 'Close navigation menu' : 'Open navigation menu'}
             >
-                <div className={isExpanded ? 'hamburger-menu openHam' : 'hamburger-menu'} aria-hidden="true">
-                    <div className="bar" id="bar1"></div>
-                    <div className="bar" id="bar2"></div>
-                    <div className="bar" id="bar3"></div>
-                </div>
+                {/* Two lines that cross into an X when open */}
+                <span className={isExpanded ? 'hamburger-menu openHam' : 'hamburger-menu'} aria-hidden="true">
+                    <span className="bar bar--top"></span>
+                    <span className="bar bar--bottom"></span>
+                </span>
             </button>
 
             {transitions((style, item) =>
                 item ? (
                     <animated.div style={style} id="smallScreenMenu" role="dialog" aria-label="Navigation menu">
+                        {/* The logo webp has a ~1.5% black haze where it should be
+                            transparent, which shows as a grey box on white.
+                            This filter turns that near-zero alpha into zero. */}
+                        <svg width="0" height="0" aria-hidden="true" focusable="false" style={{ position: 'absolute' }}>
+                            <filter id="navSmLogoClean">
+                                <feComponentTransfer>
+                                    <feFuncA type="linear" slope="1.05" intercept="-0.05" />
+                                </feComponentTransfer>
+                            </filter>
+                        </svg>
                         <nav aria-label="Main navigation" className='navBarSm'>
                             <Link className="navSm__menuLogo" onClick={close} to={HOME_PATH}>
                                 <img
-                                    src={publicUrl('/logos/white_primary_logo-840.webp')}
-                                    width={840}
-                                    height={694}
+                                    src={publicUrl('/logos/black_primary_logo-400.webp')}
+                                    width={400}
+                                    height={330}
                                     alt="Studio Within Salon, home"
                                 />
                             </Link>

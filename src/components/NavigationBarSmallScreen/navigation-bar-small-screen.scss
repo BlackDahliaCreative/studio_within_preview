@@ -20,60 +20,71 @@
     }
 }
 
+// Menu button: white square with a thin black border (same look as the
+// logo box), two thin lines that cross into an X when the menu is open.
 .hambContainer {
-    border-radius: 0px;
-    display: flex;
-    justify-content: end;
     position: fixed;
-    z-index: 12;
-    right: 20px;
+    z-index: 1001; // just above the open menu
     top: 20px;
+    right: 20px;
+    display: flex;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 
     .hamburger-menu {
-        cursor: pointer;
-        width: 40px;
-        height: 40px;
         position: relative;
-        background-color: black;
-        border: 1px solid white;
-        padding: 0;
+        display: block;
+        width: 44px;
+        height: 44px;
+        box-sizing: border-box;
+        background: #fff;
+        border: 1px solid #000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); // stays visible over photos
+        transition: box-shadow 0.3s ease;
 
         .bar {
             position: absolute;
             left: 50%;
             top: 50%;
-            width: 60%;
-            height: 2px;
-            background-color: white;
-            border-radius: 10px;
-            transition: transform 0.35s ease, opacity 0.2s ease, width 0.35s ease;
+            width: 20px;
+            height: 1.5px;
+            background: #000;
+            transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
         }
-
-        #bar1 { transform: translate(-50%, calc(50% - 10px)); }
-        #bar2 { transform: translate(-70%, -50%); width: 40%; }
-        #bar3 { transform: translate(-50%, calc(-170% + 10px)); }
+        .bar--top    { transform: translate(-50%, -4px); }
+        .bar--bottom { transform: translate(-50%, 3px); }
 
         &.openHam {
-            #bar1 {
-                transform: translate(-50%, -50%) rotate(45deg);
-                width: 70%;
-            }
-            #bar2 {
-                opacity: 0;
-                transform: translate(-50%, -50%) scaleX(0.2);
-            }
-            #bar3 {
-                transform: translate(-50%, -50%) rotate(-45deg);
-                width: 70%;
-            }
+            box-shadow: none; // sits flat on the white menu
+            .bar--top    { transform: translate(-50%, -50%) rotate(45deg); }
+            .bar--bottom { transform: translate(-50%, -50%) rotate(-45deg); }
         }
     }
 
+    // Closed: the lines spread a little on hover
+    @media (hover: hover) {
+        &:hover .hamburger-menu:not(.openHam) {
+            .bar--top    { transform: translate(-50%, -6px); }
+            .bar--bottom { transform: translate(-50%, 5px); }
+        }
+    }
+    &:focus-visible {
+        outline: 2px solid var(--text-brown-color);
+        outline-offset: 3px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .hamburger-menu .bar { transition: none; }
+    }
 }
 
 #smallScreenMenu {
     box-sizing: border-box;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
+    color: #000 !important;
     width: 100%;
     position: fixed;
     top: 0;
@@ -82,21 +93,26 @@
     align-items: center;
     justify-content: center;
     align-self: center;
-    z-index: 11;
+    z-index: 1000; // above any page content (pages use z-index up to ~22)
     .navBarSm {
         padding: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 20px;
-        // White logo at the top of the open menu (links home)
+        // Black logo at the top of the open menu (links home)
         .navSm__menuLogo {
             margin-bottom: 16px;
-            img { display: block; width: 160px; height: auto; }
+            img {
+                display: block;
+                width: 180px;
+                height: auto;
+                filter: url(#navSmLogoClean); // clears the image's faint grey box (filter is in the TSX)
+            }
         }
         .navLinksSmScreen {
             text-decoration: none;
-            color: white;
+            color: rgb(0, 0, 0);
             font-size: var(--navbar-fontsize);
             font-family: var(--navbar-fontFamily);
             font-weight: 400;

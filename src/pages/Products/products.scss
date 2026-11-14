@@ -114,32 +114,74 @@ $card-bg: rgba(235, 219, 189, 0.37); // --primary-color at 37%
         .product-card { padding: 0 32px 48px 40px; }
     }
 
-    // One column, in reading order
+    // Tablet: one product per row, photo beside its text, alternating sides
+    // like desktop, without the big side padding and the 75dvh row height
     @media (max-width: 999.98px) {
         .products-layout {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 48px;
+            gap: 80px;
             margin-top: 40px;
-            padding: 0 var(--padding-md);
+            padding: 0 40px;
             box-sizing: border-box;
         }
-        .products-col { display: contents; }
-
-        // Undo the desktop offsets: everything is centred and full width
-        .product-card,
-        .products-photo {
-            margin: 0 !important;
-            width: 100% !important;
-            max-width: 640px;
+        .products-col {
+            align-items: center;
+            gap: 40px;
+            height: auto;
+            padding: 0;
         }
-        .product-card { margin-top: 17px !important; }    // room for the title on the edge
-        .products-photo--band::before { display: none; } // bands only make sense in the 2-column layout
+        .products-photo {
+            flex: 0 0 44%;
+            width: auto;
+            aspect-ratio: 4 / 5;
+        }
+        .product-card {
+            flex: 1 1 auto;
+            width: auto;
+            padding: 0;
+            &__body {
+                margin: 32px 0 36px;
+                font-size: 15px;
+                line-height: 1.7;
+                letter-spacing: 0.5pt;
+            }
+        }
+        .products-photo--band::after { bottom: 10%; height: 64px; }
     }
 
+    // Phone: each product stacks photo first, then its text
     @media (max-width: 767.98px) {
-        .product-card { padding: 0 var(--padding-md) 32px; }
-        .home-btn { min-width: 260px; }
+        .git-subtitle { width: 100%; }
+        .products-layout {
+            gap: 64px;
+            margin-top: 24px;
+            padding: 0 var(--padding-md);
+        }
+        .products-col {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 28px;
+        }
+        .products-col--right .products-photo { order: -1; } // photo above its card here too
+        .products-photo {
+            flex: none;
+            width: 100%;
+            max-width: 420px;
+            align-self: center;
+            aspect-ratio: 1 / 1;
+        }
+        .products-photo--band::after { display: none; } // bands only make sense side by side
+        .product-card {
+            // container-type makes its content width 0, so it must stretch
+            align-self: stretch;
+            width: 100%;
+            &__title { font-size: 18pt; line-height: 1.3; }
+            &__body {
+                margin: 24px 0 28px;
+                padding-bottom: 0 !important; // the pb-25 utility on the first card
+            }
+        }
+        .home-btn { min-width: 0; width: 100%; }
     }
 }

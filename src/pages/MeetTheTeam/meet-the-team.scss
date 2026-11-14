@@ -38,6 +38,7 @@
         justify-content: center;
         margin: 50px auto 0;
         padding: 0 clamp(16px, 6vw, 100px) 80px;
+        overflow-x: clip; // the scaled-up pugs photo pokes out on phones
         position: relative;
         row-gap: 56px;
         width: 100%;
@@ -51,7 +52,12 @@
             left: 0px;
             transform: translateY(30%);
             z-index: 0;
-
+            // Phones stack 4 rows, so the band covers the whole section
+            @media (max-width: 767.98px) {
+                height: 100%;
+                transform: none;
+                background: linear-gradient(#00000000 0%, var(--cream-color) 4%, var(--cream-color) 96%, #00000000 100%);
+            }
         }
 
         .single_stylist_card {
