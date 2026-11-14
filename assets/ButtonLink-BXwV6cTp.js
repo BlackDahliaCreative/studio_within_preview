@@ -1,0 +1,1 @@
+import{a as l,j as i,L as m,S as _}from"./index-BsQwtihg.js";const f=({to:s,children:r,variant:a="dark",onClick:o,target:e="_self"})=>{const t=l(_),n=e==="_blank"&&t?"_self":e;return i.jsx(m,{className:`home-btn home-btn--${a}`,to:s,onClick:o,target:n,rel:n==="_blank"?"noopener noreferrer":void 0,children:r})};export{f as B};
