@@ -34,10 +34,14 @@ const Landing = () => {
         // A still image covers the videos (and the play button iOS draws on a blocked video)
         // until a video is actually playing, then fades away.
         const cover = coverRef.current
+        const hideCover = () => { cover?.classList.add("is-hidden") }
         const onPlaying = (e: Event) => {
-            if (!(e.target as HTMLVideoElement).paused) cover?.classList.add("is-hidden")
+            if (!(e.target as HTMLVideoElement).paused) hideCover()
         }
         videos.forEach((v) => v.addEventListener("playing", onPlaying))
+        // On the live site the page arrives pre-rendered, so the browser may have started the
+        // video (autoplay) before this code ran and its "playing" event was already missed.
+        if (videos.some((v) => !v.paused)) hideCover()
 
 
         let front = 0
@@ -97,7 +101,7 @@ const Landing = () => {
             if (back.paused) {
                 back.play()?.then(() => { if (backIndex !== front) back.pause() }).catch(() => {})
             }
-            videos[front].play()?.then(removeGestureListeners).catch(() => {})
+            videos[front].play()?.then(() => { hideCover(); removeGestureListeners() }).catch(() => {})
         }
 
         // Try again when the visitor comes back to the tab or reopens the page from history
@@ -107,7 +111,8 @@ const Landing = () => {
         document.addEventListener("visibilitychange", onReturn)
         window.addEventListener("pageshow", onReturn)
 
-        videos[0].play()?.catch(() => {
+        // play() also succeeds for a video that is already playing, so this covers that case too
+        videos[0].play()?.then(hideCover).catch(() => {
             // Keep the still cover up (it hides the play button) until a tap starts the video
             cover?.classList.remove("is-hidden")
             GESTURE_EVENTS.forEach((e) => document.addEventListener(e, onGesture, { passive: true }))
