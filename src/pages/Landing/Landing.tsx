@@ -16,6 +16,7 @@ const tryPlay = (video: HTMLVideoElement) => { video.play()?.catch(() => {}) }
 
 const Landing = () => {
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
+    const coverRef = useRef<HTMLImageElement | null>(null)
 
     // Seamless loop: two copies of the video are stacked. As the visible one nears its end,
     // the other starts from the beginning on top and fades in, so the end blends into the start.
@@ -29,6 +30,15 @@ const Landing = () => {
         }
 
         videos.forEach((v) => { v.muted = true })
+
+        // A still image covers the videos (and the play button iOS draws on a blocked video)
+        // until a video is actually playing, then fades away.
+        const cover = coverRef.current
+        const onPlaying = (e: Event) => {
+            if (!(e.target as HTMLVideoElement).paused) cover?.classList.add("is-hidden")
+        }
+        videos.forEach((v) => v.addEventListener("playing", onPlaying))
+
 
         let front = 0
         let crossfading = false
@@ -73,10 +83,42 @@ const Landing = () => {
         if (videos[0].readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) loadSecondCopy()
         else videos[0].addEventListener("canplaythrough", loadSecondCopy, { once: true })
 
-        tryPlay(videos[0])
+        // iPhone Low Power Mode (and some browser settings) block autoplay, but browsers still allow
+        // playback after the visitor taps or presses a key. If autoplay is refused, start the video
+        // on the first interaction. The back copy is started and paused in the same tap so the
+        // loop's crossfade is allowed to play it later.
+        const GESTURE_EVENTS = ["touchend", "click", "keydown"] as const
+        const removeGestureListeners = () => {
+            GESTURE_EVENTS.forEach((e) => document.removeEventListener(e, onGesture))
+        }
+        const onGesture = () => {
+            const backIndex = 1 - front
+            const back = videos[backIndex]
+            if (back.paused) {
+                back.play()?.then(() => { if (backIndex !== front) back.pause() }).catch(() => {})
+            }
+            videos[front].play()?.then(removeGestureListeners).catch(() => {})
+        }
+
+        // Try again when the visitor comes back to the tab or reopens the page from history
+        const onReturn = () => {
+            if (document.visibilityState === "visible" && videos[front].paused) tryPlay(videos[front])
+        }
+        document.addEventListener("visibilitychange", onReturn)
+        window.addEventListener("pageshow", onReturn)
+
+        videos[0].play()?.catch(() => {
+            // Keep the still cover up (it hides the play button) until a tap starts the video
+            cover?.classList.remove("is-hidden")
+            GESTURE_EVENTS.forEach((e) => document.addEventListener(e, onGesture, { passive: true }))
+        })
 
         return () => {
             clearTimeout(timer)
+            videos.forEach((v) => v.removeEventListener("playing", onPlaying))
+            removeGestureListeners()
+            document.removeEventListener("visibilitychange", onReturn)
+            window.removeEventListener("pageshow", onReturn)
             videos[0].removeEventListener("canplaythrough", loadSecondCopy)
             handlers.forEach(({ video, onTime, onEnded }) => {
                 video.removeEventListener("timeupdate", onTime)
@@ -109,6 +151,7 @@ const Landing = () => {
                     <source src={videoDesktop} type="video/mp4" />
                 </video>
             ))}
+            <img ref={coverRef} className="landingHero__cover" src={posterImage} alt="" aria-hidden="true" />
             <div className="flex flex-column flex-alignItems-center" id="logo_btn_landing">
                 {/* The logo is the page's main heading (search engines and screen readers need one) */}
                 <h1 className="landingHero__title">

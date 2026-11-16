@@ -57,7 +57,10 @@ const NavigationBarSmallScreen = () => {
 
     // Same as desktop: the logo box (the home link) shows on every page except
     // the landing page and the home page, whose hero already has the big logo.
-    const showLogoBar = path !== '/' && !path.startsWith('/home-page')
+    const showLogoBar = !path.startsWith('/home-page')
+
+    // Same as desktop: the landing page has no menu, "Enter here" is the only way in
+    if (path === '/') return null
 
     return (
         <>
